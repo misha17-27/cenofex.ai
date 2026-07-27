@@ -1,0 +1,15 @@
+---
+deployment:
+  tasks:
+    # Домашняя папка cPanel-пользователя (из пути репозитория /home/cenofex/...)
+    - export DEPLOYPATH=/home/cenofex/public_html
+    # Папка с картинками
+    - /bin/mkdir -p $DEPLOYPATH/images
+    - /bin/cp -R images/. $DEPLOYPATH/images/
+    # version-4 -> главная страница и index4.html
+    - /bin/cp version-4/index4.html $DEPLOYPATH/index.html
+    - /bin/cp version-4/index4.html $DEPLOYPATH/index4.html
+    # остальные версии по желанию (index2 / index3 / index1)
+    - /bin/cp version-2/index2.html $DEPLOYPATH/index2.html
+    - /bin/cp version-3/index3.html $DEPLOYPATH/index3.html
+    - /bin/cp version-1/index.html  $DEPLOYPATH/index1.html
