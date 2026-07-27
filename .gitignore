@@ -1,0 +1,11 @@
+# Temp / build
+tmp_brand_pages/
+*.log
+
+# Heavy source assets not needed for the site
+images/Brand Guidelines CENOFEX.pdf
+images/*.ai
+
+# OS
+.DS_Store
+Thumbs.db
