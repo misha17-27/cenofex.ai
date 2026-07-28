@@ -192,6 +192,9 @@
       .hero-inner,.about,.contact{grid-template-columns:1fr}
       .hero .wrap{padding-bottom:clamp(20px,5vw,32px)}
       .hero-inner{gap:26px}
+      /* Кнопки hero — в одну строку */
+      .hero-cta{flex-wrap:nowrap;gap:10px}
+      .hero-cta .btn{flex:1 1 0;min-width:0;padding:0 14px;font-size:clamp(13px,3.6vw,15px);white-space:nowrap;min-height:48px}
       .hero-badges{flex-wrap:nowrap;gap:14px}
       .hero-badges b{font-size:clamp(22px,7vw,30px)}
       .hero-badges span{font-size:12px}
