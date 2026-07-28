@@ -430,9 +430,6 @@ ob_start();
 <footer>
   <div class="foot">
     <img src="<?= $base ?>/images/logo-white-text.png" alt="CENOFEX">
-    <p><?= e(t($c,'copyright')) ?>
-      <span class="by">Site by <a href="https://webline.az/" target="_blank" rel="noopener">Webline</a></span>
-    </p>
     <div class="foot-links">
       <a href="#about"><?= e(t($c,'nav_about')) ?></a>
       <a href="#services"><?= e(t($c,'nav_services')) ?></a>
@@ -440,6 +437,9 @@ ob_start();
       <a href="#solutions"><?= e(t($c,'nav_solutions')) ?></a>
       <a href="#contact"><?= e(t($c,'nav_contact')) ?></a>
     </div>
+    <p><?= e(t($c,'copyright')) ?>
+      <span class="by">Site by <a href="https://webline.az/" target="_blank" rel="noopener">Webline</a></span>
+    </p>
   </div>
 </footer>
 <button class="to-top" id="toTop" type="button" aria-label="<?= $lang==='az' ? 'Yuxarı qalx' : 'Back to top' ?>">
