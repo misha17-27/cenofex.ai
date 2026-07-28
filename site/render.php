@@ -66,6 +66,26 @@ $slides = [
    'def'=>'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80','fb'=>'3.png'],
 ];
 
+/** Набор размеров для картинок Unsplash — мобильные грузят маленькую версию. */
+function img_srcset(string $url): string
+{
+    if (strpos($url, 'images.unsplash.com') === false) return '';
+    $set = [];
+    foreach ([480, 640, 960, 1280, 1600] as $w) {
+        $u = preg_replace('/([?&])w=\d+/', '$1w=' . $w, $url);
+        if (strpos($u, 'w=') === false) $u .= '&w=' . $w;
+        $set[] = $u . ' ' . $w . 'w';
+    }
+    return implode(', ', $set);
+}
+/** Уменьшенная версия для мобильных — используется как основной src. */
+function img_small(string $url, int $w = 960): string
+{
+    if (strpos($url, 'images.unsplash.com') === false) return $url;
+    $u = preg_replace('/([?&])w=\d+/', '$1w=' . $w, $url);
+    return preg_replace('/([?&])q=\d+/', '${1}q=72', $u);
+}
+
 ob_start();
 ?><!doctype html>
 <html lang="<?= e($lang) ?>">
@@ -84,8 +104,18 @@ ob_start();
 <link rel="icon" type="image/png" href="<?= $base ?>/images/brand-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="stylesheet" href="<?= e(asset('/assets/site.css', $base)) ?>">
+<?php /* Шрифты грузим неблокирующе — страница рисуется сразу */ ?>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"></noscript>
+<?php /* Предзагрузка главной картинки — ускоряет LCP */
+      $lcp = setting($slides[0]['img'], $slides[0]['def']);
+      $lcpSet = img_srcset($lcp); ?>
+<link rel="preload" as="image" href="<?= e(img_small($lcp)) ?>"
+      <?php if ($lcpSet): ?>imagesrcset="<?= e($lcpSet) ?>" imagesizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
+      fetchpriority="high">
 <?= turnstile_script() ?>
 </head>
 <body>
@@ -126,7 +156,10 @@ ob_start();
               </div>
             </div>
             <div class="hero-visual">
-              <img src="<?= e($img) ?>" alt="<?= e(t($c,$s['ct'])) ?>" <?= $i===0?'loading="eager" fetchpriority="high"':'loading="lazy"' ?>
+              <img src="<?= e(img_small($img)) ?>"
+                   <?php $ss = img_srcset($img); if ($ss): ?>srcset="<?= e($ss) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
+                   width="1600" height="1100" decoding="async"
+                   alt="<?= e(t($c,$s['ct'])) ?>" <?= $i===0?'loading="eager" fetchpriority="high"':'loading="lazy"' ?>
                    onerror="this.onerror=null;this.src='<?= $base ?>/images/<?= e($s['fb']) ?>';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
               <div class="hero-chip"><img src="<?= $base ?>/images/brand-icon.png" alt="">
                 <div><b><?= e(t($c,$s['ct'])) ?></b><span><?= e(t($c,$s['cs'])) ?></span></div>
@@ -158,9 +191,11 @@ ob_start();
       </div>
       <div class="about-media reveal">
         <?php $ab = setting('photo_about', 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80'); ?>
-        <img src="<?= e($ab) ?>" alt="<?= e(t($c,'about_title')) ?>" loading="lazy"
+        <img src="<?= e(img_small($ab)) ?>"
+             <?php $ssa = img_srcset($ab); if ($ssa): ?>srcset="<?= e($ssa) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
+             width="1600" height="1200" decoding="async"
+             alt="<?= e(t($c,'about_title')) ?>" loading="lazy"
              onerror="this.onerror=null;this.src='<?= $base ?>/images/4.png';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
-        <div class="about-mark"><img src="<?= $base ?>/images/brand-icon.png" alt=""></div>
       </div>
     </div>
   </section>
