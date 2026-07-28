@@ -384,3 +384,14 @@
     .to-top:active{transform:translateY(0)}
     @media (max-width:560px){.to-top{width:44px;height:44px}}
     @media (prefers-reduced-motion:reduce){.to-top{transition:opacity .2s}}
+
+    /* --- на мобильном 4 пункта знака в 2 столбика --- */
+    @media (max-width:640px){
+      .pill-rows{grid-template-columns:1fr 1fr;gap:8px}
+      .pill-row{padding:12px;gap:9px;align-items:center}
+      .pill-dot{width:10px;height:10px;margin-top:0}
+      .pill-txt em{font-size:10px;letter-spacing:.1em}
+      .pill-txt b{font-size:15px;line-height:1.2}
+      .pill-txt i{font-size:12.5px}
+      .pil-sum{width:100%;justify-content:center;padding:12px 14px}
+    }
