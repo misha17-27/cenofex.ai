@@ -5,6 +5,17 @@ require_once __DIR__ . '/db.php';
 
 function e($v): string { return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
 
+/**
+ * Ссылка на файл стилей/скриптов с версией по времени изменения.
+ * Браузер сам подтянет новую версию после каждого обновления файла.
+ */
+function asset(string $relative, string $base = '.'): string
+{
+    $file = __DIR__ . '/..' . $relative;          // /assets/site.css -> site/assets/site.css
+    $v    = is_file($file) ? filemtime($file) : time();
+    return $base . $relative . '?v=' . $v;
+}
+
 /* ---------------- Контент (тексты сайта) ---------------- */
 
 /** Все тексты одного языка: ['ключ' => 'значение'] */

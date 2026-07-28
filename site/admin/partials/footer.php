@@ -1,6 +1,6 @@
     </div><!-- /content -->
   </div><!-- /main -->
 </div><!-- /layout -->
-<script src="assets/admin.js?v=3"></script>
+<script src="<?= e(asset('/admin/assets/admin.js', '')) ?>"></script>
 </body>
 </html>

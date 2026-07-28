@@ -20,7 +20,7 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
 <title><?= e($title) ?> — CENOFEX</title>
 <link rel="icon" type="image/png" href="../images/brand-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/admin.css?v=3">
+<link rel="stylesheet" href="<?= e(asset('/admin/assets/admin.css', '')) ?>">
 </head>
 <body>
 <div class="layout">

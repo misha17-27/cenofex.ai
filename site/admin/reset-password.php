@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $row) {
 <title>Новый пароль — CENOFEX</title>
 <link rel="icon" type="image/png" href="../images/brand-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/admin.css?v=3">
+<link rel="stylesheet" href="<?= e(asset('/admin/assets/admin.css', '')) ?>">
 </head><body>
 <div class="auth">
   <div class="auth-card">
@@ -49,5 +49,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $row) {
     <?php endif; ?>
   </div>
 </div>
-<script src="assets/admin.js?v=3"></script>
+<script src="<?= e(asset('/admin/assets/admin.js', '')) ?>"></script>
 </body></html>

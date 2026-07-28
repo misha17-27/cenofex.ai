@@ -29,7 +29,7 @@ if (!current_user()) {
     <title>Вход — CENOFEX</title>
     <link rel="icon" type="image/png" href="../images/brand-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/admin.css?v=3">
+    <link rel="stylesheet" href="<?= e(asset('/admin/assets/admin.css', '')) ?>">
     <?= turnstile_script() ?>
     </head><body>
     <div class="auth">
@@ -65,7 +65,7 @@ if (!current_user()) {
         <div class="auth-links"><a href="forgot-password">Забыли пароль?</a></div>
       </div>
     </div>
-    <script src="assets/admin.js?v=3"></script>
+    <script src="<?= e(asset('/admin/assets/admin.js', '')) ?>"></script>
     </body></html>
     <?php
     exit;
