@@ -10,9 +10,11 @@ deployment:
     - /bin/cp coming-soon.html $DEPLOYPATH/index.html
     # Полная версия сайта доступна по /index4.html
     - /bin/cp version-4/index4.html $DEPLOYPATH/index4.html
-    # Азербайджанская версия по адресу /az/ (тот же файл, язык определяется по URL)
+    # index5 — версия с реальным контентом клиента
+    - /bin/cp version-5/index5.html $DEPLOYPATH/index5.html
+    # Азербайджанская версия по адресу /az/ (index5, язык определяется по URL)
     - /bin/mkdir -p $DEPLOYPATH/az
-    - /bin/cp version-4/index4.html $DEPLOYPATH/az/index.html
+    - /bin/cp version-5/index5.html $DEPLOYPATH/az/index.html
     # остальные версии по желанию (index2 / index3 / index1)
     - /bin/cp version-2/index2.html $DEPLOYPATH/index2.html
     - /bin/cp version-3/index3.html $DEPLOYPATH/index3.html
