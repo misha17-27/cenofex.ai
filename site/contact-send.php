@@ -51,7 +51,8 @@ if (mb_strlen($name) < 2)                              $errors[] = 'name';
 if (!preg_match('/^[0-9()+\-\s]{7,40}$/', $phone))     $errors[] = 'phone';
 if (preg_match('/\d/', $phone) === 0)                  $errors[] = 'phone';
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'email';
-if (mb_strlen($message) < 5)                           $errors[] = 'message';
+// сообщение необязательно — проверяем только если заполнено
+if ($message !== '' && mb_strlen($message) < 3) $errors[] = 'message';
 
 /* простая защита от спам-ссылок */
 if (preg_match_all('~https?://~i', $message) > 3)      $errors[] = 'spam';
@@ -67,7 +68,7 @@ try {
 /* 7. Письмо администратору */
 $to   = setting('contact_form_email', 'info@cenofex.ai');
 $body = "Имя: $name\nТелефон: $phone\nE-mail: " . ($email ?: '—') . "\nЯзык: $lang\nIP: " . client_ip()
-      . "\n\nСообщение:\n$message\n";
+      . "\n\nСообщение:\n" . ($message !== '' ? $message : '—') . "\n";
 
 $err = '';
 send_mail($to, 'CENOFEX — новая заявка с сайта', $body, $email, $err);

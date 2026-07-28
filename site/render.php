@@ -417,8 +417,8 @@ ob_start();
                  pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
                  placeholder="<?= e(t($c,'email_ph')) ?>"></div>
 
-        <div class="field"><label for="cf-msg"><?= e(t($c,'message_label','Message')) ?> *</label>
-          <textarea id="cf-msg" name="message" required maxlength="4000" placeholder="<?= e(t($c,'message_ph')) ?>"></textarea></div>
+        <div class="field"><label for="cf-msg"><?= e(t($c,'message_label','Message')) ?></label>
+          <textarea id="cf-msg" name="message" maxlength="4000" placeholder="<?= e(t($c,'message_ph')) ?>"></textarea></div>
 
         <?= turnstile_widget() ?>
         <button class="btn" type="submit"><?= e(t($c,'send','Send Message')) ?></button>
