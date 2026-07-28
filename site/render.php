@@ -412,7 +412,10 @@ ob_start();
                  placeholder="<?= e(t($c,'phone_ph','+994 __ ___ __ __')) ?>"></div>
 
         <div class="field"><label for="cf-email"><?= e(t($c,'email_label2','E-mail')) ?></label>
-          <input id="cf-email" type="email" name="email" maxlength="190" placeholder="<?= e(t($c,'email_ph')) ?>"></div>
+          <input id="cf-email" type="email" name="email" maxlength="190"
+                 inputmode="email" autocomplete="email" spellcheck="false" autocapitalize="off"
+                 pattern="[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}"
+                 placeholder="<?= e(t($c,'email_ph')) ?>"></div>
 
         <div class="field"><label for="cf-msg"><?= e(t($c,'message_label','Message')) ?> *</label>
           <textarea id="cf-msg" name="message" required maxlength="4000" placeholder="<?= e(t($c,'message_ph')) ?>"></textarea></div>

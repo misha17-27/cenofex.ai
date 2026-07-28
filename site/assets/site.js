@@ -102,6 +102,36 @@
     });
   })();
 
+  /* ---- поле e-mail: только допустимые в адресе символы ---- */
+  (function () {
+    var mail = document.getElementById('cf-email');
+    if (!mail) return;
+
+    // латиница, цифры и символы, разрешённые в адресе почты
+    var ALLOWED = /[A-Za-z0-9@._+\-]/;
+    function clean(v) { return v.replace(/[^A-Za-z0-9@._+\-]/g, '').toLowerCase(); }
+
+    mail.addEventListener('keypress', function (ev) {
+      if (ev.ctrlKey || ev.metaKey) return;
+      if (!ALLOWED.test(ev.key)) ev.preventDefault();          // пробелы, кириллица и пр. — блокируем
+    });
+    mail.addEventListener('input', function () {
+      var before = mail.value, pos = mail.selectionStart, after = clean(before);
+      if (after !== before) {
+        var shift = before.length - after.length;
+        mail.value = after;
+        mail.setSelectionRange(Math.max(0, pos - shift), Math.max(0, pos - shift));
+      }
+    });
+    mail.addEventListener('paste', function (ev) {
+      var txt = (ev.clipboardData || window.clipboardData).getData('text');
+      if (txt && clean(txt) !== txt) {
+        ev.preventDefault();
+        mail.value = clean(mail.value + txt);
+      }
+    });
+  })();
+
   /* ---- концепция знака: подсветка сегмента ---- */
   (function () {
     var rows = q('#pillRows'), mark = q('#conceptMark');
