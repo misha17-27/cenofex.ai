@@ -168,10 +168,10 @@ ob_start();
   <!-- BRAND CONCEPT: знак из 4 частей -->
   <?php
   $pillars = [
-    ['n' => '01', 'key' => 'pil1', 'def' => 'Consultation', 'seg' => 'tl'],
-    ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'tr'],
-    ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'br'],
-    ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'bl'],
+    ['n' => '01', 'key' => 'pil1', 'def' => 'Consultation', 'seg' => 'p1'],
+    ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'p2'],
+    ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'p3'],
+    ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'p4'],
   ];
   ?>
   <section id="concept">
@@ -202,10 +202,10 @@ ob_start();
         </div>
       </div>
 
-      <div class="concept-mark reveal" id="conceptMark" data-active="tl">
-        <div class="mark-stage">
-          <?php foreach (['tl','tr','br','bl'] as $seg): ?>
-            <img class="seg seg-<?= $seg ?>" src="<?= $base ?>/images/brand-icon.png" alt="" aria-hidden="true">
+      <div class="concept-mark reveal" id="conceptMark" data-active="p1">
+        <div class="mark-stage" role="img" aria-label="CENOFEX">
+          <?php foreach (['p1','p2','p3','p4'] as $seg): ?>
+            <span class="petal <?= $seg ?>" aria-hidden="true"></span>
           <?php endforeach; ?>
         </div>
       </div>
