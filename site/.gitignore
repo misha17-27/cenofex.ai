@@ -1,0 +1,4 @@
+app/config.php
+storage/cache/*.html
+uploads/photos/*
+uploads/partners/p*

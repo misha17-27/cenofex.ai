@@ -3,19 +3,42 @@ deployment:
   tasks:
     # Домашняя папка cPanel-пользователя (из пути репозитория /home/cenofex/...)
     - export DEPLOYPATH=/home/cenofex/public_html
-    # Папка с картинками
+
+    # ---------- Общие ресурсы ----------
     - /bin/mkdir -p $DEPLOYPATH/images
     - /bin/cp -R images/. $DEPLOYPATH/images/
-    # Главная (/) -> страница-заглушка "Coming Soon"
+
+    # ---------- Главная (/) — страница Coming Soon ----------
     - /bin/cp coming-soon.html $DEPLOYPATH/index.html
-    # Полная версия сайта доступна по /index4.html
+
+    # ---------- Статические прототипы (для сравнения версий) ----------
     - /bin/cp version-4/index4.html $DEPLOYPATH/index4.html
-    # index5 — версия с реальным контентом клиента
     - /bin/cp version-5/index5.html $DEPLOYPATH/index5.html
-    # Азербайджанская версия по адресу /az/ (index5, язык определяется по URL)
-    - /bin/mkdir -p $DEPLOYPATH/az
-    - /bin/cp version-5/index5.html $DEPLOYPATH/az/index.html
-    # остальные версии по желанию (index2 / index3 / index1)
     - /bin/cp version-2/index2.html $DEPLOYPATH/index2.html
     - /bin/cp version-3/index3.html $DEPLOYPATH/index3.html
     - /bin/cp version-1/index.html  $DEPLOYPATH/index1.html
+
+    # ---------- Рабочий сайт на PHP + админ-панель ----------
+    - /bin/mkdir -p $DEPLOYPATH/app $DEPLOYPATH/admin/partials $DEPLOYPATH/admin/assets
+    - /bin/mkdir -p $DEPLOYPATH/assets $DEPLOYPATH/az $DEPLOYPATH/storage/cache
+    - /bin/mkdir -p $DEPLOYPATH/uploads/partners $DEPLOYPATH/uploads/photos
+
+    - /bin/cp -R site/app/.      $DEPLOYPATH/app/
+    - /bin/cp -R site/admin/.    $DEPLOYPATH/admin/
+    - /bin/cp -R site/assets/.   $DEPLOYPATH/assets/
+    - /bin/cp -R site/az/.       $DEPLOYPATH/az/
+    - /bin/cp site/render.php       $DEPLOYPATH/render.php
+    - /bin/cp site/index5.php       $DEPLOYPATH/index5.php
+    - /bin/cp site/contact-send.php $DEPLOYPATH/contact-send.php
+    - /bin/cp site/install.php      $DEPLOYPATH/install.php
+    - /bin/cp site/storage/.htaccess $DEPLOYPATH/storage/.htaccess
+    - /bin/cp site/uploads/.htaccess $DEPLOYPATH/uploads/.htaccess
+
+    # config.php создаём один раз и БОЛЬШЕ НЕ ТРОГАЕМ (в нём пароль от БД)
+    - /bin/cp -n site/app/config.example.php $DEPLOYPATH/app/config.php
+
+    # Старый статический /az/index.html убираем, чтобы работала PHP-версия /az/
+    - /bin/rm -f $DEPLOYPATH/az/index.html
+
+    # Сброс кэша страниц после обновления
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html

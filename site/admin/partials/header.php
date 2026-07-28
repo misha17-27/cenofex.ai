@@ -1,0 +1,73 @@
+<?php
+/** Шапка админ-панели: подключение ядра, проверка доступа, боковое меню. */
+require_once dirname(__DIR__, 2) . '/app/auth.php';
+
+$user = require_login();
+$page = $page ?? '';
+$title = $title ?? 'Панель';
+
+function nav_item(string $href, string $key, string $label, string $svg, string $current): void
+{
+    $active = $key === $current ? ' active' : '';
+    echo '<a class="item' . $active . '" href="' . e($href) . '"><svg viewBox="0 0 24 24">' . $svg . '</svg>' . e($label) . '</a>';
+}
+?><!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title><?= e($title) ?> — CENOFEX</title>
+<link rel="icon" type="image/png" href="../images/brand-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand"><img src="../images/logo-white-text.png" alt="CENOFEX"></div>
+    <nav>
+      <div class="grp">Основное</div>
+      <?php nav_item('index.php', 'dashboard', 'Обзор',
+        '<rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/>', $page); ?>
+
+      <div class="grp">Контент</div>
+      <?php
+      nav_item('content.php', 'content', 'Тексты сайта',
+        '<path d="M4 5h16M4 12h16M4 19h10"/>', $page);
+      nav_item('items.php', 'items', 'Услуги и решения',
+        '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/>', $page);
+      nav_item('partners.php', 'partners', 'Партнёры',
+        '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 3.5a3 3 0 0 1 0 9"/><path d="M18 20a6 6 0 0 0-3-5.2"/>', $page);
+      nav_item('media.php', 'media', 'Изображения',
+        '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 5-5 4 4 3-2 4 4"/>', $page);
+      ?>
+
+      <div class="grp">Настройки</div>
+      <?php
+      nav_item('seo.php', 'seo', 'SEO',
+        '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', $page);
+      nav_item('users.php', 'users', 'Пользователи',
+        '<circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/>', $page);
+      nav_item('profile.php', 'profile', 'Мой профиль',
+        '<circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/>', $page);
+      ?>
+    </nav>
+    <div class="foot">
+      Вы вошли как<br><strong style="color:#fff"><?= e($user['name']) ?></strong>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      <h1><?= e($title) ?></h1>
+      <div class="right">
+        <a class="btn ghost sm" href="../index5.php" target="_blank" rel="noopener">Открыть сайт</a>
+        <a class="btn ghost sm" href="logout.php">Выйти</a>
+      </div>
+    </div>
+    <div class="content">
+<?php if (!empty($_GET['saved'])): ?>
+      <div class="alert ok">Сохранено. Изменения уже на сайте.</div>
+<?php endif; ?>
