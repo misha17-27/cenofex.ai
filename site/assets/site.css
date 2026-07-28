@@ -395,3 +395,9 @@
       .pill-txt i{font-size:12.5px}
       .pil-sum{width:100%;justify-content:center;padding:12px 14px}
     }
+
+    /* подпись разработчика в футере */
+    .foot .by{display:inline-block;margin-left:8px;color:rgba(255,255,255,.5)}
+    .foot .by a{color:rgba(255,255,255,.72);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3)}
+    .foot .by a:hover{color:var(--green);border-color:var(--green)}
+    @media (max-width:560px){.foot .by{display:block;margin:6px 0 0}}
