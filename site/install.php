@@ -21,12 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!$errors) {
         try {
-            // 1. Таблицы
+            // 1. Таблицы (сначала убираем строки-комментарии, иначе запрос не распознаётся)
             $sql = file_get_contents(__DIR__ . '/app/schema.sql');
+            $sql = preg_replace('/^\s*--.*$/m', '', $sql);
+            $made = 0;
             foreach (array_filter(array_map('trim', explode(';', $sql))) as $stmt) {
-                if (stripos($stmt, 'CREATE') === 0 || stripos($stmt, 'SET') === 0) db()->exec($stmt);
+                if ($stmt === '') continue;
+                db()->exec($stmt);
+                $made++;
             }
-            $log[] = 'Таблицы созданы.';
+            $log[] = "Таблицы созданы (запросов: {$made}).";
 
             // 2. Администратор
             $st = db()->prepare('SELECT id FROM users WHERE email = ?');
