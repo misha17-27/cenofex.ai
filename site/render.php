@@ -407,6 +407,7 @@ ob_start();
 
         <div class="field"><label for="cf-phone"><?= e(t($c,'phone_form_label', $lang==='az'?'Telefon':'Phone')) ?> *</label>
           <input id="cf-phone" name="phone" type="tel" required maxlength="40"
+                 inputmode="tel" autocomplete="tel"
                  pattern="[0-9()+\-\s]{7,40}"
                  placeholder="<?= e(t($c,'phone_ph','+994 __ ___ __ __')) ?>"></div>
 

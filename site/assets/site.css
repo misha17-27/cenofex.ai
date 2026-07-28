@@ -358,13 +358,16 @@
     /* hero: горизонтальные жесты — нам, вертикальные — странице */
     .hero-viewport{touch-action:pan-y}
 
-    /* --- на мобильном показываем 3 логотипа вместо 2 --- */
+    /* --- на мобильном показываем 3 логотипа --- */
+    /* ширина считается от экрана: (100vw − боковые отступы − промежутки) / 3
+       проценты здесь нельзя — лента имеет width:max-content */
     @media (max-width:640px){
-      .marquee-track{gap:12px}
-      .partner{flex:0 0 calc((100% - 24px)/3);min-height:96px;padding:14px 12px;border-radius:14px}
-      .partner img{max-height:40px}
+      .marquee-track{gap:10px}
+      .partner{flex:0 0 calc((100vw - 36px - 20px) / 3);min-height:92px;padding:12px 10px;border-radius:14px}
+      .partner img{max-height:38px}
     }
     @media (max-width:380px){
-      .partner{flex:0 0 calc((100% - 20px)/3);min-height:86px;padding:12px 10px}
-      .partner img{max-height:34px}
+      .marquee-track{gap:8px}
+      .partner{flex:0 0 calc((100vw - 36px - 16px) / 3);min-height:84px;padding:10px 8px}
+      .partner img{max-height:32px}
     }

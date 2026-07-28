@@ -69,6 +69,39 @@
     start();
   })();
 
+  /* ---- поле телефона: только цифры, +, скобки, дефис и пробел ---- */
+  (function () {
+    var phone = document.getElementById('cf-phone');
+    if (!phone) return;
+
+    function clean(v) {
+      var plus = v.trim().charAt(0) === '+';           // «+» разрешаем только первым
+      var rest = v.replace(/[^\d()\-\s]/g, '');
+      return (plus ? '+' : '') + rest;
+    }
+    phone.addEventListener('input', function () {
+      var before = phone.value, pos = phone.selectionStart;
+      var after = clean(before);
+      if (after !== before) {
+        phone.value = after;
+        phone.setSelectionRange(Math.max(0, pos - (before.length - after.length)),
+                                Math.max(0, pos - (before.length - after.length)));
+      }
+    });
+    phone.addEventListener('keypress', function (ev) {
+      if (ev.ctrlKey || ev.metaKey) return;
+      var ok = /[\d()\-\s]/.test(ev.key) || (ev.key === '+' && phone.selectionStart === 0);
+      if (!ok) ev.preventDefault();
+    });
+    phone.addEventListener('paste', function (ev) {
+      var txt = (ev.clipboardData || window.clipboardData).getData('text');
+      if (txt && clean(txt) !== txt) {
+        ev.preventDefault();
+        phone.value = clean(phone.value + txt);
+      }
+    });
+  })();
+
   /* ---- концепция знака: подсветка сегмента ---- */
   (function () {
     var rows = q('#pillRows'), mark = q('#conceptMark');
