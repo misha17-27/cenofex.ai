@@ -69,6 +69,23 @@
     start();
   })();
 
+  /* ---- кнопка «наверх» ---- */
+  (function () {
+    var btn = q('#toTop');
+    if (!btn) return;
+
+    function toggle() {
+      btn.classList.toggle('show', window.pageYOffset > 400);
+    }
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+
+    btn.addEventListener('click', function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  })();
+
   /* ---- отправка формы без перезагрузки (страница не прыгает) ---- */
   (function () {
     var form = document.querySelector('form.form');

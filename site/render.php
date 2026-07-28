@@ -440,6 +440,12 @@ ob_start();
     </div>
   </div>
 </footer>
+<button class="to-top" id="toTop" type="button" aria-label="<?= $lang==='az' ? 'Yuxarı qalx' : 'Back to top' ?>">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+       stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"/><path d="M5 12l7-7 7 7"/>
+  </svg>
+</button>
 <script src="<?= e(asset('/assets/site.js', $base)) ?>" defer></script>
 </body>
 </html>
