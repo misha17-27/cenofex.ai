@@ -340,3 +340,9 @@
       .petal{transition:background .2s ease}
       .concept-mark[data-active] .petal{transform:none}
     }
+
+    /* --- запрет автозума на мобильных (iOS приближает поля с шрифтом < 16px) --- */
+    @media (max-width:980px){
+      .form input,.form textarea,select{font-size:16px}
+    }
+    html{-webkit-text-size-adjust:100%;text-size-adjust:100%}

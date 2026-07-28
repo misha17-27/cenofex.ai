@@ -111,3 +111,9 @@ tr:last-child td{border-bottom:0}
   border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--muted);border-radius:8px}
 .pw-toggle:hover{color:var(--teal);background:rgba(2,167,142,.08)}
 .pw-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* --- запрет автозума на мобильных --- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (max-width:900px){
+  input[type=text],input[type=email],input[type=password],input[type=url],input[type=number],select,textarea{font-size:16px}
+}

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $row) {
 }
 ?><!doctype html>
 <html lang="ru"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>Новый пароль — CENOFEX</title>
 <link rel="icon" type="image/png" href="../images/brand-icon.png">
