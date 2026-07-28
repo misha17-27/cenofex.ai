@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     cache_clear();
-    header('Location: content.php?saved=1'); exit;
+    header('Location: content?saved=1'); exit;
 }
 
 $en = content_all('en');

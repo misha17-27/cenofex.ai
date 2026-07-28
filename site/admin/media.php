@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($url !== '') setting_set($key, $url);
         }
     }
-    if (!$err) { cache_clear(); header('Location: media.php?saved=1'); exit; }
+    if (!$err) { cache_clear(); header('Location: media?saved=1'); exit; }
 }
 ?>
 <?php if ($err): ?><div class="alert err"><?= e($err) ?></div><?php endif; ?>

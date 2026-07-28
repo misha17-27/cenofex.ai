@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             else {
                 db()->prepare('INSERT INTO users (name,email,password_hash,role) VALUES (?,?,?,?)')
                     ->execute([$name, $email, password_hash($pass, PASSWORD_DEFAULT), $role]);
-                header('Location: users.php?saved=1'); exit;
+                header('Location: users?saved=1'); exit;
             }
         }
     } elseif ($action === 'save') {
@@ -44,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          ->execute([password_hash($f['password'], PASSWORD_DEFAULT), $id]);
             }
         }
-        if (!$err) { header('Location: users.php?saved=1'); exit; }
+        if (!$err) { header('Location: users?saved=1'); exit; }
     } elseif ($action === 'delete') {
         $id = (int)($_POST['id'] ?? 0);
         if ($id === (int)$user['id']) $err = 'Нельзя удалить самого себя.';
-        else { db()->prepare('DELETE FROM users WHERE id=?')->execute([$id]); header('Location: users.php?saved=1'); exit; }
+        else { db()->prepare('DELETE FROM users WHERE id=?')->execute([$id]); header('Location: users?saved=1'); exit; }
     }
 }
 

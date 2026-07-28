@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setting_set($k, trim($_POST[$k] ?? ''));
     }
     cache_clear();
-    header('Location: seo.php?saved=1'); exit;
+    header('Location: seo?saved=1'); exit;
 }
 ?>
 <form method="post">

@@ -103,3 +103,11 @@ tr:last-child td{border-bottom:0}
   .burger{display:flex}
   .content{padding:16px}
 }
+
+/* ---------- Поле пароля с «глазом» ---------- */
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:46px}
+.pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:34px;height:34px;
+  border:0;background:transparent;cursor:pointer;display:grid;place-items:center;color:var(--muted);border-radius:8px}
+.pw-toggle:hover{color:var(--teal);background:rgba(2,167,142,.08)}
+.pw-toggle svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}

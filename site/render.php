@@ -4,6 +4,7 @@
  * Результат кэшируется в storage/cache/page_{lang}.html и отдаётся как статика.
  */
 require_once __DIR__ . '/app/helpers.php';
+require_once __DIR__ . '/app/captcha.php';
 
 if (!isset($lang) || !in_array($lang, ['en', 'az'], true)) $lang = 'en';
 
@@ -85,6 +86,7 @@ ob_start();
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?= $base ?>/assets/site.css">
+<?= turnstile_script() ?>
 </head>
 <body>
 <header>
@@ -298,18 +300,48 @@ ob_start();
 
       <form class="form reveal" method="post" action="<?= $base ?>/contact-send.php">
         <?php if ($notice === 'ok'): ?>
-          <div class="form-msg ok"><?= e(t($c, 'form_ok', $lang === 'az' ? 'Mesajınız göndərildi. Tezliklə əlaqə saxlayacağıq.' : 'Thank you — your message has been sent.')) ?></div>
+          <div class="form-msg ok"><?= e(t($c, 'form_ok', $lang === 'az'
+              ? 'Mesajınız göndərildi. Tezliklə əlaqə saxlayacağıq.'
+              : 'Thank you — your message has been sent.')) ?></div>
         <?php elseif ($notice === 'err'): ?>
-          <div class="form-msg err"><?= e(t($c, 'form_err', $lang === 'az' ? 'Zəhmət olmasa bütün xanaları doğru doldurun.' : 'Please fill in all fields correctly.')) ?></div>
+          <div class="form-msg err"><?php
+            $code = (string)($_GET['error'] ?? '1');
+            if ($code === '2') {
+                echo e($lang === 'az'
+                  ? 'Çox sayda müraciət göndərilib. Zəhmət olmasa bir azdan yenidən cəhd edin.'
+                  : 'Too many messages sent. Please try again later.');
+            } elseif ($code === '3') {
+                echo e($lang === 'az'
+                  ? '«Mən robot deyiləm» yoxlamasını tamamlayın.'
+                  : 'Please complete the “I’m not a robot” check.');
+            } else {
+                echo e($lang === 'az'
+                  ? 'Zəhmət olmasa ad, telefon və mesaj xanalarını düzgün doldurun.'
+                  : 'Please fill in your name, phone and message correctly.');
+            }
+          ?></div>
         <?php endif; ?>
         <input type="hidden" name="lang" value="<?= e($lang) ?>">
-        <div style="position:absolute;left:-9999px" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
-        <div class="field"><label for="cf-name"><?= e(t($c,'name_label','Name')) ?></label>
-          <input id="cf-name" name="name" required placeholder="<?= e(t($c,'name_ph')) ?>"></div>
+        <input type="hidden" name="ts" value="<?= time() ?>">
+        <div style="position:absolute;left:-9999px" aria-hidden="true">
+          <input name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="field"><label for="cf-name"><?= e(t($c,'name_label','Name')) ?> *</label>
+          <input id="cf-name" name="name" required maxlength="120" placeholder="<?= e(t($c,'name_ph')) ?>"></div>
+
+        <div class="field"><label for="cf-phone"><?= e(t($c,'phone_form_label', $lang==='az'?'Telefon':'Phone')) ?> *</label>
+          <input id="cf-phone" name="phone" type="tel" required maxlength="40"
+                 pattern="[0-9()+\-\s]{7,40}"
+                 placeholder="<?= e(t($c,'phone_ph','+994 __ ___ __ __')) ?>"></div>
+
         <div class="field"><label for="cf-email"><?= e(t($c,'email_label2','E-mail')) ?></label>
-          <input id="cf-email" type="email" name="email" required placeholder="<?= e(t($c,'email_ph')) ?>"></div>
-        <div class="field"><label for="cf-msg"><?= e(t($c,'message_label','Message')) ?></label>
-          <textarea id="cf-msg" name="message" required placeholder="<?= e(t($c,'message_ph')) ?>"></textarea></div>
+          <input id="cf-email" type="email" name="email" maxlength="190" placeholder="<?= e(t($c,'email_ph')) ?>"></div>
+
+        <div class="field"><label for="cf-msg"><?= e(t($c,'message_label','Message')) ?> *</label>
+          <textarea id="cf-msg" name="message" required maxlength="4000" placeholder="<?= e(t($c,'message_ph')) ?>"></textarea></div>
+
+        <?= turnstile_widget() ?>
         <button class="btn" type="submit"><?= e(t($c,'send','Send Message')) ?></button>
       </form>
     </div>

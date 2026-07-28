@@ -28,28 +28,34 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
     <div class="brand"><img src="../images/logo-white-text.png" alt="CENOFEX"></div>
     <nav>
       <div class="grp">Основное</div>
-      <?php nav_item('index.php', 'dashboard', 'Обзор',
+      <?php nav_item('/admin/', 'dashboard', 'Обзор',
         '<rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/>', $page); ?>
 
       <div class="grp">Контент</div>
       <?php
-      nav_item('content.php', 'content', 'Тексты сайта',
+      nav_item('content', 'content', 'Тексты сайта',
         '<path d="M4 5h16M4 12h16M4 19h10"/>', $page);
-      nav_item('items.php', 'items', 'Услуги и решения',
+      nav_item('items', 'items', 'Услуги и решения',
         '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/>', $page);
-      nav_item('partners.php', 'partners', 'Партнёры',
+      nav_item('partners', 'partners', 'Партнёры',
         '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 3.5a3 3 0 0 1 0 9"/><path d="M18 20a6 6 0 0 0-3-5.2"/>', $page);
-      nav_item('media.php', 'media', 'Изображения',
+      nav_item('media', 'media', 'Изображения',
         '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 5-5 4 4 3-2 4 4"/>', $page);
+      nav_item('messages', 'messages', 'Заявки с сайта',
+        '<path d="M4 5h16v12H7l-3 3z"/><path d="M8 9h8M8 13h5"/>', $page);
       ?>
 
       <div class="grp">Настройки</div>
       <?php
-      nav_item('seo.php', 'seo', 'SEO',
+      nav_item('seo', 'seo', 'SEO',
         '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', $page);
-      nav_item('users.php', 'users', 'Пользователи',
+      nav_item('mail', 'mail', 'Почта (SMTP)',
+        '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>', $page);
+      nav_item('security', 'security', 'Безопасность',
+        '<path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/>', $page);
+      nav_item('users', 'users', 'Пользователи',
         '<circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/>', $page);
-      nav_item('profile.php', 'profile', 'Мой профиль',
+      nav_item('profile', 'profile', 'Мой профиль',
         '<circle cx="12" cy="8" r="3.2"/><path d="M5 20a7 7 0 0 1 14 0"/>', $page);
       ?>
     </nav>
@@ -64,7 +70,7 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
       <h1><?= e($title) ?></h1>
       <div class="right">
         <a class="btn ghost sm" href="../index5.php" target="_blank" rel="noopener">Открыть сайт</a>
-        <a class="btn ghost sm" href="logout.php">Выйти</a>
+        <a class="btn ghost sm" href="logout">Выйти</a>
       </div>
     </div>
     <div class="content">

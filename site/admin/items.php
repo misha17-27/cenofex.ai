@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         db()->prepare('DELETE FROM items WHERE id = ?')->execute([(int)($_POST['id'] ?? 0)]);
     }
     cache_clear();
-    header("Location: items.php?group={$group}&lang={$lang}&saved=1"); exit;
+    header("Location: items?group={$group}&lang={$lang}&saved=1"); exit;
 }
 
 $list = db()->prepare('SELECT * FROM items WHERE `group`=? AND lang=? ORDER BY sort_order, id');

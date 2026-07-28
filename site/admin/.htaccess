@@ -1,0 +1,17 @@
+# Чистые адреса: /admin/users -> users.php
+RewriteEngine On
+RewriteBase /admin/
+
+# .php в адресе не нужен — перенаправляем на чистый вид
+RewriteCond %{THE_REQUEST} \s/admin/([a-z0-9-]+)\.php[\s?] [NC]
+RewriteRule ^ /admin/%1 [R=301,L]
+
+# Внутренняя подстановка .php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9-]+)/?$ $1.php [L]
+
+# Служебные файлы закрыты
+<FilesMatch "\.(sql|json|md)$">
+  Require all denied
+</FilesMatch>

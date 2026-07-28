@@ -87,6 +87,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'seo_desc_az'        => 'Cenofex şirkətlərə transformasiya planlarını işlək həllərə çevirməyə kömək edir — strategiya, avtomatlaşdırma, AI və CoE as a Service.',
                 'og_image'           => '/images/logo-white-text.png',
                 'contact_form_email' => 'info@cenofex.ai',
+                'turnstile_site_key' => '0x4AAAAAAEAMa-8bXU5_NU-K',
+                'smtp_port'          => '587',
+                'smtp_secure'        => 'tls',
+                'smtp_from'          => 'info@cenofex.ai',
+                'smtp_from_name'     => 'CENOFEX',
             ];
             foreach ($defaults as $k => $v) {
                 if (setting($k) === '') setting_set($k, $v);
@@ -140,7 +145,7 @@ code{background:#f2f6f5;padding:2px 6px;border-radius:6px}
   <div class="ok"><?= implode('<br>', array_map('e', $log)) ?></div>
   <p class="mut" style="margin-top:16px">
     Обязательно удалите файл <code>install.php</code> с сервера.<br>
-    Панель: <a href="admin/login.php">/admin/login.php</a>
+    Панель: <a href="admin/">/admin/</a>
   </p>
 <?php else: ?>
   <h1>Установка CENOFEX</h1>

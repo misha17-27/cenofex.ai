@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             else db()->prepare('UPDATE users SET password_hash=? WHERE id=?')
                      ->execute([password_hash($new, PASSWORD_DEFAULT), $user['id']]);
         }
-        if (!$err) { header('Location: profile.php?saved=1'); exit; }
+        if (!$err) { header('Location: profile?saved=1'); exit; }
     }
 }
 ?>

@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             db()->prepare('INSERT INTO partners (name, logo, url, sort_order) VALUES (?,?,?,?)')
                 ->execute([$name, $logo, trim($_POST['url'] ?? '') ?: null, (int)($_POST['sort_order'] ?? 99)]);
             cache_clear();
-            header('Location: partners.php?saved=1'); exit;
+            header('Location: partners?saved=1'); exit;
         }
     } elseif ($action === 'save') {
         foreach (($_POST['p'] ?? []) as $id => $f) {
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            (int)($f['sort_order'] ?? 0), isset($f['active']) ? 1 : 0, (int)$id]);
         }
         cache_clear();
-        header('Location: partners.php?saved=1'); exit;
+        header('Location: partners?saved=1'); exit;
     } elseif ($action === 'delete') {
         $id = (int)($_POST['id'] ?? 0);
         $st = db()->prepare('SELECT logo FROM partners WHERE id=?'); $st->execute([$id]);
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         db()->prepare('DELETE FROM partners WHERE id=?')->execute([$id]);
         cache_clear();
-        header('Location: partners.php?saved=1'); exit;
+        header('Location: partners?saved=1'); exit;
     }
 }
 

@@ -3,6 +3,7 @@
 
 require_once __DIR__ . '/db.php';
 require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/mailer.php';
 
 function session_start_safe(): void
 {
@@ -32,7 +33,7 @@ function current_user(): ?array
 function require_login(): array
 {
     $u = current_user();
-    if (!$u) { header('Location: login.php'); exit; }
+    if (!$u) { header('Location: /admin/'); exit; }
     return $u;
 }
 
@@ -127,20 +128,13 @@ function apply_reset(string $token, string $newPassword): bool
 
 function send_reset_mail(string $email, string $token): bool
 {
-    $url  = rtrim(cfg('site.url'), '/') . '/admin/reset-password.php?token=' . urlencode($token);
-    $from = cfg('site.from_email');
-    $name = cfg('site.from_name');
+    $url = rtrim(cfg('site.url'), '/') . '/admin/reset-password?token=' . urlencode($token);
 
-    $subject = '=?UTF-8?B?' . base64_encode('CENOFEX — password reset') . '?=';
     $body = "Здравствуйте!\n\n"
           . "Вы запросили сброс пароля для админ-панели CENOFEX.\n"
-          . "Ссылка действительна 60 минут:\n\n$url\n\n"
+          . "Ссылка действительна 60 минут:\n\n{$url}\n\n"
           . "Если вы не запрашивали сброс — просто проигнорируйте письмо.\n";
 
-    $headers = "From: {$name} <{$from}>\r\n"
-             . "Reply-To: {$from}\r\n"
-             . "Content-Type: text/plain; charset=UTF-8\r\n"
-             . "MIME-Version: 1.0\r\n";
-
-    return @mail($email, $subject, $body, $headers);
+    $err = '';
+    return send_mail($email, 'CENOFEX — восстановление пароля', $body, '', $err);
 }
