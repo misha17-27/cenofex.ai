@@ -155,19 +155,59 @@ ob_start();
           <p><?= e(t($c,'about_p2')) ?></p>
           <p><?= e(t($c,'about_p3')) ?></p>
         </div>
-        <div class="pillars-brand">
-          <div class="pil"><span>01</span><b><?= e(t($c,'pil1','Consultation')) ?></b></div>
-          <div class="pil"><span>02</span><b><?= e(t($c,'pil2','Technology')) ?></b></div>
-          <div class="pil"><span>03</span><b><?= e(t($c,'pil3','Excellence')) ?></b></div>
-          <div class="pil"><span>04</span><b><?= e(t($c,'pil4','Trust')) ?></b></div>
-          <div class="pil-sum"><img src="<?= $base ?>/images/brand-icon.png" alt=""><b><?= e(t($c,'pil_sum')) ?></b></div>
-        </div>
       </div>
       <div class="about-media reveal">
         <?php $ab = setting('photo_about', 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80'); ?>
         <img src="<?= e($ab) ?>" alt="<?= e(t($c,'about_title')) ?>" loading="lazy"
              onerror="this.onerror=null;this.src='<?= $base ?>/images/4.png';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
         <div class="about-mark"><img src="<?= $base ?>/images/brand-icon.png" alt=""></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND CONCEPT: знак из 4 частей -->
+  <?php
+  $pillars = [
+    ['n' => '01', 'key' => 'pil1', 'def' => 'Consultation', 'seg' => 'tl'],
+    ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'tr'],
+    ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'br'],
+    ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'bl'],
+  ];
+  ?>
+  <section id="concept">
+    <div class="wrap concept">
+      <div class="concept-list reveal">
+        <span class="kicker"><?= e(t($c,'concept_label', $lang === 'az' ? 'Loqonun mənası' : 'The mark')) ?></span>
+        <h2 class="title"><?= e(t($c,'concept_title', $lang === 'az'
+            ? 'Dörd hissə. Bir transformasiya.'
+            : 'Four parts. One transformation.')) ?></h2>
+
+        <div class="pill-rows" id="pillRows">
+          <?php foreach ($pillars as $i => $p):
+                $desc = t($c, $p['key'] . '_desc', ''); ?>
+            <button type="button" class="pill-row<?= $i === 0 ? ' on' : '' ?>" data-seg="<?= e($p['seg']) ?>">
+              <span class="pill-dot"></span>
+              <span class="pill-txt">
+                <em><?= e($p['n']) ?></em>
+                <b><?= e(t($c, $p['key'], $p['def'])) ?></b>
+                <?php if ($desc !== ''): ?><i><?= e($desc) ?></i><?php endif; ?>
+              </span>
+            </button>
+          <?php endforeach; ?>
+        </div>
+
+        <div class="pil-sum">
+          <img src="<?= $base ?>/images/brand-icon.png" alt="">
+          <b><?= e(t($c,'pil_sum')) ?></b>
+        </div>
+      </div>
+
+      <div class="concept-mark reveal" id="conceptMark" data-active="tl">
+        <div class="mark-stage">
+          <?php foreach (['tl','tr','br','bl'] as $seg): ?>
+            <img class="seg seg-<?= $seg ?>" src="<?= $base ?>/images/brand-icon.png" alt="" aria-hidden="true">
+          <?php endforeach; ?>
+        </div>
       </div>
     </div>
   </section>

@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <title>Восстановление пароля — CENOFEX</title>
 <link rel="icon" type="image/png" href="../images/brand-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/admin.css">
+<link rel="stylesheet" href="assets/admin.css?v=3">
 <?= turnstile_script() ?>
 </head><body>
 <div class="auth">
@@ -52,5 +52,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-links"><a href="login">← Вернуться ко входу</a></div>
   </div>
 </div>
-<script src="assets/admin.js"></script>
+<script src="assets/admin.js?v=3"></script>
 </body></html>

@@ -27,8 +27,14 @@ $sections = [
   'О компании' => [
     'about_label' => 'Надзаголовок', 'about_title' => 'Заголовок',
     'about_p1' => 'Абзац 1', 'about_p2' => 'Абзац 2', 'about_p3' => 'Абзац 3',
-    'pil1' => '01 — Consultation', 'pil2' => '02 — Technology', 'pil3' => '03 — Excellence',
-    'pil4' => '04 — Trust', 'pil_sum' => 'Итог (Together — Transformation)',
+  ],
+  'Знак: 4 части (блок «The mark»)' => [
+    'concept_label' => 'Надзаголовок блока', 'concept_title' => 'Заголовок блока',
+    'pil1' => '01 — название', 'pil1_desc' => '01 — описание (необязательно)',
+    'pil2' => '02 — название', 'pil2_desc' => '02 — описание (необязательно)',
+    'pil3' => '03 — название', 'pil3_desc' => '03 — описание (необязательно)',
+    'pil4' => '04 — название', 'pil4_desc' => '04 — описание (необязательно)',
+    'pil_sum' => 'Итоговая плашка (Together — Transformation)',
   ],
   'Услуги — заголовок' => [
     'services_label' => 'Надзаголовок', 'services_title' => 'Заголовок',
@@ -54,7 +60,7 @@ $sections = [
   ],
 ];
 
-$long = ['about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','sol_intro','ready_intro',
+$long = ['pil1_desc','pil2_desc','pil3_desc','pil4_desc','about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','sol_intro','ready_intro',
          'note_text','contact_intro','s1_sub','s2_sub','s3_sub'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
