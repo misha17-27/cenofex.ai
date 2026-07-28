@@ -44,6 +44,28 @@
     var prev = hero.querySelector('.hero-arrow.prev'), next = hero.querySelector('.hero-arrow.next');
     if (prev) prev.addEventListener('click', function () { show(cur - 1); start(); });
     if (next) next.addEventListener('click', function () { show(cur + 1); start(); });
+
+    /* листание пальцем */
+    var vp = hero.querySelector('.hero-viewport') || track;
+    var x0 = null, y0 = null, moved = false;
+    vp.addEventListener('touchstart', function (ev) {
+      var t = ev.touches[0];
+      x0 = t.clientX; y0 = t.clientY; moved = false;
+      clearInterval(timer);
+    }, { passive: true });
+    vp.addEventListener('touchmove', function (ev) {
+      if (x0 === null) return;
+      var t = ev.touches[0];
+      if (Math.abs(t.clientX - x0) > Math.abs(t.clientY - y0)) moved = true;
+    }, { passive: true });
+    vp.addEventListener('touchend', function (ev) {
+      if (x0 === null) return;
+      var dx = ev.changedTouches[0].clientX - x0;
+      if (moved && Math.abs(dx) > 45) show(dx < 0 ? cur + 1 : cur - 1);
+      x0 = y0 = null;
+      start();
+    }, { passive: true });
+
     start();
   })();
 
