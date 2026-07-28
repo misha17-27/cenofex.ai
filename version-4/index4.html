@@ -36,7 +36,8 @@
     .btn.ghost:hover{background:rgba(2,167,142,.07)}
 
     /* HEADER */
-    header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    body.menu-open{overflow:hidden}
     .nav{max-width:var(--max);margin:auto;padding:12px clamp(18px,4vw,32px);display:flex;align-items:center;gap:20px}
     .logo img{width:158px}
     .links{margin-left:auto;display:flex;gap:26px;font-size:15px;font-weight:700}
@@ -156,6 +157,33 @@
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
     .reveal.in{opacity:1;transform:none}
 
+    /* BRAND PATTERN (мотив из брендбука) */
+    .band{position:relative;overflow:hidden}
+    .band::before{content:"";position:absolute;inset:0;pointer-events:none;
+      background:url('../images/pattern-dark.png') 0 0 repeat;background-size:190px auto;opacity:.10}
+    .band>.wrap{position:relative;z-index:1}
+    footer{position:relative;overflow:hidden}
+    footer::before{content:"";position:absolute;inset:0;pointer-events:none;
+      background:url('../images/pattern-light.png') 0 0 repeat;background-size:190px auto;opacity:.09}
+    .foot{position:relative;z-index:1}
+
+    /* LOGO MOTION */
+    @keyframes cxSpin{to{transform:rotate(360deg)}}
+    @keyframes cxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    .hero::after{content:"";position:absolute;right:-6%;top:-14%;width:min(46vw,520px);height:min(46vw,520px);
+      background:url('../images/brand-icon.png') center/contain no-repeat;opacity:.05;z-index:0;pointer-events:none;
+      animation:cxSpin 44s linear infinite}
+    .hero-viewport{z-index:1}
+    .contact-info{position:relative;overflow:hidden}
+    .contact-info::after{content:"";position:absolute;right:-56px;top:-56px;width:210px;height:210px;
+      background:url('../images/brand-icon.png') center/contain no-repeat;filter:brightness(0) invert(1);
+      opacity:.06;pointer-events:none;animation:cxSpin 30s linear infinite}
+    .contact-info>*{position:relative;z-index:1}
+    .about-mark{animation:cxFloat 6s ease-in-out infinite}
+    @media (prefers-reduced-motion:reduce){
+      .hero::after,.contact-info::after,.about-mark{animation:none}
+    }
+
     /* RESPONSIVE */
     @media (max-width:980px){
       .hero-inner,.about,.contact{grid-template-columns:1fr}
@@ -170,8 +198,17 @@
       .solutions{grid-template-columns:1fr}
       .links,.lang{display:none}
       .menu{display:flex}
-      .nav.open .links{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:#fff;padding:18px clamp(18px,4vw,32px);border-bottom:1px solid var(--line);box-shadow:var(--shadow);gap:14px}
-      .nav.open .lang{display:flex;position:absolute;top:calc(68px + 210px);left:clamp(18px,4vw,32px)}
+      /* Полноэкранное меню с фирменным паттерном */
+      .nav.open .links{display:flex;position:fixed;top:68px;left:0;right:0;bottom:0;z-index:60;
+        flex-direction:column;justify-content:center;gap:6px;overflow-y:auto;
+        background:#fff;padding:24px clamp(22px,6vw,40px) 120px}
+      .nav.open .links::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+        background:url('../images/pattern-dark.png') 0 0 repeat;background-size:190px auto;opacity:.07}
+      .nav.open .links a{font-size:clamp(24px,7vw,34px);font-weight:800;padding:14px 0;border-bottom:1px solid var(--line)}
+      .nav.open .links a:after{display:none}
+      .nav.open .links a:last-child{border-bottom:0}
+      /* Переключатель языка — внизу меню, не перекрывает пункты */
+      .nav.open .lang{display:flex;position:fixed;left:clamp(22px,6vw,40px);bottom:36px;z-index:61;background:#fff}
     }
     @media (max-width:560px){
       .cards,.sectors{grid-template-columns:1fr}
@@ -459,15 +496,25 @@
       document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
       localStorage.setItem("cenofexLang",lang);
     }
-    document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>render(b.dataset.lang)));
+    // URL-слаг: AZ -> /az/, основной EN -> без слага
+    function syncUrl(lang){
+      if(!/^https?:/.test(location.protocol))return;      // на file:// не трогаем
+      const base=location.pathname.replace(/\/az\/?$/,"")||"/";
+      const target=lang==="az"?(base.replace(/\/$/,"")+"/az/"):(base||"/");
+      if(location.pathname!==target){history.pushState({lang},"",target+location.hash);}
+    }
+    function setLang(lang){render(lang);syncUrl(lang);}
+    document.querySelectorAll("[data-lang]").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+    window.addEventListener("popstate",()=>render(/\/az\/?$/.test(location.pathname)?"az":"en"));
     const nav=q("#nav"),menu=q("#menu");
-    menu.addEventListener("click",()=>{const o=nav.classList.toggle("open");menu.setAttribute("aria-expanded",o);});
-    document.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");}));
+    menu.addEventListener("click",()=>{const o=nav.classList.toggle("open");menu.setAttribute("aria-expanded",o);document.body.classList.toggle("menu-open",o);});
+    document.querySelectorAll(".links a").forEach(a=>a.addEventListener("click",()=>{nav.classList.remove("open");menu.setAttribute("aria-expanded","false");document.body.classList.remove("menu-open");}));
     q("#contactForm").addEventListener("submit",e=>{
       e.preventDefault();const lang=localStorage.getItem("cenofexLang")||"en";const d=new FormData(e.currentTarget);
       location.href=`mailto:info@cenofex.ai?subject=${encodeURIComponent(translations[lang].form_subject)}&body=${encodeURIComponent(`${d.get("name")||""}\n${d.get("email")||""}\n\n${d.get("message")||""}`)}`;
     });
-    render(localStorage.getItem("cenofexLang")||"en");
+    // язык при загрузке: приоритет — URL (/az), затем сохранённый выбор
+    render(/\/az\/?$/.test(location.pathname)?"az":(localStorage.getItem("cenofexLang")||"en"));
     // hero slider (whole hero)
     (function(){
       const hero=q("#home");if(!hero)return;
