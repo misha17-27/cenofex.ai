@@ -11,8 +11,26 @@ require_once __DIR__ . '/app/mailer.php';
 $lang = ($_POST['lang'] ?? 'en') === 'az' ? 'az' : 'en';
 $back = ($lang === 'az' ? cfg('site.az_path') : cfg('site.en_path'));
 
+/** Запрос отправлен фоном (без перезагрузки страницы)? */
+function is_ajax(): bool
+{
+    return (($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'XMLHttpRequest')
+        || (strpos($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json') !== false);
+}
+
+/**
+ * Ответ клиенту: для фоновой отправки — JSON, иначе — обычное перенаправление.
+ * $status: 'sent=1' | 'error=1' | 'error=2' | 'error=3'
+ */
 function back_to(string $back, string $status): void
 {
+    if (is_ajax()) {
+        $ok   = ($status === 'sent=1');
+        $code = $ok ? 'ok' : substr($status, -1);      // 1 | 2 | 3
+        header('Content-Type: application/json; charset=UTF-8');
+        echo json_encode(['ok' => $ok, 'code' => $code]);
+        exit;
+    }
     $sep = (strpos($back, '?') === false) ? '?' : '&';
     header('Location: ' . $back . $sep . $status . '#contact');
     exit;

@@ -69,6 +69,63 @@
     start();
   })();
 
+  /* ---- отправка формы без перезагрузки (страница не прыгает) ---- */
+  (function () {
+    var form = document.querySelector('form.form');
+    if (!form || !window.fetch) return;                    // без fetch — обычная отправка
+
+    var az = document.documentElement.lang === 'az';
+    var TXT = {
+      ok:  az ? 'Mesajınız göndərildi. Tezliklə əlaqə saxlayacağıq.'
+              : 'Thank you — your message has been sent.',
+      e1:  az ? 'Zəhmət olmasa ad və telefon xanalarını düzgün doldurun.'
+              : 'Please fill in your name and phone correctly.',
+      e2:  az ? 'Çox sayda müraciət göndərilib. Zəhmət olmasa bir azdan yenidən cəhd edin.'
+              : 'Too many messages sent. Please try again later.',
+      e3:  az ? '«Mən robot deyiləm» yoxlamasını tamamlayın.'
+              : 'Please complete the “I’m not a robot” check.',
+      net: az ? 'Əlaqə xətası. Zəhmət olmasa yenidən cəhd edin.'
+              : 'Connection error. Please try again.'
+    };
+
+    function showMsg(type, text) {
+      var box = form.querySelector('.form-msg');
+      if (!box) {
+        box = document.createElement('div');
+        form.insertBefore(box, form.firstChild);
+      }
+      box.className = 'form-msg ' + (type === 'ok' ? 'ok' : 'err');
+      box.textContent = text;
+    }
+
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();                                  // никакой перезагрузки и прыжка
+      var btn = form.querySelector('button[type=submit]');
+      if (btn) { btn.disabled = true; btn.style.opacity = '.7'; }
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
+      })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res && res.ok) {
+          showMsg('ok', TXT.ok);
+          form.reset();
+        } else {
+          var code = res && res.code;
+          showMsg('err', code === '2' ? TXT.e2 : code === '3' ? TXT.e3 : TXT.e1);
+        }
+        if (window.turnstile) { try { window.turnstile.reset(); } catch (e) {} }
+      })
+      .catch(function () { showMsg('err', TXT.net); })
+      .then(function () {
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+      });
+    });
+  })();
+
   /* ---- поле телефона: только цифры, +, скобки, дефис и пробел ---- */
   (function () {
     var phone = document.getElementById('cf-phone');
