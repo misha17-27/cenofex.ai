@@ -512,11 +512,12 @@
       document.querySelectorAll("[data-lang]").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
       localStorage.setItem("cenofexLang",lang);
     }
-    // URL-слаг: AZ -> /az/, основной EN -> без слага
+    // Пока сайт не запущен: EN живёт на /index4.html, AZ — на /az/.
+    // ПОСЛЕ ЗАПУСКА заменить EN_PATH на "/" (главная станет основной версией).
+    const EN_PATH="/index4.html";
     function syncUrl(lang){
       if(!/^https?:/.test(location.protocol))return;      // на file:// не трогаем
-      const base=location.pathname.replace(/\/az\/?$/,"")||"/";
-      const target=lang==="az"?(base.replace(/\/$/,"")+"/az/"):(base||"/");
+      const target=lang==="az"?"/az/":EN_PATH;
       if(location.pathname!==target){history.pushState({lang},"",target+location.hash);}
     }
     function setLang(lang){render(lang);syncUrl(lang);}
