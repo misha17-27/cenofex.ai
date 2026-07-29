@@ -447,9 +447,9 @@
     .v6 .band:not(.sol-brand)::before{display:none}
 
     /* Ready Solutions — фирменный тил с паттерном тон-в-тон (стр. 22 брендбука) */
-    .v6 .sol-brand{position:relative;overflow:hidden;color:#fff;background:#048282}
-    .v6 .sol-brand::before{content:"";position:absolute;inset:0;pointer-events:none;
-      background:url('../images/pattern-light.png') 0 0 repeat;background-size:200px auto;opacity:.12}
+    .v6 .sol-brand{position:relative;overflow:hidden;color:#fff;
+      background:#048282 url('../images/pattern-tile.png') 0 0 repeat;background-size:688px auto}
+    .v6 .sol-brand::before{display:none}
     .v6 .sol-brand>.wrap{position:relative;z-index:1}
     .v6 .sol-brand .kicker{color:#bdf0e6}
     .v6 .sol-brand .title{color:#fff}
@@ -486,8 +486,9 @@
 
     /* футер — тёмная фирменная плашка с паттерном тон-в-тон */
     .v6 footer{background:var(--ink)}
-    .v6 footer::before{background:url('../images/pattern-dark.png') 0 0 repeat;
-      background-size:200px auto;opacity:.45}
+    .v6 footer::before{background:var(--teal);opacity:.55;
+      -webkit-mask:url('../images/pattern-mask.png') 0 0/688px auto repeat;
+              mask:url('../images/pattern-mask.png') 0 0/688px auto repeat}
     .v6 .foot{padding-top:52px;padding-bottom:52px}
     .v6 .foot-links a:hover{color:#bdf0e6}
     .v6 .foot p{color:rgba(255,255,255,.72)}
