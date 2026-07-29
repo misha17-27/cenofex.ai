@@ -1,8 +1,10 @@
 <?php
 /** Шапка админ-панели: подключение ядра, проверка доступа, боковое меню. */
 require_once dirname(__DIR__, 2) . '/app/auth.php';
+require_once dirname(__DIR__, 2) . '/app/adminlang.php';
 
 $user = require_login();
+ob_start();                       // весь вывод переводим в footer.php
 $page = $page ?? '';
 $title = $title ?? 'Панель';
 
@@ -69,6 +71,7 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
       <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
       <h1><?= e($title) ?></h1>
       <div class="right">
+        <?= admin_lang_switch() ?>
         <a class="btn ghost sm" href="../index5.php" target="_blank" rel="noopener">Открыть сайт</a>
         <a class="btn ghost sm" href="logout">Выйти</a>
       </div>

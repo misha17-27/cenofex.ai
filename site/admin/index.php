@@ -5,6 +5,7 @@
  */
 require_once dirname(__DIR__) . '/app/auth.php';
 require_once dirname(__DIR__) . '/app/captcha.php';
+require_once dirname(__DIR__) . '/app/adminlang.php';
 
 /* ================= НЕ ВОШЁЛ — форма входа ================= */
 if (!current_user()) {
@@ -22,8 +23,8 @@ if (!current_user()) {
             $error = 'Неверный e-mail или пароль.';
         }
     }
-    ?><!doctype html>
-    <html lang="ru"><head>
+    ob_start(); ?><!doctype html>
+    <html lang="<?= admin_lang() ?>"><head>
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="robots" content="noindex,nofollow">
     <title>Вход — CENOFEX</title>
@@ -63,11 +64,13 @@ if (!current_user()) {
         </form>
 
         <div class="auth-links"><a href="forgot-password">Забыли пароль?</a></div>
+        <div class="auth-links" style="margin-top:10px"><?= admin_lang_switch() ?></div>
       </div>
     </div>
     <script src="<?= e(asset('/admin/assets/admin.js', '')) ?>"></script>
     </body></html>
     <?php
+    echo admin_translate(ob_get_clean());
     exit;
 }
 
