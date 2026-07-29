@@ -492,6 +492,33 @@
     .v6 footer::before{background:var(--teal);opacity:.55;
       -webkit-mask:url('../images/pattern-mask.png') 0 0/688px auto repeat;
               mask:url('../images/pattern-mask.png') 0 0/688px auto repeat}
+
+    /* ============ ВАРИАНТ 7: тёмная шапка тем же паттерном, что и футер ============ */
+    .v7 header,
+    .v7 footer{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
+      background-size:688px auto}
+    .v7 footer::before{display:none}
+    .v7 header{border-bottom:1px solid rgba(255,255,255,.10);
+      backdrop-filter:none;-webkit-backdrop-filter:none}
+    .v7 .links a{color:#fff}
+    .v7 .links a:after{background:#02A78E}
+    .v7 .menu{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.22)}
+    .v7 .menu span{background:#fff}
+    .v7 .lang{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.20)}
+    .v7 .lang .lang-btn{color:rgba(255,255,255,.75)}
+    .v7 .lang .active{background:var(--green);color:#fff}
+
+    @media (max-width:980px){
+      /* мобильное меню — та же тёмная плашка */
+      /* класс v7 стоит на <body>, поэтому селектор body.v7.menu-open */
+      body.v7.menu-open header{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
+        background-size:688px auto}
+      .v7 .nav.open .links{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
+        background-size:688px auto;color:#fff}
+      .v7 .nav.open .links a{border-bottom-color:rgba(255,255,255,.14)}
+      .v7 .nav.open .links::after{filter:brightness(0) invert(1);opacity:.12}
+      .v7 .nav.open .lang{background:rgba(255,255,255,.10)}
+    }
     .v6 .foot{padding-top:52px;padding-bottom:52px}
     .v6 .foot-links a:hover{color:#bdf0e6}
     .v6 .foot p{color:rgba(255,255,255,.72)}
