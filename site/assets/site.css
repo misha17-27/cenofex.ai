@@ -460,3 +460,40 @@
     .variant-note{position:relative;z-index:80;background:#0c1615;color:#fff;text-align:center;
       font-size:13px;padding:8px 14px;font-weight:700}
     .variant-note a{color:#7fe3d2;text-decoration:underline}
+
+    /* ============ ВАРИАНТ 6: паттерн по брендбуку (тон-в-тон на фирменном цвете) ============ */
+    /* светлые секции очищаем — бледный паттерн на светлом был ошибкой */
+    .v6 .band:not(.sol-brand)::before{display:none}
+
+    /* Ready Solutions — фирменный тил с паттерном тон-в-тон (стр. 22 брендбука) */
+    .v6 .sol-brand{position:relative;overflow:hidden;color:#fff;background:#048282}
+    .v6 .sol-brand::before{content:"";position:absolute;inset:0;pointer-events:none;
+      background:url('../images/pattern-light.png') 0 0 repeat;background-size:200px auto;opacity:.12}
+    .v6 .sol-brand>.wrap{position:relative;z-index:1}
+    .v6 .sol-brand .kicker{color:#bdf0e6}
+    .v6 .sol-brand .title{color:#fff}
+    .v6 .sol-brand .lead{color:rgba(255,255,255,.85)}
+    .v6 .sol-brand .group-head h3{color:#fff}
+    .v6 .sol-brand .group-head:before{background:#bdf0e6}
+    .v6 .sol-brand .card,
+    .v6 .sol-brand .ready-item{background:#fff;border-color:rgba(255,255,255,.22)}
+    .v6 .sol-brand .card:hover,
+    .v6 .sol-brand .ready-item:hover{border-color:rgba(255,255,255,.6);box-shadow:0 20px 44px rgba(0,0,0,.24)}
+    .v6 .sol-brand .note{background:var(--ink)}
+
+    /* знак у заголовка Ready to Deploy — светлая версия логотипа (комм. 14) */
+    .v6 .ready-head{display:flex;align-items:flex-start;gap:18px}
+    .v6 .ready-mark{width:clamp(48px,6vw,68px);height:auto;flex:0 0 auto;margin-top:6px;
+      filter:brightness(0) invert(1);opacity:.9}
+
+    /* компактнее, чтобы блок помещался на один экран (комм. 12) */
+    .v6 .sol-brand .ready-item{padding:18px}
+    .v6 .sol-brand .ready-item h4{font-size:16px;margin-bottom:6px}
+    .v6 .sol-brand .ready-item p{font-size:13.5px;line-height:1.5}
+    .v6 .sol-brand .group{margin-top:clamp(22px,2.6vw,32px)}
+    .v6 .sol-brand .group-head{margin-bottom:14px}
+    .v6 .sol-brand .ready{gap:14px}
+    @media (max-width:560px){
+      .v6 .ready-head{gap:12px}
+      .v6 .ready-mark{width:42px}
+    }

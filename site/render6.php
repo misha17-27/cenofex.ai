@@ -212,7 +212,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 <?php endif; ?>
 <?= turnstile_script() ?>
 </head>
-<body>
+<body class="v6">
 <div class="variant-note">Вариант 6 — правки по комментариям &nbsp;·&nbsp;
   <a href="/index5.php">открыть вариант 5</a></div>
 <header>
@@ -375,7 +375,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
   </section>
 
   <!-- SOLUTIONS -->
-  <section class="band" id="solutions">
+  <section class="band sol-brand" id="solutions">
     <div class="wrap">
       <div class="head reveal">
         <span class="kicker"><?= e(t($c,'sol_label')) ?></span>
@@ -391,9 +391,12 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         <?php endforeach; ?>
       </div>
 
-      <div class="head reveal" style="margin-top:clamp(46px,6vw,76px)">
-        <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
-        <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
+      <div class="head reveal ready-head" style="margin-top:clamp(46px,6vw,76px)">
+        <img class="ready-mark" src="<?= $base ?>/images/brand-icon.png" alt="" aria-hidden="true">
+        <div>
+          <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
+          <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
+        </div>
       </div>
 
       <?php if ($finance): ?>
