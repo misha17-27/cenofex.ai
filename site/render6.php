@@ -304,6 +304,53 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     </div>
   </section>
 
+  <!-- BRAND CONCEPT: знак из 4 частей -->
+  <?php
+  $pillars = [
+    ['n' => '01', 'key' => 'pil1', 'def' => 'Consultation', 'seg' => 'p1'],
+    ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'p2'],
+    ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'p3'],
+    ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'p4'],
+  ];
+  ?>
+  <section id="concept">
+    <div class="wrap concept">
+      <div class="concept-list reveal">
+        <span class="kicker"><?= e(t($c,'concept_label', $lang === 'az' ? 'Loqonun mənası' : 'The mark')) ?></span>
+        <h2 class="title"><?= e(t($c,'concept_title', $lang === 'az'
+            ? 'Dörd hissə. Bir transformasiya.'
+            : 'Four parts. One transformation.')) ?></h2>
+
+        <div class="pill-rows" id="pillRows">
+          <?php foreach ($pillars as $i => $p):
+                $desc = t($c, $p['key'] . '_desc', ''); ?>
+            <button type="button" class="pill-row<?= $i === 0 ? ' on' : '' ?>" data-seg="<?= e($p['seg']) ?>">
+              <span class="pill-dot"></span>
+              <span class="pill-txt">
+                <em><?= e($p['n']) ?></em>
+                <b><?= e(t($c, $p['key'], $p['def'])) ?></b>
+                <?php if ($desc !== ''): ?><i><?= e($desc) ?></i><?php endif; ?>
+              </span>
+            </button>
+          <?php endforeach; ?>
+        </div>
+
+        <div class="pil-sum">
+          <img src="<?= $base ?>/images/brand-icon.png" alt="">
+          <b><?= e(t($c,'pil_sum')) ?></b>
+        </div>
+      </div>
+
+      <div class="concept-mark reveal" id="conceptMark" data-active="p1">
+        <div class="mark-stage" role="img" aria-label="CENOFEX">
+          <?php foreach (['p1','p2','p3','p4'] as $seg): ?>
+            <span class="petal <?= $seg ?>" aria-hidden="true"></span>
+          <?php endforeach; ?>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section class="band" id="services">
     <div class="wrap">
