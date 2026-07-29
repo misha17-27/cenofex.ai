@@ -322,8 +322,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     </div>
   </section>
 
-  <!-- TECHNOLOGY (тёмная секция с фирменным паттерном тон-в-тон) -->
-  <section id="technology" class="tech-dark">
+  <!-- TECHNOLOGY (светлая секция, без паттерна) -->
+  <section id="technology" class="tech-light">
     <div class="wrap">
       <div class="head reveal">
         <span class="kicker"><?= e(t($c,'tech_label')) ?></span>
