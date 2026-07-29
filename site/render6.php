@@ -1,6 +1,9 @@
 <?php
 /**
- * Шаблон публичной страницы. Данные — из БД.
+ * ВАРИАНТ 6 — правки по комментариям клиента (для сравнения с index5.php).
+ * Отличия: тёмная секция Technology с паттерном тон-в-тон, фото со списком
+ * технологий, убрана секция «The mark», добавлены кнопки CTA.
+ * Данные — из БД.
  * Результат кэшируется в storage/cache/page_{lang}.html и отдаётся как статика.
  */
 require_once __DIR__ . '/app/helpers.php';
@@ -15,7 +18,7 @@ elseif (isset($_GET['error']))  $notice = 'err';
 $useCache = ($notice === '');
 
 /* ---- отдать готовый кэш, если есть ---- */
-$cacheFile = cache_path($lang);
+$cacheFile = cache_path($lang . '6');
 $ttl = (int)cfg('cache_ttl');
 if ($useCache && is_file($cacheFile) && ($ttl === 0 || (time() - filemtime($cacheFile)) < $ttl)) {
     header('Content-Type: text/html; charset=UTF-8');
@@ -39,7 +42,7 @@ $siteUrl  = rtrim(cfg('site.url'), '/');
 $enPath   = cfg('site.en_path');
 $azPath   = cfg('site.az_path');
 $base     = ($lang === 'az') ? '..' : '.';     // корректные пути к картинкам из /az/
-$canonical = $siteUrl . ($lang === 'az' ? $azPath : $enPath);
+$canonical = $siteUrl . '/index6.php';
 
 $svgSvc = [
   '<svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
@@ -108,7 +111,7 @@ ob_start();
 <meta name="twitter:title" content="<?= e($seoTitle) ?>">
 <meta name="twitter:description" content="<?= e($seoDesc) ?>">
 <meta name="twitter:image" content="<?= e($siteUrl . $ogImage) ?>">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#02A78E">
 <meta name="author" content="CENOFEX">
 <link rel="canonical" href="<?= e($canonical) ?>">
@@ -210,6 +213,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 <?= turnstile_script() ?>
 </head>
 <body>
+<div class="variant-note">Вариант 6 — правки по комментариям &nbsp;·&nbsp;
+  <a href="/index5.php">открыть вариант 5</a></div>
 <header>
   <nav class="nav" id="nav">
     <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-dark-text.png" alt="CENOFEX"></a>
@@ -284,6 +289,9 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           <p><?= e(t($c,'about_p2')) ?></p>
           <p><?= e(t($c,'about_p3')) ?></p>
         </div>
+        <div class="hero-cta" style="margin-top:26px">
+          <a class="btn" href="#contact"><?= e(t($c,'cta_talk','Talk to Us')) ?></a>
+        </div>
       </div>
       <div class="about-media reveal">
         <?php $ab = setting('photo_about', 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80'); ?>
@@ -292,53 +300,6 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
              width="1600" height="1200" decoding="async"
              alt="<?= e(t($c,'about_title')) ?>" loading="lazy"
              onerror="this.onerror=null;this.src='<?= $base ?>/images/4.png';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
-      </div>
-    </div>
-  </section>
-
-  <!-- BRAND CONCEPT: знак из 4 частей -->
-  <?php
-  $pillars = [
-    ['n' => '01', 'key' => 'pil1', 'def' => 'Consultation', 'seg' => 'p1'],
-    ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'p2'],
-    ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'p3'],
-    ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'p4'],
-  ];
-  ?>
-  <section id="concept">
-    <div class="wrap concept">
-      <div class="concept-list reveal">
-        <span class="kicker"><?= e(t($c,'concept_label', $lang === 'az' ? 'Loqonun mənası' : 'The mark')) ?></span>
-        <h2 class="title"><?= e(t($c,'concept_title', $lang === 'az'
-            ? 'Dörd hissə. Bir transformasiya.'
-            : 'Four parts. One transformation.')) ?></h2>
-
-        <div class="pill-rows" id="pillRows">
-          <?php foreach ($pillars as $i => $p):
-                $desc = t($c, $p['key'] . '_desc', ''); ?>
-            <button type="button" class="pill-row<?= $i === 0 ? ' on' : '' ?>" data-seg="<?= e($p['seg']) ?>">
-              <span class="pill-dot"></span>
-              <span class="pill-txt">
-                <em><?= e($p['n']) ?></em>
-                <b><?= e(t($c, $p['key'], $p['def'])) ?></b>
-                <?php if ($desc !== ''): ?><i><?= e($desc) ?></i><?php endif; ?>
-              </span>
-            </button>
-          <?php endforeach; ?>
-        </div>
-
-        <div class="pil-sum">
-          <img src="<?= $base ?>/images/brand-icon.png" alt="">
-          <b><?= e(t($c,'pil_sum')) ?></b>
-        </div>
-      </div>
-
-      <div class="concept-mark reveal" id="conceptMark" data-active="p1">
-        <div class="mark-stage" role="img" aria-label="CENOFEX">
-          <?php foreach (['p1','p2','p3','p4'] as $seg): ?>
-            <span class="petal <?= $seg ?>" aria-hidden="true"></span>
-          <?php endforeach; ?>
-        </div>
       </div>
     </div>
   </section>
@@ -361,17 +322,42 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     </div>
   </section>
 
-  <!-- TECHNOLOGY -->
-  <section id="technology">
+  <!-- TECHNOLOGY (тёмная секция с фирменным паттерном тон-в-тон) -->
+  <section id="technology" class="tech-dark">
     <div class="wrap">
       <div class="head reveal">
         <span class="kicker"><?= e(t($c,'tech_label')) ?></span>
         <h2 class="title"><?= e(t($c,'tech_title')) ?></h2>
       </div>
-      <div class="tech-copy reveal">
-        <p><?= e(t($c,'tech_p1')) ?></p>
-        <p><?= e(t($c,'tech_p2')) ?></p>
-        <p><?= e(t($c,'tech_p3')) ?></p>
+
+      <div class="tech-grid">
+        <div class="tech-copy reveal">
+          <p><?= e(t($c,'tech_p1')) ?></p>
+          <p><?= e(t($c,'tech_p2')) ?></p>
+          <p><?= e(t($c,'tech_p3')) ?></p>
+        </div>
+
+        <?php
+          $techPhoto = setting('photo_tech',
+              'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+          $caps = [
+            t($c, 'cap1', 'RPA'),
+            t($c, 'cap2', 'AI & Agentic AI'),
+            t($c, 'cap3', 'ERP Systems'),
+            t($c, 'cap4', 'Data & Analytics'),
+            t($c, 'cap5', 'APIs & Integrations'),
+          ];
+        ?>
+        <figure class="tech-photo reveal">
+          <img src="<?= e(img_small($techPhoto)) ?>"
+               <?php $ts = img_srcset($techPhoto); if ($ts): ?>srcset="<?= e($ts) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
+               width="1600" height="1100" loading="lazy" decoding="async"
+               alt="<?= e(t($c,'tech_title')) ?>"
+               onerror="this.onerror=null;this.src='<?= $base ?>/images/5.png';this.style.objectFit='contain'">
+          <figcaption class="tech-caps">
+            <?php foreach ($caps as $cap): ?><span><?= e($cap) ?></span><?php endforeach; ?>
+          </figcaption>
+        </figure>
       </div>
       <?php if ($plist): ?>
       <div class="group-head reveal" style="margin-top:clamp(30px,4vw,48px);margin-bottom:0">
@@ -433,11 +419,16 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
       <?php endif; ?>
 
       <div class="note reveal">
+        <img class="note-mark" src="<?= $base ?>/images/brand-icon.png" alt="" aria-hidden="true">
         <div>
           <h3><?= e(t($c,'note_title')) ?></h3>
           <p><?= e(t($c,'note_text')) ?></p>
         </div>
-        <a class="btn" href="#contact"><?= e(t($c,'cta_demo','Request a Demo')) ?></a>
+        <div class="note-actions">
+          <a class="btn light" href="#contact"><?= e(t($c,'cta_demo','Request a Demo')) ?></a>
+          <a class="btn outline" href="#contact"><?= e(t($c,'cta_usecases', $lang === 'az'
+              ? 'Daha çox nümunə' : 'Explore more use cases')) ?></a>
+        </div>
       </div>
     </div>
   </section>

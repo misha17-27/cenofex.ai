@@ -17,5 +17,6 @@ Disallow: /index2.html
 Disallow: /index3.html
 Disallow: /index4.html
 Disallow: /index5.html
+Disallow: /index6.php
 
 Sitemap: https://cenofex.ai/sitemap.xml

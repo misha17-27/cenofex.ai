@@ -29,6 +29,8 @@ deployment:
     - /bin/cp -R site/az/.       $DEPLOYPATH/az/
     - /bin/cp site/render.php       $DEPLOYPATH/render.php
     - /bin/cp site/index5.php       $DEPLOYPATH/index5.php
+    - /bin/cp site/render6.php      $DEPLOYPATH/render6.php
+    - /bin/cp site/index6.php       $DEPLOYPATH/index6.php
     - /bin/cp site/contact-send.php $DEPLOYPATH/contact-send.php
     - /bin/cp site/install.php      $DEPLOYPATH/install.php
     - /bin/cp site/.htaccess       $DEPLOYPATH/.htaccess
@@ -45,4 +47,4 @@ deployment:
     - /bin/rm -f $DEPLOYPATH/az/index.html
 
     # Сброс кэша страниц после обновления
-    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html $DEPLOYPATH/storage/cache/page_en6.html
