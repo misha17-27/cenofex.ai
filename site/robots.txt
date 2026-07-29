@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Служебные разделы в поиске не нужны
+Disallow: /admin/
+Disallow: /app/
+Disallow: /storage/
+Disallow: /uploads/photos/
+Disallow: /install.php
+Disallow: /contact-send.php
+Disallow: /*?sent=
+Disallow: /*?error=
+
+# Старые статические прототипы — не индексируем
+Disallow: /index1.html
+Disallow: /index2.html
+Disallow: /index3.html
+Disallow: /index4.html
+Disallow: /index5.html
+
+Sitemap: https://cenofex.ai/sitemap.xml

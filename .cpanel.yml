@@ -32,6 +32,9 @@ deployment:
     - /bin/cp site/contact-send.php $DEPLOYPATH/contact-send.php
     - /bin/cp site/install.php      $DEPLOYPATH/install.php
     - /bin/cp site/.htaccess       $DEPLOYPATH/.htaccess
+    - /bin/cp site/robots.txt       $DEPLOYPATH/robots.txt
+    - /bin/cp site/sitemap.php      $DEPLOYPATH/sitemap.php
+    - /bin/cp site/404.php          $DEPLOYPATH/404.php
     - /bin/cp site/storage/.htaccess $DEPLOYPATH/storage/.htaccess
     - /bin/cp site/uploads/.htaccess $DEPLOYPATH/uploads/.htaccess
 

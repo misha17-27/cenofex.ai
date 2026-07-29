@@ -52,3 +52,20 @@
 
 # ---------- Без листинга папок ----------
 Options -Indexes
+
+# ---------- SEO ----------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Один канонический адрес: https и без www (иначе Google видит дубли)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # Карта сайта отдаётся скриптом
+  RewriteRule ^sitemap\.xml$ /sitemap.php [L]
+</IfModule>
+
+# Своя страница 404 с правильным кодом ответа
+ErrorDocument 404 /404.php

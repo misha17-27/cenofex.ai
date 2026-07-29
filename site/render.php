@@ -39,6 +39,7 @@ $siteUrl  = rtrim(cfg('site.url'), '/');
 $enPath   = cfg('site.en_path');
 $azPath   = cfg('site.az_path');
 $base     = ($lang === 'az') ? '..' : '.';     // корректные пути к картинкам из /az/
+$canonical = $siteUrl . ($lang === 'az' ? $azPath : $enPath);
 
 $svgSvc = [
   '<svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
@@ -97,11 +98,25 @@ ob_start();
 <meta property="og:title" content="<?= e($seoTitle) ?>">
 <meta property="og:description" content="<?= e($seoDesc) ?>">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="CENOFEX">
+<meta property="og:url" content="<?= e($canonical) ?>">
 <meta property="og:image" content="<?= e($siteUrl . $ogImage) ?>">
-<link rel="canonical" href="<?= e($siteUrl . ($lang === 'az' ? $azPath : $enPath)) ?>">
+<meta property="og:image:alt" content="CENOFEX">
+<meta property="og:locale" content="<?= $lang === 'az' ? 'az_AZ' : 'en_US' ?>">
+<meta property="og:locale:alternate" content="<?= $lang === 'az' ? 'en_US' : 'az_AZ' ?>">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($seoTitle) ?>">
+<meta name="twitter:description" content="<?= e($seoDesc) ?>">
+<meta name="twitter:image" content="<?= e($siteUrl . $ogImage) ?>">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" content="#02A78E">
+<meta name="author" content="CENOFEX">
+<link rel="canonical" href="<?= e($canonical) ?>">
 <link rel="alternate" hreflang="en" href="<?= e($siteUrl . $enPath) ?>">
 <link rel="alternate" hreflang="az" href="<?= e($siteUrl . $azPath) ?>">
+<link rel="alternate" hreflang="x-default" href="<?= e($siteUrl . $enPath) ?>">
 <link rel="icon" type="image/png" href="<?= $base ?>/images/brand-icon.png">
+<link rel="apple-touch-icon" href="<?= $base ?>/images/brand-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -116,6 +131,82 @@ ob_start();
 <link rel="preload" as="image" href="<?= e(img_small($lcp)) ?>"
       <?php if ($lcpSet): ?>imagesrcset="<?= e($lcpSet) ?>" imagesizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
       fetchpriority="high">
+<?php
+/* ---------- Структурированные данные для Google (schema.org) ---------- */
+$sameAs = array_values(array_filter([
+    setting('social_linkedin'), setting('social_instagram'), setting('social_facebook'),
+], fn($u) => $u !== '' && $u !== '#'));
+
+$org = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'Organization',
+    '@id'      => $siteUrl . '/#organization',
+    'name'     => 'CENOFEX',
+    'url'      => $siteUrl . '/',
+    'logo'     => ['@type' => 'ImageObject', 'url' => $siteUrl . '/images/logo-dark-text.png'],
+    'image'    => $siteUrl . $ogImage,
+    'description' => $seoDesc,
+    'address'  => ['@type' => 'PostalAddress', 'addressCountry' => 'AZ', 'addressLocality' => 'Baku'],
+    'contactPoint' => [[
+        '@type'       => 'ContactPoint',
+        'contactType' => 'sales',
+        'telephone'   => preg_replace('/\s+/', '', t($c, 'contact_phone', '+994503939812')),
+        'email'       => t($c, 'contact_email', 'info@cenofex.ai'),
+        'availableLanguage' => ['en', 'az'],
+    ]],
+];
+if ($sameAs) $org['sameAs'] = $sameAs;
+
+$website = [
+    '@context' => 'https://schema.org',
+    '@type'    => 'WebSite',
+    '@id'      => $siteUrl . '/#website',
+    'url'      => $siteUrl . '/',
+    'name'     => 'CENOFEX',
+    'inLanguage' => $lang,
+    'publisher'  => ['@id' => $siteUrl . '/#organization'],
+];
+
+$webpage = [
+    '@context'   => 'https://schema.org',
+    '@type'      => 'WebPage',
+    'url'        => $canonical,
+    'name'       => $seoTitle,
+    'description'=> $seoDesc,
+    'inLanguage' => $lang,
+    'isPartOf'   => ['@id' => $siteUrl . '/#website'],
+    'about'      => ['@id' => $siteUrl . '/#organization'],
+];
+
+/* Услуги — отдельным списком */
+$svcList = [];
+foreach ($services as $n => $it) {
+    $svcList[] = [
+        '@type'    => 'ListItem',
+        'position' => $n + 1,
+        'item'     => [
+            '@type'       => 'Service',
+            'name'        => $it['title'],
+            'description' => $it['body'],
+            'provider'    => ['@id' => $siteUrl . '/#organization'],
+        ],
+    ];
+}
+$svcSchema = $svcList ? [
+    '@context' => 'https://schema.org',
+    '@type'    => 'ItemList',
+    'name'     => t($c, 'services_title', 'Services'),
+    'itemListElement' => $svcList,
+] : null;
+
+$FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+?>
+<script type="application/ld+json"><?= json_encode($org, $FLAGS) ?></script>
+<script type="application/ld+json"><?= json_encode($website, $FLAGS) ?></script>
+<script type="application/ld+json"><?= json_encode($webpage, $FLAGS) ?></script>
+<?php if ($svcSchema): ?>
+<script type="application/ld+json"><?= json_encode($svcSchema, $FLAGS) ?></script>
+<?php endif; ?>
 <?= turnstile_script() ?>
 </head>
 <body>
@@ -148,7 +239,12 @@ ob_start();
           <div class="wrap hero-inner">
             <div>
               <span class="kicker"><?= e(t($c,$s['k'])) ?></span>
-              <h1><span><?= e(t($c,$s['a'])) ?></span> <span class="hl"><?= e(t($c,$s['b'])) ?></span></h1>
+              <?php /* На странице должен быть один H1 — он у первого слайда, остальные H2 */ ?>
+              <?php if ($i === 0): ?>
+                <h1><span><?= e(t($c,$s['a'])) ?></span> <span class="hl"><?= e(t($c,$s['b'])) ?></span></h1>
+              <?php else: ?>
+                <h2 class="as-h1"><span><?= e(t($c,$s['a'])) ?></span> <span class="hl"><?= e(t($c,$s['b'])) ?></span></h2>
+              <?php endif; ?>
               <p class="sub"><?= e(t($c,$s['sub'])) ?></p>
               <div class="hero-cta">
                 <a class="btn" href="<?= e($s['ctaHref']) ?>"><?= e(t($c,$s['cta'])) ?></a>
