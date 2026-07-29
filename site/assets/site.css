@@ -457,7 +457,12 @@
     .v6 .sol-brand .group-head h3{color:#fff}
     .v6 .sol-brand .group-head:before{background:#bdf0e6}
     .v6 .sol-brand .card,
-    .v6 .sol-brand .ready-item{background:#fff;border-color:rgba(255,255,255,.22)}
+    .v6 .sol-brand .ready-item{background:#fff;border-color:rgba(255,255,255,.22);color:var(--ink)}
+    /* заголовки внутри белых карточек не должны наследовать белый цвет секции */
+    .v6 .sol-brand .card h3,
+    .v6 .sol-brand .ready-item h4{color:var(--ink)}
+    .v6 .sol-brand .card p,
+    .v6 .sol-brand .ready-item p{color:var(--muted)}
     .v6 .sol-brand .card:hover,
     .v6 .sol-brand .ready-item:hover{border-color:rgba(255,255,255,.6);box-shadow:0 20px 44px rgba(0,0,0,.24)}
     .v6 .sol-brand .note{background:var(--ink)}
