@@ -213,8 +213,6 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 <?= turnstile_script() ?>
 </head>
 <body class="v6">
-<div class="variant-note">Вариант 6 — правки по комментариям &nbsp;·&nbsp;
-  <a href="/index5.php">открыть вариант 5</a></div>
 <header>
   <nav class="nav" id="nav">
     <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-dark-text.png" alt="CENOFEX"></a>
