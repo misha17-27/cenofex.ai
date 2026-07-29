@@ -480,9 +480,9 @@
     }
 
     /* футер — тёмная фирменная плашка с паттерном тон-в-тон */
-    .v6 footer{background:linear-gradient(135deg,#0c1615 0%,#06403c 55%,#048282 100%)}
-    .v6 footer::before{background:url('../images/pattern-light.png') 0 0 repeat;
-      background-size:200px auto;opacity:.10}
+    .v6 footer{background:var(--ink)}
+    .v6 footer::before{background:url('../images/pattern-dark.png') 0 0 repeat;
+      background-size:200px auto;opacity:.45}
     .v6 .foot{padding-top:52px;padding-bottom:52px}
     .v6 .foot-links a:hover{color:#bdf0e6}
     .v6 .foot p{color:rgba(255,255,255,.72)}
