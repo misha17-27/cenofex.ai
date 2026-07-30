@@ -388,6 +388,19 @@
     @media (max-width:560px){.to-top{width:44px;height:44px}}
     @media (prefers-reduced-motion:reduce){.to-top{transition:opacity .2s}}
 
+    /* Кнопка WhatsApp — над кнопкой «наверх», видна всегда */
+    .wa-btn{position:fixed;right:clamp(16px,2.4vw,28px);
+      bottom:calc(clamp(16px,2.4vw,28px) + 60px);z-index:60;
+      width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+      background:#25D366;color:#fff;box-shadow:0 12px 28px rgba(37,211,102,.34);
+      transition:transform .2s,box-shadow .2s}
+    .wa-btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(37,211,102,.45)}
+    .wa-btn:active{transform:translateY(0)}
+    @media (max-width:560px){
+      .wa-btn{width:44px;height:44px;bottom:calc(clamp(16px,2.4vw,28px) + 54px)}
+      .wa-btn svg{width:23px;height:23px}
+    }
+
     /* --- на мобильном 4 пункта знака в 2 столбика --- */
     @media (max-width:640px){
       .pill-rows{grid-template-columns:1fr 1fr;gap:8px}
