@@ -422,20 +422,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
   <!-- SOLUTIONS -->
   <section class="band sol-brand" id="solutions">
     <div class="wrap">
-      <div class="head reveal">
-        <span class="kicker"><?= e(t($c,'sol_label')) ?></span>
-        <p class="lead"><?= e(t($c,'sol_intro')) ?></p>
-      </div>
-      <div class="cards reveal">
-        <?php foreach ($solutions as $i => $it): ?>
-        <article class="card">
-          <div class="icon"><?= $svgSol[$i % count($svgSol)] ?></div>
-          <h3><?= e($it['title']) ?></h3><p><?= e($it['body']) ?></p>
-        </article>
-        <?php endforeach; ?>
-      </div>
-
-      <div class="head reveal ready-head" style="margin-top:clamp(46px,6vw,76px)">
+      <div class="head reveal ready-head">
         <img class="ready-mark" src="<?= $base ?>/images/brand-icon.svg" alt="" aria-hidden="true">
         <div>
           <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>

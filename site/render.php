@@ -393,19 +393,6 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
   <section class="band" id="solutions">
     <div class="wrap">
       <div class="head reveal">
-        <span class="kicker"><?= e(t($c,'sol_label')) ?></span>
-        <p class="lead"><?= e(t($c,'sol_intro')) ?></p>
-      </div>
-      <div class="cards reveal">
-        <?php foreach ($solutions as $i => $it): ?>
-        <article class="card">
-          <div class="icon"><?= $svgSol[$i % count($svgSol)] ?></div>
-          <h3><?= e($it['title']) ?></h3><p><?= e($it['body']) ?></p>
-        </article>
-        <?php endforeach; ?>
-      </div>
-
-      <div class="head reveal" style="margin-top:clamp(46px,6vw,76px)">
         <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
         <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
       </div>
