@@ -19,6 +19,56 @@
     });
   }
 
+  /* ---- переход по якорям: секция должна вставать под шапку ---- */
+  (function () {
+    var header = document.querySelector('header');
+
+    /* У секций большой внутренний отступ (.wrap). Обычный якорь ставит
+       ВЕРХ секции под шапку, и заголовок оказывается далеко внизу.
+       Поэтому целимся в первый видимый блок содержимого. */
+    function targetTop(sec) {
+      var headerH = header ? header.getBoundingClientRect().height : 0;
+      var wrap = sec.querySelector('.wrap') || sec;
+      var pad = parseFloat(getComputedStyle(wrap).paddingTop) || 0;
+      /* меряем по самой секции: у неё нет анимаций, в отличие от .reveal внутри */
+      var top = sec.getBoundingClientRect().top + window.pageYOffset;
+      return Math.max(0, Math.round(top + pad - headerH - 28));
+    }
+
+    function go(sec, smooth) {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: targetTop(sec), behavior: (smooth && !reduce) ? 'smooth' : 'auto' });
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href');
+      if (!id || id === '#' || id.length < 2) return;
+
+      var sec = document.querySelector(id);
+      if (!sec) return;
+
+      e.preventDefault();
+      /* первый слайд — просто наверх, там шапка перекрывать нечего */
+      if (id === '#home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        go(sec, true);
+      }
+      if (history.replaceState) history.replaceState(null, '', id);
+    });
+
+    /* если страницу открыли сразу со ссылкой вида /index7.php#solutions */
+    if (location.hash.length > 1) {
+      var sec = document.querySelector(location.hash);
+      if (sec) {
+        // ждём картинки: без этого высота ещё «плывёт» и промах неизбежен
+        window.addEventListener('load', function () { setTimeout(function () { go(sec, false); }, 60); });
+      }
+    }
+  })();
+
   /* ---- hero-слайдер ---- */
   (function () {
     var hero = q('#home'); if (!hero) return;
