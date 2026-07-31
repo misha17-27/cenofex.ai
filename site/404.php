@@ -11,7 +11,7 @@ $home    = cfg('site.en_path');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found — CENOFEX</title>
 <meta name="robots" content="noindex, follow">
-<link rel="icon" type="image/png" href="/images/brand-icon.svg">
+<link rel="icon" type="image/svg+xml" href="/images/brand-icon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{--green:#02A78E;--teal:#048282;--ink:#0c1615}
