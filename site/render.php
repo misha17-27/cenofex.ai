@@ -135,6 +135,7 @@ ob_start();
 /* ---------- Структурированные данные для Google (schema.org) ---------- */
 $sameAs = array_values(array_filter([
     setting('social_linkedin'), setting('social_instagram'), setting('social_facebook'),
+    setting('social_youtube'), setting('social_x'),
 ], fn($u) => $u !== '' && $u !== '#'));
 
 $org = [
@@ -459,11 +460,19 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
             <div><strong><?= e(t($c,'address_label','Address')) ?></strong><span><?= e(t($c,'contact_address')) ?></span></div></div>
         </div>
         <div class="social">
-          <?php foreach (['linkedin'=>'<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7v.01M12 16v-3a2 2 0 0 1 4 0v3"/>',
-                          'instagram'=>'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>',
-                          'facebook'=>'<path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1z"/>'] as $netKey => $svg):
-                $u = setting('social_' . $netKey, '#'); ?>
-            <a href="<?= e($u) ?>" aria-label="<?= e(ucfirst($netKey)) ?>"<?= $u!=='#'?' target="_blank" rel="noopener"':'' ?>><svg viewBox="0 0 24 24"><?= $svg ?></svg></a>
+          <?php
+          /* Показываем только те сети, которые заполнены в админ-панели. */
+          $nets = [
+            'linkedin'  => '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v6M8 7v.01M12 16v-3a2 2 0 0 1 4 0v3"/>',
+            'instagram' => '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/>',
+            'facebook'  => '<path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.6.4-1 1-1z"/>',
+            'youtube'   => '<rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="m10.5 9.5 5 2.5-5 2.5z"/>',
+            'x'         => '<path d="m4 4 16 16M20 4 4 20"/>',
+          ];
+          foreach ($nets as $netKey => $svg):
+                $u = trim(setting('social_' . $netKey, ''));
+                if ($u === '' || $u === '#') continue; ?>
+            <a href="<?= e($u) ?>" aria-label="<?= e($netKey === 'x' ? 'X' : ucfirst($netKey)) ?>" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><?= $svg ?></svg></a>
           <?php endforeach; ?>
         </div>
       </div>

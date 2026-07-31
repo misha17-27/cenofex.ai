@@ -43,6 +43,8 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
         '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 3.5a3 3 0 0 1 0 9"/><path d="M18 20a6 6 0 0 0-3-5.2"/>', $page);
       nav_item('media', 'media', 'Изображения',
         '<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m4 17 5-5 4 4 3-2 4 4"/>', $page);
+      nav_item('contacts', 'contacts', 'Контакты и соцсети',
+        '<path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h2A1.5 1.5 0 0 1 9 5.5v2A1.5 1.5 0 0 1 7.5 9C7.5 13 11 16.5 15 16.5A1.5 1.5 0 0 1 16.5 15h2A1.5 1.5 0 0 1 20 16.5v2a1.5 1.5 0 0 1-1.5 1.5C10.5 20 4 13.5 4 5.5z"/>', $page);
       nav_item('messages', 'messages', 'Заявки с сайта',
         '<path d="M4 5h16v12H7l-3 3z"/><path d="M8 9h8M8 13h5"/>', $page);
       ?>
