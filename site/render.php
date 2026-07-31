@@ -115,8 +115,8 @@ ob_start();
 <link rel="alternate" hreflang="en" href="<?= e($siteUrl . $enPath) ?>">
 <link rel="alternate" hreflang="az" href="<?= e($siteUrl . $azPath) ?>">
 <link rel="alternate" hreflang="x-default" href="<?= e($siteUrl . $enPath) ?>">
-<link rel="icon" type="image/png" href="<?= $base ?>/images/brand-icon.png">
-<link rel="apple-touch-icon" href="<?= $base ?>/images/brand-icon.png">
+<link rel="icon" type="image/png" href="<?= $base ?>/images/brand-icon.svg">
+<link rel="apple-touch-icon" href="<?= $base ?>/images/brand-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -258,7 +258,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
                    width="1600" height="1100" decoding="async"
                    alt="<?= e(t($c,$s['ct'])) ?>" <?= $i===0?'loading="eager" fetchpriority="high"':'loading="lazy"' ?>
                    onerror="this.onerror=null;this.src='<?= $base ?>/images/<?= e($s['fb']) ?>';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
-              <div class="hero-chip"><img src="<?= $base ?>/images/brand-icon.png" alt="">
+              <div class="hero-chip"><img src="<?= $base ?>/images/brand-icon.svg" alt="">
                 <div><b><?= e(t($c,$s['ct'])) ?></b><span><?= e(t($c,$s['cs'])) ?></span></div>
               </div>
             </div>
@@ -329,7 +329,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         </div>
 
         <div class="pil-sum">
-          <img src="<?= $base ?>/images/brand-icon.png" alt="">
+          <img src="<?= $base ?>/images/brand-icon.svg" alt="">
           <b><?= e(t($c,'pil_sum')) ?></b>
         </div>
       </div>

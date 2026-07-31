@@ -158,12 +158,12 @@
     @keyframes cxSpin{to{transform:rotate(360deg)}}
     @keyframes cxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
     .hero::after{content:"";position:absolute;right:-6%;top:-14%;width:min(46vw,520px);height:min(46vw,520px);
-      background:url('../images/brand-icon.png') center/contain no-repeat;opacity:.05;z-index:0;pointer-events:none;
+      background:url('../images/brand-icon.svg') center/contain no-repeat;opacity:.05;z-index:0;pointer-events:none;
       animation:cxSpin 44s linear infinite}
     .hero-viewport{z-index:1}
     .contact-info{position:relative;overflow:hidden}
     .contact-info::after{content:"";position:absolute;right:-56px;top:-56px;width:210px;height:210px;
-      background:url('../images/brand-icon.png') center/contain no-repeat;filter:brightness(0) invert(1);
+      background:url('../images/brand-icon.svg') center/contain no-repeat;filter:brightness(0) invert(1);
       opacity:.06;pointer-events:none;animation:cxSpin 30s linear infinite}
     .contact-info>*{position:relative;z-index:1}
     .about-mark{animation:cxFloat 6s ease-in-out infinite}
@@ -196,7 +196,7 @@
         background:#fff;padding:88px clamp(22px,6vw,40px) 120px}
       /* Бледный фирменный знак справа внизу */
       .nav.open .links::after{content:"";position:absolute;right:-40px;bottom:-30px;width:210px;height:210px;
-        background:url('../images/brand-icon.png') center/contain no-repeat;opacity:.10;pointer-events:none;z-index:-1}
+        background:url('../images/brand-icon.svg') center/contain no-repeat;opacity:.10;pointer-events:none;z-index:-1}
       .nav.open .links a{width:min(340px,100%);font-size:clamp(24px,7vw,34px);font-weight:800;padding:14px 0;border-bottom:1px solid var(--line)}
       .nav.open .links a:after{display:none}
       .nav.open .links a:last-child{border-bottom:0}
