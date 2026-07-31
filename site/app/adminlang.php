@@ -78,6 +78,8 @@ function admin_phrases(): array
         'Форма: телефон' => ['Form: phone', 'Forma: telefon'],
         'Форма: подсказка телефона' => ['Form: phone hint', 'Forma: telefon ipucu'],
         'Сообщение после отправки' => ['Message after sending', 'Göndərişdən sonrakı mesaj'],
+        'Открыть сайт для поисковиков' => ['Allow search engines', 'Axtarış sistemlərinə icazə'],
+        'Впишите 1, когда сайт будет запущен. Пока стоит 0 — страница закрыта от Google.' => ['Enter 1 when the site goes live. While it is 0 the page is hidden from Google.', 'Sayt işə düşəndə 1 yazın. 0 olduqda səhifə Google-dan gizlidir.'],
         'Контакты и соцсети' => ['Contacts & social', 'Əlaqə və sosial şəbəkələr'],
         'Контакты на сайте' => ['Site contacts', 'Saytdakı əlaqə məlumatları'],
         'Слева — английская версия, справа — азербайджанская.' => ['English version on the left, Azerbaijani on the right.', 'Solda ingilis, sağda Azərbaycan versiyası.'],

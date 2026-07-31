@@ -8,10 +8,8 @@ $fields = [
   'seo_title_az'       => ['Заголовок страницы (AZ)', ''],
   'seo_desc_az'        => ['Описание (AZ)', '', true],
   'og_image'           => ['Картинка для соцсетей', 'Путь от корня сайта, например /images/logo-white-text.png'],
+  'robots_index'       => ['Открыть сайт для поисковиков', 'Впишите 1, когда сайт будет запущен. Пока стоит 0 — страница закрыта от Google.'],
   'contact_form_email' => ['Почта для заявок с формы', 'Куда приходят сообщения из формы обратной связи.'],
-  'social_linkedin'    => ['LinkedIn', 'Полная ссылка или # если не нужно.'],
-  'social_instagram'   => ['Instagram', ''],
-  'social_facebook'    => ['Facebook', ''],
 ];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

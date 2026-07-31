@@ -19,7 +19,7 @@ return [
         // Полный адрес сайта без слэша в конце
         'url'        => 'https://cenofex.ai',
         // Страница английской версии (главная сейчас — coming soon)
-        'en_path'    => '/index5.php',
+        'en_path'    => '/index.php',
         'az_path'    => '/az/',
         'from_email' => 'info@cenofex.ai',
         'from_name'  => 'CENOFEX',

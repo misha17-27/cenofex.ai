@@ -136,7 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'clear
 <div class="card">
   <h2>Страницы сайта</h2>
   <div class="row">
-    <a class="btn ghost" href="../index5.php" target="_blank" rel="noopener">Английская версия</a>
+    <a class="btn ghost" href="../index.php" target="_blank" rel="noopener">Английская версия</a>
     <a class="btn ghost" href="../az/" target="_blank" rel="noopener">Азербайджанская версия</a>
   </div>
 </div>

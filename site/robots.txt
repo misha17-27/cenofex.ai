@@ -11,15 +11,4 @@ Disallow: /contact-send.php
 Disallow: /*?sent=
 Disallow: /*?error=
 
-# Старые статические прототипы — не индексируем
-Disallow: /index1.html
-Disallow: /index2.html
-Disallow: /index3.html
-Disallow: /index4.html
-Disallow: /index5.html
-Disallow: /index6.php
-Disallow: /index7.php
-Disallow: /az/index6.php
-Disallow: /az/index7.php
-
 Sitemap: https://cenofex.ai/sitemap.xml

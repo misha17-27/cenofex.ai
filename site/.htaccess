@@ -50,6 +50,12 @@
   Require all denied
 </Files>
 
+# ---------- Что отдавать по адресу папки ----------
+# Пока идёт подготовка: / — это coming soon (index.html),
+# сам сайт открывается по /index.php. При запуске достаточно
+# удалить index.html — тогда / начнёт отдавать index.php.
+DirectoryIndex index.html index.php
+
 # ---------- Без листинга папок ----------
 Options -Indexes
 

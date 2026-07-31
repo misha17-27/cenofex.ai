@@ -74,7 +74,7 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
       <h1><?= e($title) ?></h1>
       <div class="right">
         <?= admin_lang_switch() ?>
-        <a class="btn ghost sm" href="../index5.php" target="_blank" rel="noopener">Открыть сайт</a>
+        <a class="btn ghost sm" href="../index.php" target="_blank" rel="noopener">Открыть сайт</a>
         <a class="btn ghost sm" href="logout">Выйти</a>
       </div>
     </div>

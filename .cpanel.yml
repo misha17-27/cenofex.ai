@@ -8,17 +8,12 @@ deployment:
     - /bin/mkdir -p $DEPLOYPATH/images
     - /bin/cp -R images/. $DEPLOYPATH/images/
 
-    # ---------- Главная (/) — страница Coming Soon ----------
+    # ---------- Главная (/) — пока страница Coming Soon ----------
+    # Когда сайт запускаем: убрать эту строку и удалить index.html на сервере,
+    # тогда / начнёт отдавать index.php (см. DirectoryIndex в .htaccess).
     - /bin/cp coming-soon.html $DEPLOYPATH/index.html
 
-    # ---------- Статические прототипы (для сравнения версий) ----------
-    - /bin/cp version-4/index4.html $DEPLOYPATH/index4.html
-    - /bin/cp version-5/index5.html $DEPLOYPATH/index5.html
-    - /bin/cp version-2/index2.html $DEPLOYPATH/index2.html
-    - /bin/cp version-3/index3.html $DEPLOYPATH/index3.html
-    - /bin/cp version-1/index.html  $DEPLOYPATH/index1.html
-
-    # ---------- Рабочий сайт на PHP + админ-панель ----------
+    # ---------- Сайт на PHP + админ-панель ----------
     - /bin/mkdir -p $DEPLOYPATH/app $DEPLOYPATH/admin/partials $DEPLOYPATH/admin/assets
     - /bin/mkdir -p $DEPLOYPATH/assets $DEPLOYPATH/az $DEPLOYPATH/storage/cache
     - /bin/mkdir -p $DEPLOYPATH/uploads/partners $DEPLOYPATH/uploads/photos
@@ -28,14 +23,10 @@ deployment:
     - /bin/cp -R site/assets/.   $DEPLOYPATH/assets/
     - /bin/cp -R site/az/.       $DEPLOYPATH/az/
     - /bin/cp site/render.php       $DEPLOYPATH/render.php
-    - /bin/cp site/index5.php       $DEPLOYPATH/index5.php
-    - /bin/cp site/render6.php      $DEPLOYPATH/render6.php
-    - /bin/cp site/index6.php       $DEPLOYPATH/index6.php
-    - /bin/cp site/render7.php      $DEPLOYPATH/render7.php
-    - /bin/cp site/index7.php       $DEPLOYPATH/index7.php
+    - /bin/cp site/index.php        $DEPLOYPATH/index.php
     - /bin/cp site/contact-send.php $DEPLOYPATH/contact-send.php
     - /bin/cp site/install.php      $DEPLOYPATH/install.php
-    - /bin/cp site/.htaccess       $DEPLOYPATH/.htaccess
+    - /bin/cp site/.htaccess        $DEPLOYPATH/.htaccess
     - /bin/cp site/robots.txt       $DEPLOYPATH/robots.txt
     - /bin/cp site/sitemap.php      $DEPLOYPATH/sitemap.php
     - /bin/cp site/404.php          $DEPLOYPATH/404.php
@@ -45,8 +36,14 @@ deployment:
     # config.php создаём один раз и БОЛЬШЕ НЕ ТРОГАЕМ (в нём пароль от БД)
     - /bin/cp -n site/app/config.example.php $DEPLOYPATH/app/config.php
 
-    # Старый статический /az/index.html убираем, чтобы работала PHP-версия /az/
-    - /bin/rm -f $DEPLOYPATH/az/index.html
+    # ---------- Убираем прототипы, которых больше нет ----------
+    - /bin/rm -f $DEPLOYPATH/index1.html $DEPLOYPATH/index2.html $DEPLOYPATH/index3.html
+    - /bin/rm -f $DEPLOYPATH/index4.html $DEPLOYPATH/index5.html
+    - /bin/rm -f $DEPLOYPATH/index5.php $DEPLOYPATH/index6.php $DEPLOYPATH/index7.php
+    - /bin/rm -f $DEPLOYPATH/render6.php $DEPLOYPATH/render7.php
+    - /bin/rm -f $DEPLOYPATH/az/index.html $DEPLOYPATH/az/index6.php $DEPLOYPATH/az/index7.php
 
-    # Сброс кэша страниц после обновления
-    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html $DEPLOYPATH/storage/cache/page_en6.html $DEPLOYPATH/storage/cache/page_en7.html $DEPLOYPATH/storage/cache/page_az6.html $DEPLOYPATH/storage/cache/page_az7.html
+    # Сброс кэша страниц после обновления (включая кэш старых вариантов)
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en6.html $DEPLOYPATH/storage/cache/page_az6.html
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en7.html $DEPLOYPATH/storage/cache/page_az7.html

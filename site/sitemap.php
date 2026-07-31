@@ -6,8 +6,8 @@
 require_once __DIR__ . '/app/helpers.php';
 
 $siteUrl = rtrim(cfg('site.url'), '/');
-$enUrl   = $siteUrl . cfg('site.en_path');
-$azUrl   = $siteUrl . cfg('site.az_path');
+$enUrl   = $siteUrl . '/index.php';
+$azUrl   = $siteUrl . '/az/';
 
 /* Дата последнего изменения = когда в панели последний раз сохраняли контент */
 $lastmod = date('Y-m-d');

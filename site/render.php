@@ -1,6 +1,7 @@
 <?php
 /**
- * Шаблон публичной страницы. Данные — из БД.
+ * Главная страница сайта (утверждённый дизайн).
+ * Данные — из БД.
  * Результат кэшируется в storage/cache/page_{lang}.html и отдаётся как статика.
  */
 require_once __DIR__ . '/app/helpers.php';
@@ -36,8 +37,10 @@ $seoTitle = setting("seo_title_{$lang}", 'CENOFEX');
 $seoDesc  = setting("seo_desc_{$lang}", '');
 $ogImage  = setting('og_image', '/images/logo-white-text.png');
 $siteUrl  = rtrim(cfg('site.url'), '/');
-$enPath   = cfg('site.en_path');
-$azPath   = cfg('site.az_path');
+/* Задано в коде, а не в конфиге: config.php на сервере при деплое не трогаем,
+   и старое значение из него ломало бы переключатель языка. */
+$enPath   = '/index.php';
+$azPath   = '/az/';
 $base     = ($lang === 'az') ? '..' : '.';     // корректные пути к картинкам из /az/
 $canonical = $siteUrl . ($lang === 'az' ? $azPath : $enPath);
 
@@ -108,7 +111,9 @@ ob_start();
 <meta name="twitter:title" content="<?= e($seoTitle) ?>">
 <meta name="twitter:description" content="<?= e($seoDesc) ?>">
 <meta name="twitter:image" content="<?= e($siteUrl . $ogImage) ?>">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<?php /* Пока на / стоит coming soon, страницу в поиск не пускаем.
+         Переключается в админке: SEO → «Открыть сайт для поисковиков». */ ?>
+<meta name="robots" content="<?= setting('robots_index', '0') === '1' ? 'index, follow' : 'noindex, nofollow' ?>">
 <meta name="theme-color" content="#02A78E">
 <meta name="author" content="CENOFEX">
 <link rel="canonical" href="<?= e($canonical) ?>">
@@ -210,10 +215,10 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 <?php endif; ?>
 <?= turnstile_script() ?>
 </head>
-<body>
+<body class="v6 v7">
 <header>
   <nav class="nav" id="nav">
-    <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-dark-text.svg" alt="CENOFEX"></a>
+    <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-white-text.svg" alt="CENOFEX"></a>
     <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="links">
       <a href="#about"><?= e(t($c,'nav_about','Who We Are')) ?></a>
@@ -284,6 +289,9 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           <p><?= e(t($c,'about_p1')) ?></p>
           <p><?= e(t($c,'about_p2')) ?></p>
           <p><?= e(t($c,'about_p3')) ?></p>
+        </div>
+        <div class="hero-cta" style="margin-top:26px">
+          <a class="btn" href="#contact"><?= e(t($c,'cta_talk','Talk to Us')) ?></a>
         </div>
       </div>
       <div class="about-media reveal">
@@ -362,17 +370,42 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     </div>
   </section>
 
-  <!-- TECHNOLOGY -->
-  <section id="technology">
+  <!-- TECHNOLOGY (светлая секция, без паттерна) -->
+  <section id="technology" class="tech-light">
     <div class="wrap">
       <div class="head reveal">
         <span class="kicker"><?= e(t($c,'tech_label')) ?></span>
         <h2 class="title"><?= e(t($c,'tech_title')) ?></h2>
       </div>
-      <div class="tech-copy reveal">
-        <p><?= e(t($c,'tech_p1')) ?></p>
-        <p><?= e(t($c,'tech_p2')) ?></p>
-        <p><?= e(t($c,'tech_p3')) ?></p>
+
+      <div class="tech-grid">
+        <div class="tech-copy reveal">
+          <p><?= e(t($c,'tech_p1')) ?></p>
+          <p><?= e(t($c,'tech_p2')) ?></p>
+          <p><?= e(t($c,'tech_p3')) ?></p>
+        </div>
+
+        <?php
+          $techPhoto = setting('photo_tech',
+              'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+          $caps = [
+            t($c, 'cap1', 'RPA'),
+            t($c, 'cap2', 'AI & Agentic AI'),
+            t($c, 'cap3', 'ERP Systems'),
+            t($c, 'cap4', 'Data & Analytics'),
+            t($c, 'cap5', 'APIs & Integrations'),
+          ];
+        ?>
+        <figure class="tech-photo reveal">
+          <img src="<?= e(img_small($techPhoto)) ?>"
+               <?php $ts = img_srcset($techPhoto); if ($ts): ?>srcset="<?= e($ts) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
+               width="1600" height="1100" loading="lazy" decoding="async"
+               alt="<?= e(t($c,'tech_title')) ?>"
+               onerror="this.onerror=null;this.src='<?= $base ?>/images/5.png';this.style.objectFit='contain'">
+          <figcaption class="tech-caps">
+            <?php foreach ($caps as $cap): ?><span><?= e($cap) ?></span><?php endforeach; ?>
+          </figcaption>
+        </figure>
       </div>
       <?php if ($plist): ?>
       <div class="group-head reveal" style="margin-top:clamp(30px,4vw,48px);margin-bottom:0">
@@ -390,11 +423,14 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
   </section>
 
   <!-- SOLUTIONS -->
-  <section class="band" id="solutions">
+  <section class="band sol-brand" id="solutions">
     <div class="wrap">
-      <div class="head reveal">
-        <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
-        <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
+      <div class="head reveal ready-head">
+        <img class="ready-mark" src="<?= $base ?>/images/brand-icon.svg" alt="" aria-hidden="true">
+        <div>
+          <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
+          <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
+        </div>
       </div>
 
       <?php if ($finance): ?>
@@ -420,11 +456,16 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
       <?php endif; ?>
 
       <div class="note reveal">
+        <img class="note-mark" src="<?= $base ?>/images/brand-icon.svg" alt="" aria-hidden="true">
         <div>
           <h3><?= e(t($c,'note_title')) ?></h3>
           <p><?= e(t($c,'note_text')) ?></p>
         </div>
-        <a class="btn" href="#contact"><?= e(t($c,'cta_demo','Request a Demo')) ?></a>
+        <div class="note-actions">
+          <a class="btn light" href="#contact"><?= e(t($c,'cta_demo','Request a Demo')) ?></a>
+          <a class="btn outline" href="#contact"><?= e(t($c,'cta_usecases', $lang === 'az'
+              ? 'Daha çox nümunə' : 'Explore more use cases')) ?></a>
+        </div>
       </div>
     </div>
   </section>
