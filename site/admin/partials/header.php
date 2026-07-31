@@ -27,7 +27,7 @@ function nav_item(string $href, string $key, string $label, string $svg, string 
 <body>
 <div class="layout">
   <aside class="sidebar" id="sidebar">
-    <div class="brand"><img src="../images/logo-white-text.png" alt="CENOFEX"></div>
+    <div class="brand"><img src="../images/logo-white-text.svg" alt="CENOFEX"></div>
     <nav>
       <div class="grp">Основное</div>
       <?php nav_item('/admin/', 'dashboard', 'Обзор',

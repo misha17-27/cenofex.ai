@@ -216,7 +216,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 <body class="v6 v7">
 <header>
   <nav class="nav" id="nav">
-    <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-white-text.png" alt="CENOFEX"></a>
+    <a class="logo" href="#home"><img src="<?= $base ?>/images/logo-white-text.svg" alt="CENOFEX"></a>
     <button class="menu" id="menu" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <div class="links">
       <a href="#about"><?= e(t($c,'nav_about','Who We Are')) ?></a>
@@ -561,7 +561,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 
 <footer>
   <div class="foot">
-    <img src="<?= $base ?>/images/logo-white-text.png" alt="CENOFEX">
+    <img src="<?= $base ?>/images/logo-white-text.svg" alt="CENOFEX">
     <div class="foot-links">
       <a href="#about"><?= e(t($c,'nav_about')) ?></a>
       <a href="#services"><?= e(t($c,'nav_services')) ?></a>

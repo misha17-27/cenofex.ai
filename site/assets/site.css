@@ -307,7 +307,7 @@
     .pill-txt i{display:block;font-style:normal;font-size:14px;color:var(--muted);margin-top:4px}
 
     .concept-mark{display:grid;place-items:center}
-    .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:611/600}
+    .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821}
     .mark-stage:before{content:"";position:absolute;inset:-10%;border-radius:50%;
       background:radial-gradient(circle at 50% 45%,rgba(2,167,142,.10),transparent 68%)}
     /* каждый лепесток — отдельная форма (маска из логотипа), цвет задаётся фоном */
@@ -316,10 +316,10 @@
       -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
       -webkit-mask-position:center;mask-position:center;
       -webkit-mask-size:contain;mask-size:contain}
-    .petal.p1{-webkit-mask-image:url('../images/mark/petal-1.png');mask-image:url('../images/mark/petal-1.png')}
-    .petal.p2{-webkit-mask-image:url('../images/mark/petal-2.png');mask-image:url('../images/mark/petal-2.png')}
-    .petal.p3{-webkit-mask-image:url('../images/mark/petal-3.png');mask-image:url('../images/mark/petal-3.png')}
-    .petal.p4{-webkit-mask-image:url('../images/mark/petal-4.png');mask-image:url('../images/mark/petal-4.png')}
+    .petal.p1{-webkit-mask-image:url('../images/mark/petal-1.svg');mask-image:url('../images/mark/petal-1.svg')}
+    .petal.p2{-webkit-mask-image:url('../images/mark/petal-2.svg');mask-image:url('../images/mark/petal-2.svg')}
+    .petal.p3{-webkit-mask-image:url('../images/mark/petal-3.svg');mask-image:url('../images/mark/petal-3.svg')}
+    .petal.p4{-webkit-mask-image:url('../images/mark/petal-4.svg');mask-image:url('../images/mark/petal-4.svg')}
     .concept-mark[data-active="p1"] .petal.p1,
     .concept-mark[data-active="p2"] .petal.p2,
     .concept-mark[data-active="p3"] .petal.p3,

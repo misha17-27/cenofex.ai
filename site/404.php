@@ -31,7 +31,7 @@ $home    = cfg('site.en_path');
 </head>
 <body>
   <main>
-    <img class="logo" src="/images/logo-white-text.png" alt="CENOFEX">
+    <img class="logo" src="/images/logo-white-text.svg" alt="CENOFEX">
     <b class="code">404</b>
     <h1>Page not found</h1>
     <p>The page you are looking for doesn’t exist or has been moved.</p>

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head><body>
 <div class="auth">
   <div class="auth-card">
-    <img class="logo" src="../images/logo-dark-text.png" alt="CENOFEX">
+    <img class="logo" src="../images/logo-dark-text.svg" alt="CENOFEX">
     <h1>Забыли пароль?</h1>
     <p class="sub">Пришлём ссылку для восстановления</p>
 

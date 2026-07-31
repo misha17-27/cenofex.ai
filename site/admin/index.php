@@ -35,7 +35,7 @@ if (!current_user()) {
     </head><body>
     <div class="auth">
       <div class="auth-card">
-        <img class="logo" src="../images/logo-dark-text.png" alt="CENOFEX">
+        <img class="logo" src="../images/logo-dark-text.svg" alt="CENOFEX">
         <h1>Вход в панель</h1>
         <p class="sub">Управление контентом сайта</p>
 

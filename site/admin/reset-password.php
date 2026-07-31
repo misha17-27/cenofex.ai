@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $row) {
 </head><body>
 <div class="auth">
   <div class="auth-card">
-    <img class="logo" src="../images/logo-dark-text.png" alt="CENOFEX">
+    <img class="logo" src="../images/logo-dark-text.svg" alt="CENOFEX">
     <h1>Новый пароль</h1>
 
     <?php if (!$row): ?>
