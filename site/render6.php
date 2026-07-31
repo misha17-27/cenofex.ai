@@ -39,10 +39,11 @@ $seoTitle = setting("seo_title_{$lang}", 'CENOFEX');
 $seoDesc  = setting("seo_desc_{$lang}", '');
 $ogImage  = setting('og_image', '/images/logo-white-text.png');
 $siteUrl  = rtrim(cfg('site.url'), '/');
-$enPath   = cfg('site.en_path');
-$azPath   = cfg('site.az_path');
+/* У варианта свои адреса: иначе переключатель языка уводил на index5. */
+$enPath   = '/index6.php';
+$azPath   = '/az/index6.php';
 $base     = ($lang === 'az') ? '..' : '.';     // корректные пути к картинкам из /az/
-$canonical = $siteUrl . '/index6.php';
+$canonical = $siteUrl . ($lang === 'az' ? $azPath : $enPath);
 
 $svgSvc = [
   '<svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
@@ -527,6 +528,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           ?></div>
         <?php endif; ?>
         <input type="hidden" name="lang" value="<?= e($lang) ?>">
+        <!-- куда вернуться, если JS выключен и форма уходит обычным POST -->
+        <input type="hidden" name="back" value="<?= e($lang === 'az' ? $azPath : $enPath) ?>">
         <input type="hidden" name="ts" value="<?= time() ?>">
         <div style="position:absolute;left:-9999px" aria-hidden="true">
           <input name="website" tabindex="-1" autocomplete="off">

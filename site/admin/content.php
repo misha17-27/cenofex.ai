@@ -23,6 +23,7 @@ $sections = [
   'Кнопки' => [
     'cta_talk' => 'Связаться', 'cta_about' => 'О нас', 'cta_partners' => 'Партнёры',
     'cta_services' => 'Услуги', 'cta_demo' => 'Запросить демо', 'send' => 'Кнопка формы',
+    'cta_usecases' => 'Больше сценариев',
   ],
   'О компании' => [
     'about_label' => 'Надзаголовок', 'about_title' => 'Заголовок',
@@ -43,9 +44,10 @@ $sections = [
     'tech_label' => 'Надзаголовок', 'tech_title' => 'Заголовок',
     'tech_p1' => 'Абзац 1', 'tech_p2' => 'Абзац 2', 'tech_p3' => 'Абзац 3',
     'partners_label' => 'Заголовок блока партнёров',
+    'cap1' => 'Тег на фото 1', 'cap2' => 'Тег на фото 2', 'cap3' => 'Тег на фото 3',
+    'cap4' => 'Тег на фото 4', 'cap5' => 'Тег на фото 5',
   ],
   'Готовые решения' => [
-    'sol_label' => 'Надзаголовок', 'sol_title' => 'Заголовок', 'sol_intro' => 'Вступление',
     'ready_title' => 'Заголовок «Ready to Deploy»', 'ready_intro' => 'Описание «Ready to Deploy»',
     'grp_fin' => 'Группа: Финансы и налоги', 'grp_hr' => 'Группа: HR',
     'note_title' => 'Плашка — заголовок', 'note_text' => 'Плашка — текст',
@@ -56,12 +58,14 @@ $sections = [
     'email_label' => 'Подпись «E-mail»', 'contact_email' => 'Адрес почты',
     'address_label' => 'Подпись «Адрес»', 'contact_address' => 'Адрес',
     'name_label' => 'Форма: имя', 'email_label2' => 'Форма: e-mail', 'message_label' => 'Форма: сообщение',
+    'phone_form_label' => 'Форма: телефон', 'phone_ph' => 'Форма: подсказка телефона',
+    'form_ok' => 'Сообщение после отправки',
     'name_ph' => 'Форма: подсказка имени', 'email_ph' => 'Форма: подсказка почты', 'message_ph' => 'Форма: подсказка сообщения',
   ],
 ];
 
-$long = ['pil1_desc','pil2_desc','pil3_desc','pil4_desc','about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','sol_intro','ready_intro',
-         'note_text','contact_intro','s1_sub','s2_sub','s3_sub'];
+$long = ['pil1_desc','pil2_desc','pil3_desc','pil4_desc','about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','ready_intro',
+         'note_text','contact_intro','form_ok','s1_sub','s2_sub','s3_sub'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();

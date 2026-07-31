@@ -4,7 +4,6 @@ require __DIR__ . '/partials/header.php';
 
 $groups = [
   'services'  => 'Услуги (What We Do)',
-  'solutions' => 'Готовые решения (Ready Solutions)',
   'finance'   => 'Ready to Deploy — Финансы и налоги',
   'hr'        => 'Ready to Deploy — HR',
 ];

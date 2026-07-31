@@ -10,6 +10,10 @@ require_once __DIR__ . '/app/mailer.php';
 
 $lang = ($_POST['lang'] ?? 'en') === 'az' ? 'az' : 'en';
 $back = ($lang === 'az' ? cfg('site.az_path') : cfg('site.en_path'));
+/* Страница-отправитель: вариантов сайта несколько, возвращаем на тот же.
+   Принимаем только заведомо свои адреса — чтобы поле нельзя было подменить. */
+$from = (string)($_POST['back'] ?? '');
+if (preg_match('~^/(az/)?(index[4-9]\.php)?$~', $from)) $back = $from;
 
 /** Запрос отправлен фоном (без перезагрузки страницы)? */
 function is_ajax(): bool

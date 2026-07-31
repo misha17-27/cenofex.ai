@@ -49,4 +49,4 @@ deployment:
     - /bin/rm -f $DEPLOYPATH/az/index.html
 
     # Сброс кэша страниц после обновления
-    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html $DEPLOYPATH/storage/cache/page_en6.html $DEPLOYPATH/storage/cache/page_en7.html
+    - /bin/rm -f $DEPLOYPATH/storage/cache/page_en.html $DEPLOYPATH/storage/cache/page_az.html $DEPLOYPATH/storage/cache/page_en6.html $DEPLOYPATH/storage/cache/page_en7.html $DEPLOYPATH/storage/cache/page_az6.html $DEPLOYPATH/storage/cache/page_az7.html

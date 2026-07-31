@@ -488,6 +488,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           ?></div>
         <?php endif; ?>
         <input type="hidden" name="lang" value="<?= e($lang) ?>">
+        <!-- куда вернуться, если JS выключен и форма уходит обычным POST -->
+        <input type="hidden" name="back" value="<?= e($lang === 'az' ? $azPath : $enPath) ?>">
         <input type="hidden" name="ts" value="<?= time() ?>">
         <div style="position:absolute;left:-9999px" aria-hidden="true">
           <input name="website" tabindex="-1" autocomplete="off">
