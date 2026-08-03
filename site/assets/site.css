@@ -326,7 +326,7 @@
     .concept-mark[data-active="p1"] .petal.p1,
     .concept-mark[data-active="p2"] .petal.p2,
     .concept-mark[data-active="p3"] .petal.p3,
-    .concept-mark[data-active="p4"] .petal.p4{background:var(--teal)}
+    .concept-mark[data-active="p4"] .petal.p4{background:#fff}
     /* сдвиг убран: под лепестками теперь сплошной диск, смещение открывало бы щель */
 
     .pil-sum{display:flex;align-items:center;gap:12px;background:var(--grad);color:#fff;
