@@ -312,6 +312,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     ['n' => '02', 'key' => 'pil2', 'def' => 'Technology',   'seg' => 'p2'],
     ['n' => '03', 'key' => 'pil3', 'def' => 'Excellence',   'seg' => 'p3'],
     ['n' => '04', 'key' => 'pil4', 'def' => 'Trust',        'seg' => 'p4'],
+    // пятый пункт подсвечивает весь крест, а не отдельный лепесток
+    ['n' => '05', 'key' => 'pil5', 'def' => 'Demo',         'seg' => 'all'],
   ];
   ?>
   <section id="concept">

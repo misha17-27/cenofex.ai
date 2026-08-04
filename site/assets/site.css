@@ -329,6 +329,22 @@
     .concept-mark[data-active="p4"] .petal.p4{background:#fff}
     /* сдвиг убран: под лепестками теперь сплошной диск, смещение открывало бы щель */
 
+    /* наведение на пункт — соответствующий лепесток загорается зелёным.
+       Правила идут после выбранного состояния, поэтому наведение важнее. */
+    .concept-mark[data-hover="p1"] .petal.p1,
+    .concept-mark[data-hover="p2"] .petal.p2,
+    .concept-mark[data-hover="p3"] .petal.p3,
+    .concept-mark[data-hover="p4"] .petal.p4{background:#017A66}   /* темнее креста,
+       иначе лепесток сливается с ним и границы не видно */
+
+    /* пятый пункт — загорается весь крест, лепестки гаснут до светлого */
+    .concept-mark[data-hover="all"] .petal,
+    .concept-mark[data-active="all"] .petal{background:#E8F2EF}
+    .mark-stage{transition:background .38s ease,box-shadow .38s ease}
+    .concept-mark[data-hover="all"] .mark-stage,
+    .concept-mark[data-active="all"] .mark-stage{background:#00C29E;
+      box-shadow:0 0 0 10px rgba(2,167,142,.10)}
+
     .pil-sum{display:flex;align-items:center;gap:12px;background:var(--grad);color:#fff;
       border-radius:16px;padding:14px 18px;width:max-content;max-width:100%}
     .pil-sum img{width:26px;height:26px;filter:brightness(0) invert(1);flex:0 0 auto}

@@ -1,296 +1,298 @@
 {
- "en": {
-  "nav_about": "Who We Are",
-  "nav_services": "What We Do",
-  "nav_tech": "Technology",
-  "nav_solutions": "Ready Solutions",
-  "nav_contact": "Contact",
-  "s1_kicker": "Trust",
-  "s1_ta": "Transformation Starts",
-  "s1_tb": "with Trust.",
-  "s1_sub": "Real transformation requires more than expertise. It requires a partner you can trust with the journey.",
-  "s2_kicker": "Technology",
-  "s2_ta": "The Right Technology",
-  "s2_tb": "for Your Business",
-  "s2_sub": "From proven enterprise systems and automation to the latest in AI — we choose technology around your business, not the other way around.",
-  "s3_kicker": "Center of Excellence",
-  "s3_ta": "Technology Changes.",
-  "s3_tb": "Excellence Doesn't.",
-  "s3_sub": "Strategy. Expertise. Technology. Execution. Your outsourced Center of Excellence — when and where you need it.",
-  "cta_talk": "Talk to Us",
-  "cta_about": "Who We Are",
-  "cta_partners": "Explore Our Partners",
-  "cta_services": "Discover Our Services",
-  "cta_demo": "Request a Demo",
-  "chip_t1": "Your transformation partner",
-  "chip_s1": "Trusted from strategy to delivery",
-  "chip_t2": "Automation, AI & ERP",
-  "chip_s2": "Chosen around your processes",
-  "chip_t3": "CoE as a Service",
-  "chip_s3": "When and where you need it",
-  "about_label": "Who We Are",
-  "about_title": "Your Transformation Partner. Your CoE.",
-  "about_p1": "Cenofex helps companies turn transformation plans into working solutions.",
-  "about_p2": "We bring together business expertise, technology and execution — from shaping the transformation roadmap and choosing the right tools to implementation and ongoing support.",
-  "about_p3": "Think of us as your outsourced Center of Excellence: the expertise you need, when you need it, without having to build it all in-house.",
-  "pil1": "Consultation",
-  "pil2": "Technology",
-  "pil3": "Excellence",
-  "pil4": "Trust",
-  "pil_sum": "Together — Transformation",
-  "services_label": "What We Do",
-  "services_title": "From Transformation Strategy to Working Solutions.",
-  "tech_label": "Our Technology Ecosystem",
-  "tech_title": "The Right Solution Starts with the Right Technology.",
-  "partners_label": "Our Technology Partners",
-  "tech_p1": "We don't believe in one technology for every challenge.",
-  "tech_p2": "We work across automation, AI and enterprise technology to find the solution that fits your processes, systems and transformation goals.",
-  "tech_p3": "From proven platforms to emerging technologies, we help you evaluate the options, make the right choice and turn that choice into a working solution.",
-  "sol_label": "Ready Solutions",
-  "sol_title": "Start with What's Already Working.",
-  "sol_intro": "Not every transformation needs to start from scratch. Our ready-to-deploy solutions address common business challenges and can be adapted to your processes and systems — reducing implementation time and getting you to results faster.",
-  "ready_title": "Ready to Deploy. Adapted to You.",
-  "ready_intro": "Pre-built solutions configured to your systems, data and workflows — for faster implementation without starting from scratch.",
-  "grp_fin": "Finance & Tax",
-  "grp_hr": "Human Resources",
-  "note_title": "Have a different process in mind?",
-  "note_text": "Tell us what takes too much time today. We'll explore whether it can be automated.",
-  "contact_label": "Contact",
-  "contact_title": "Let's talk.",
-  "contact_intro": "Have a challenge, an idea, or simply not sure where to start? Let's talk.",
-  "phone_label": "Phone",
-  "email_label": "E-mail",
-  "address_label": "Address",
-  "contact_phone": "+994 50 393 98 12",
-  "contact_email": "info@cenofex.ai",
-  "contact_address": "To be announced",
-  "name_label": "Name",
-  "email_label2": "E-mail",
-  "message_label": "Message",
-  "name_ph": "Your name",
-  "email_ph": "you@company.com",
-  "message_ph": "How can we help?",
-  "send": "Send Message",
-  "copyright": "© 2026 CENOFEX. All rights reserved.",
-  "form_subject": "CENOFEX inquiry",
-  "services": [
-   [
-    "ST",
-    "Transformation Strategy & Advisory",
-    "We help you identify where transformation creates real value, set priorities and build a practical roadmap."
-   ],
-   [
-    "AU",
-    "Automation & Digital Solutions",
-    "We help you select the right solution and support the full journey — from technology assessment and procurement to implementation and delivery. We design and implement solutions that simplify processes, reduce manual work and improve performance."
-   ],
-   [
-    "AI",
-    "AI & Emerging Technology",
-    "We help you explore and implement AI where it makes business sense — from first use cases to scalable solutions."
-   ],
-   [
-    "CoE",
-    "Center of Excellence as a Service",
-    "Access transformation expertise, governance and execution capabilities without building a full CoE in-house."
-   ]
-  ],
-  "solutions": [
-   [
-    "EI",
-    "E-Invoice Automation",
-    "Automate the flow of invoices between your ERP system and the government e-invoice portal — reducing manual work, errors and processing time."
-   ],
-   [
-    "HR",
-    "HR Process Automation",
-    "Take repetitive HR tasks out of your team's daily workload. From employee data and documents to routine requests and approvals, we automate the processes that consume time without adding value."
-   ],
-   [
-    "BP",
-    "Business Process Automation",
-    "Ready automation scenarios for high-volume, rule-based processes across Finance, Operations and other business functions — adapted to your existing systems and workflows."
-   ],
-   [
-    "AI",
-    "AI-Powered Solutions",
-    "Practical AI solutions designed around real business use cases — helping teams work with information faster, make better use of business data and introduce AI into everyday processes."
-   ]
-  ],
-  "finance": [
-   [
-    "E-Invoice Automation",
-    "Two-way e-invoice automation between your ERP and the Tax e-Cabinet."
-   ],
-   [
-    "AI Tax Correspondence Assistant",
-    "Reads, prioritizes and summarizes tax letters, and drafts responses using relevant ERP data."
-   ],
-   [
-    "Bank & ERP Reconciliation",
-    "Automates bank reconciliation, payment updates, incoming funds, commissions and FX transactions."
-   ]
-  ],
-  "hr": [
-   [
-    "Employee Onboarding",
-    "From EMAS contract creation and e-signing to access, hardware and training requests."
-   ],
-   [
-    "Employee Offboarding",
-    "Automates termination documents, EMAS records, access closure and recommendation letters."
-   ],
-   [
-    "HR Acts & Employee Movement",
-    "Turns approved internal HR documents into corresponding EMAS records."
-   ]
-  ]
- },
- "az": {
-  "nav_about": "Biz kimik",
-  "nav_services": "Nə edirik",
-  "nav_tech": "Texnologiya",
-  "nav_solutions": "Hazır Həllər",
-  "nav_contact": "Əlaqə",
-  "s1_kicker": "Etibar",
-  "s1_ta": "Transformasiya",
-  "s1_tb": "etibardan başlayır.",
-  "s1_sub": "Real transformasiya yalnız ekspertiza deyil. Bu yolu birlikdə gedəcəyiniz tərəfdaşa etibar tələb edir.",
-  "s2_kicker": "Texnologiya",
-  "s2_ta": "Biznesiniz üçün",
-  "s2_tb": "doğru texnologiya.",
-  "s2_sub": "Özünü doğrultmuş korporativ sistemlər və avtomatlaşdırmadan ən son AI həllərinə qədər — texnologiyanı biznesinizə uyğun seçirik, biznesinizi texnologiyaya deyil.",
-  "s3_kicker": "Mükəmməllik Mərkəzi",
-  "s3_ta": "Texnologiya dəyişir.",
-  "s3_tb": "Mükəmməllik dəyişmir.",
-  "s3_sub": "Strategiya. Ekspertiza. Texnologiya. İcra. Ehtiyacınız olan zaman və yerdə — sizin outsourced CoE tərəfdaşınız.",
-  "cta_talk": "Bizimlə əlaqə",
-  "cta_about": "Biz kimik",
-  "cta_partners": "Tərəfdaşlarımızı kəşf edin",
-  "cta_services": "Xidmətlərimizi kəşf edin",
-  "cta_demo": "Demo sifariş edin",
-  "chip_t1": "Transformasiya tərəfdaşınız",
-  "chip_s1": "Strategiyadan icraya etibarlı",
-  "chip_t2": "Avtomatlaşdırma, AI və ERP",
-  "chip_s2": "Proseslərinizə uyğun seçilir",
-  "chip_t3": "CoE as a Service",
-  "chip_s3": "Ehtiyacınız olan zaman və yerdə",
-  "about_label": "Biz kimik",
-  "about_title": "Transformasiya tərəfdaşınız. Sizin CoE.",
-  "about_p1": "Cenofex şirkətlərə transformasiya planlarını real, işlək həllərə çevirməyə kömək edir.",
-  "about_p2": "Biz biznes ekspertizasını, texnologiyanı və icranı bir araya gətiririk — transformasiya yol xəritəsinin hazırlanması və doğru texnologiyanın seçimindən tətbiq və davamlı dəstəyə qədər.",
-  "about_p3": "Bizi sizin CoE-niz – Mükəmməllik Mərkəzi – kimi düşünün: ehtiyacınız olan ekspertiza, komanda, ideyalar və həllər — ehtiyacınız olan zaman, bütün bunları şirkət daxilində sıfırdan yaratmadan.",
-  "pil1": "Konsaltinq",
-  "pil2": "Texnologiya",
-  "pil3": "Mükəmməllik",
-  "pil4": "Etibar",
-  "pil_sum": "Birlikdə — Transformasiya",
-  "services_label": "Nə edirik",
-  "services_title": "Transformasiya strategiyasından işlək həllərə qədər.",
-  "tech_label": "Texnologiya Ekosistemimiz",
-  "tech_title": "Doğru həll doğru texnologiyadan başlayır.",
-  "partners_label": "Texnologiya Tərəfdaşlarımız",
-  "tech_p1": "Hər biznes probleminin eyni texnologiya ilə həll olunduğuna inanmırıq.",
-  "tech_p2": "Proseslərinizə, mövcud sistemlərinizə və transformasiya hədəflərinizə ən uyğun həlli tapmaq üçün avtomatlaşdırma, AI və korporativ texnologiyaların imkanlarını bir araya gətiririk.",
-  "tech_p3": "Özünü doğrultmuş platformalardan yeni texnologiyalara qədər — alternativləri qiymətləndirməyə, doğru seçimi etməyə və onu işlək həllə çevirməyə kömək edirik.",
-  "sol_label": "Hazır Həllər",
-  "sol_title": "Artıq işləyən həllərdən başlayın.",
-  "sol_intro": "Hər transformasiyaya sıfırdan başlamaq lazım deyil. Hazır həllərimiz geniş yayılmış biznes ehtiyacları üçün hazırlanıb və şirkətinizin proses və sistemlərinə uyğunlaşdırıla bilər — tətbiq müddətini qısaldaraq nəticəni daha tez əldə etməyə imkan verir.",
-  "ready_title": "Tətbiqə hazır. Biznesinizə uyğun.",
-  "ready_intro": "Hazır həllər sistemlərinizə, məlumatlarınıza və iş axınlarınıza uyğunlaşdırılır — sıfırdan başlamadan daha sürətli tətbiq üçün.",
-  "grp_fin": "Maliyyə və Vergi",
-  "grp_hr": "İnsan Resursları",
-  "note_title": "Avtomatlaşdırmaq istədiyiniz başqa bir proses var?",
-  "note_text": "Bu gün hansı prosesin vaxtınızı çox aldığını bizə deyin. Onun avtomatlaşdırılması imkanlarını birlikdə dəyərləndirək.",
-  "contact_label": "Əlaqə",
-  "contact_title": "Gəlin danışaq.",
-  "contact_intro": "Həll etmək istədiyiniz problem, yeni ideya və ya sadəcə haradan başlayacağınızla bağlı sualınız var? Gəlin danışaq.",
-  "phone_label": "Telefon",
-  "email_label": "E-mail",
-  "address_label": "Ünvan",
-  "contact_phone": "+994 50 393 98 12",
-  "contact_email": "info@cenofex.ai",
-  "contact_address": "Təyin ediləcək",
-  "name_label": "Ad",
-  "email_label2": "E-mail",
-  "message_label": "Mesaj",
-  "name_ph": "Adınız",
-  "email_ph": "siz@şirkət.com",
-  "message_ph": "Sizə necə kömək edə bilərik?",
-  "send": "Mesaj göndər",
-  "copyright": "© 2026 CENOFEX. Bütün hüquqlar qorunur.",
-  "form_subject": "CENOFEX müraciət",
-  "services": [
-   [
-    "ST",
-    "Transformasiya Strategiyası və Konsaltinq",
-    "Transformasiyanın harada real dəyər yaradacağını müəyyənləşdirir, prioritetləri seçir və praktik yol xəritəsi hazırlayırıq."
-   ],
-   [
-    "AU",
-    "Avtomatlaşdırma və Rəqəmsal Həllər",
-    "Biznesiniz üçün doğru həllin seçilməsinə kömək edir və bütün prosesi dəstəkləyirik — texnologiyanın qiymətləndirilməsi və satınalmadan tətbiq və təhvilə qədər. Prosesləri sadələşdirən, manual işi azaldan və effektivliyi artıran həllər hazırlayır və tətbiq edirik."
-   ],
-   [
-    "AI",
-    "AI və Yeni Texnologiyalar",
-    "AI imkanlarını biznes üçün real fayda yaratdığı sahələrdə tətbiq etməyə kömək edirik — ilk use case-lərdən miqyaslana bilən həllərə qədər."
-   ],
-   [
-    "CoE",
-    "CoE as a Service",
-    "Şirkət daxilində tam CoE yaratmadan transformasiya ekspertizası, idarəetmə və icra imkanlarına çıxış təmin edirik."
-   ]
-  ],
-  "solutions": [
-   [
-    "EI",
-    "E-Qaimə Avtomatlaşdırılması",
-    "ERP sisteminiz və dövlətin e-qaimə portalı arasında hesab-faktura prosesini avtomatlaşdırırıq — manual işi, səhvləri və emal müddətini azaldırıq."
-   ],
-   [
-    "HR",
-    "HR Proseslərinin Avtomatlaşdırılması",
-    "Təkrarlanan HR əməliyyatlarını komandanızın gündəlik iş yükündən çıxarırıq. İşçi məlumatları və sənədlərdən rutin sorğu və təsdiqlərə qədər vaxt aparan prosesləri avtomatlaşdırırıq."
-   ],
-   [
-    "BP",
-    "Biznes Proseslərinin Avtomatlaşdırılması",
-    "Maliyyə, Əməliyyat və digər biznes funksiyalarında yüksək həcmli və qayda əsaslı proseslər üçün hazır avtomatlaşdırma ssenariləri — mövcud sistem və iş axınlarınıza uyğunlaşdırılır."
-   ],
-   [
-    "AI",
-    "AI Əsaslı Həllər",
-    "Real biznes ehtiyacları əsasında qurulan praktik AI həlləri — məlumatla işi sürətləndirmək, biznes datasından daha effektiv istifadə etmək və AI imkanlarını gündəlik proseslərə inteqrasiya etmək üçün."
-   ]
-  ],
-  "finance": [
-   [
-    "E-Qaimə Avtomatlaşdırılması",
-    "ERP və Vergi e-Kabineti arasında ikitərəfli e-qaimə avtomatlaşdırılması."
-   ],
-   [
-    "AI Vergi Yazışmaları Assistenti",
-    "Vergi məktublarını oxuyur, prioritetləşdirir və xülasə edir, ERP məlumatları əsasında cavab layihəsi hazırlayır."
-   ],
-   [
-    "Bank və ERP Üzləşməsi",
-    "Bank üzləşməsi, ödənişlər, daxilolmalar, komissiyalar və valyuta əməliyyatlarını avtomatlaşdırır."
-   ]
-  ],
-  "hr": [
-   [
-    "İşə Qəbul",
-    "EMAS-da müqavilənin yaradılması və e-imzadan giriş, avadanlıq və təlim sorğularınadək."
-   ],
-   [
-    "İşdən Çıxış",
-    "Xitam sənədləri, EMAS qeydləri, girişlərin bağlanması və tövsiyə məktublarını avtomatlaşdırır."
-   ],
-   [
-    "HR Əmrləri və İşçi Hərəkətləri",
-    "Təsdiqlənmiş daxili HR sənədlərini müvafiq EMAS qeydlərinə çevirir."
-   ]
-  ]
- }
+  "en": {
+    "nav_about": "Who We Are",
+    "nav_services": "What We Do",
+    "nav_tech": "Technology",
+    "nav_solutions": "Ready Solutions",
+    "nav_contact": "Contact",
+    "s1_kicker": "Trust",
+    "s1_ta": "Transformation Starts",
+    "s1_tb": "with Trust.",
+    "s1_sub": "Real transformation requires more than expertise. It requires a partner you can trust with the journey.",
+    "s2_kicker": "Technology",
+    "s2_ta": "The Right Technology",
+    "s2_tb": "for Your Business",
+    "s2_sub": "From proven enterprise systems and automation to the latest in AI — we choose technology around your business, not the other way around.",
+    "s3_kicker": "Center of Excellence",
+    "s3_ta": "Technology Changes.",
+    "s3_tb": "Excellence Doesn't.",
+    "s3_sub": "Strategy. Expertise. Technology. Execution. Your outsourced Center of Excellence — when and where you need it.",
+    "cta_talk": "Talk to Us",
+    "cta_about": "Who We Are",
+    "cta_partners": "Explore Our Partners",
+    "cta_services": "Discover Our Services",
+    "cta_demo": "Request a Demo",
+    "chip_t1": "Your transformation partner",
+    "chip_s1": "Trusted from strategy to delivery",
+    "chip_t2": "Automation, AI & ERP",
+    "chip_s2": "Chosen around your processes",
+    "chip_t3": "CoE as a Service",
+    "chip_s3": "When and where you need it",
+    "about_label": "Who We Are",
+    "about_title": "Your Transformation Partner. Your CoE.",
+    "about_p1": "Cenofex helps companies turn transformation plans into working solutions.",
+    "about_p2": "We bring together business expertise, technology and execution — from shaping the transformation roadmap and choosing the right tools to implementation and ongoing support.",
+    "about_p3": "Think of us as your outsourced Center of Excellence: the expertise you need, when you need it, without having to build it all in-house.",
+    "pil1": "Consultation",
+    "pil2": "Technology",
+    "pil3": "Excellence",
+    "pil4": "Trust",
+    "pil5": "Demo",
+    "pil_sum": "Together — Transformation",
+    "services_label": "What We Do",
+    "services_title": "From Transformation Strategy to Working Solutions.",
+    "tech_label": "Our Technology Ecosystem",
+    "tech_title": "The Right Solution Starts with the Right Technology.",
+    "partners_label": "Our Technology Partners",
+    "tech_p1": "We don't believe in one technology for every challenge.",
+    "tech_p2": "We work across automation, AI and enterprise technology to find the solution that fits your processes, systems and transformation goals.",
+    "tech_p3": "From proven platforms to emerging technologies, we help you evaluate the options, make the right choice and turn that choice into a working solution.",
+    "sol_label": "Ready Solutions",
+    "sol_title": "Start with What's Already Working.",
+    "sol_intro": "Not every transformation needs to start from scratch. Our ready-to-deploy solutions address common business challenges and can be adapted to your processes and systems — reducing implementation time and getting you to results faster.",
+    "ready_title": "Ready to Deploy. Adapted to You.",
+    "ready_intro": "Pre-built solutions configured to your systems, data and workflows — for faster implementation without starting from scratch.",
+    "grp_fin": "Finance & Tax",
+    "grp_hr": "Human Resources",
+    "note_title": "Have a different process in mind?",
+    "note_text": "Tell us what takes too much time today. We'll explore whether it can be automated.",
+    "contact_label": "Contact",
+    "contact_title": "Let's talk.",
+    "contact_intro": "Have a challenge, an idea, or simply not sure where to start? Let's talk.",
+    "phone_label": "Phone",
+    "email_label": "E-mail",
+    "address_label": "Address",
+    "contact_phone": "+994 50 393 98 12",
+    "contact_email": "info@cenofex.ai",
+    "contact_address": "To be announced",
+    "name_label": "Name",
+    "email_label2": "E-mail",
+    "message_label": "Message",
+    "name_ph": "Your name",
+    "email_ph": "you@company.com",
+    "message_ph": "How can we help?",
+    "send": "Send Message",
+    "copyright": "© 2026 CENOFEX. All rights reserved.",
+    "form_subject": "CENOFEX inquiry",
+    "services": [
+      [
+        "ST",
+        "Transformation Strategy & Advisory",
+        "We help you identify where transformation creates real value, set priorities and build a practical roadmap."
+      ],
+      [
+        "AU",
+        "Automation & Digital Solutions",
+        "We help you select the right solution and support the full journey — from technology assessment and procurement to implementation and delivery. We design and implement solutions that simplify processes, reduce manual work and improve performance."
+      ],
+      [
+        "AI",
+        "AI & Emerging Technology",
+        "We help you explore and implement AI where it makes business sense — from first use cases to scalable solutions."
+      ],
+      [
+        "CoE",
+        "Center of Excellence as a Service",
+        "Access transformation expertise, governance and execution capabilities without building a full CoE in-house."
+      ]
+    ],
+    "solutions": [
+      [
+        "EI",
+        "E-Invoice Automation",
+        "Automate the flow of invoices between your ERP system and the government e-invoice portal — reducing manual work, errors and processing time."
+      ],
+      [
+        "HR",
+        "HR Process Automation",
+        "Take repetitive HR tasks out of your team's daily workload. From employee data and documents to routine requests and approvals, we automate the processes that consume time without adding value."
+      ],
+      [
+        "BP",
+        "Business Process Automation",
+        "Ready automation scenarios for high-volume, rule-based processes across Finance, Operations and other business functions — adapted to your existing systems and workflows."
+      ],
+      [
+        "AI",
+        "AI-Powered Solutions",
+        "Practical AI solutions designed around real business use cases — helping teams work with information faster, make better use of business data and introduce AI into everyday processes."
+      ]
+    ],
+    "finance": [
+      [
+        "E-Invoice Automation",
+        "Two-way e-invoice automation between your ERP and the Tax e-Cabinet."
+      ],
+      [
+        "AI Tax Correspondence Assistant",
+        "Reads, prioritizes and summarizes tax letters, and drafts responses using relevant ERP data."
+      ],
+      [
+        "Bank & ERP Reconciliation",
+        "Automates bank reconciliation, payment updates, incoming funds, commissions and FX transactions."
+      ]
+    ],
+    "hr": [
+      [
+        "Employee Onboarding",
+        "From EMAS contract creation and e-signing to access, hardware and training requests."
+      ],
+      [
+        "Employee Offboarding",
+        "Automates termination documents, EMAS records, access closure and recommendation letters."
+      ],
+      [
+        "HR Acts & Employee Movement",
+        "Turns approved internal HR documents into corresponding EMAS records."
+      ]
+    ]
+  },
+  "az": {
+    "nav_about": "Biz kimik",
+    "nav_services": "Nə edirik",
+    "nav_tech": "Texnologiya",
+    "nav_solutions": "Hazır Həllər",
+    "nav_contact": "Əlaqə",
+    "s1_kicker": "Etibar",
+    "s1_ta": "Transformasiya",
+    "s1_tb": "etibardan başlayır.",
+    "s1_sub": "Real transformasiya yalnız ekspertiza deyil. Bu yolu birlikdə gedəcəyiniz tərəfdaşa etibar tələb edir.",
+    "s2_kicker": "Texnologiya",
+    "s2_ta": "Biznesiniz üçün",
+    "s2_tb": "doğru texnologiya.",
+    "s2_sub": "Özünü doğrultmuş korporativ sistemlər və avtomatlaşdırmadan ən son AI həllərinə qədər — texnologiyanı biznesinizə uyğun seçirik, biznesinizi texnologiyaya deyil.",
+    "s3_kicker": "Mükəmməllik Mərkəzi",
+    "s3_ta": "Texnologiya dəyişir.",
+    "s3_tb": "Mükəmməllik dəyişmir.",
+    "s3_sub": "Strategiya. Ekspertiza. Texnologiya. İcra. Ehtiyacınız olan zaman və yerdə — sizin outsourced CoE tərəfdaşınız.",
+    "cta_talk": "Bizimlə əlaqə",
+    "cta_about": "Biz kimik",
+    "cta_partners": "Tərəfdaşlarımızı kəşf edin",
+    "cta_services": "Xidmətlərimizi kəşf edin",
+    "cta_demo": "Demo sifariş edin",
+    "chip_t1": "Transformasiya tərəfdaşınız",
+    "chip_s1": "Strategiyadan icraya etibarlı",
+    "chip_t2": "Avtomatlaşdırma, AI və ERP",
+    "chip_s2": "Proseslərinizə uyğun seçilir",
+    "chip_t3": "CoE as a Service",
+    "chip_s3": "Ehtiyacınız olan zaman və yerdə",
+    "about_label": "Biz kimik",
+    "about_title": "Transformasiya tərəfdaşınız. Sizin CoE.",
+    "about_p1": "Cenofex şirkətlərə transformasiya planlarını real, işlək həllərə çevirməyə kömək edir.",
+    "about_p2": "Biz biznes ekspertizasını, texnologiyanı və icranı bir araya gətiririk — transformasiya yol xəritəsinin hazırlanması və doğru texnologiyanın seçimindən tətbiq və davamlı dəstəyə qədər.",
+    "about_p3": "Bizi sizin CoE-niz – Mükəmməllik Mərkəzi – kimi düşünün: ehtiyacınız olan ekspertiza, komanda, ideyalar və həllər — ehtiyacınız olan zaman, bütün bunları şirkət daxilində sıfırdan yaratmadan.",
+    "pil1": "Konsaltinq",
+    "pil2": "Texnologiya",
+    "pil3": "Mükəmməllik",
+    "pil4": "Etibar",
+    "pil5": "Demo",
+    "pil_sum": "Birlikdə — Transformasiya",
+    "services_label": "Nə edirik",
+    "services_title": "Transformasiya strategiyasından işlək həllərə qədər.",
+    "tech_label": "Texnologiya Ekosistemimiz",
+    "tech_title": "Doğru həll doğru texnologiyadan başlayır.",
+    "partners_label": "Texnologiya Tərəfdaşlarımız",
+    "tech_p1": "Hər biznes probleminin eyni texnologiya ilə həll olunduğuna inanmırıq.",
+    "tech_p2": "Proseslərinizə, mövcud sistemlərinizə və transformasiya hədəflərinizə ən uyğun həlli tapmaq üçün avtomatlaşdırma, AI və korporativ texnologiyaların imkanlarını bir araya gətiririk.",
+    "tech_p3": "Özünü doğrultmuş platformalardan yeni texnologiyalara qədər — alternativləri qiymətləndirməyə, doğru seçimi etməyə və onu işlək həllə çevirməyə kömək edirik.",
+    "sol_label": "Hazır Həllər",
+    "sol_title": "Artıq işləyən həllərdən başlayın.",
+    "sol_intro": "Hər transformasiyaya sıfırdan başlamaq lazım deyil. Hazır həllərimiz geniş yayılmış biznes ehtiyacları üçün hazırlanıb və şirkətinizin proses və sistemlərinə uyğunlaşdırıla bilər — tətbiq müddətini qısaldaraq nəticəni daha tez əldə etməyə imkan verir.",
+    "ready_title": "Tətbiqə hazır. Biznesinizə uyğun.",
+    "ready_intro": "Hazır həllər sistemlərinizə, məlumatlarınıza və iş axınlarınıza uyğunlaşdırılır — sıfırdan başlamadan daha sürətli tətbiq üçün.",
+    "grp_fin": "Maliyyə və Vergi",
+    "grp_hr": "İnsan Resursları",
+    "note_title": "Avtomatlaşdırmaq istədiyiniz başqa bir proses var?",
+    "note_text": "Bu gün hansı prosesin vaxtınızı çox aldığını bizə deyin. Onun avtomatlaşdırılması imkanlarını birlikdə dəyərləndirək.",
+    "contact_label": "Əlaqə",
+    "contact_title": "Gəlin danışaq.",
+    "contact_intro": "Həll etmək istədiyiniz problem, yeni ideya və ya sadəcə haradan başlayacağınızla bağlı sualınız var? Gəlin danışaq.",
+    "phone_label": "Telefon",
+    "email_label": "E-mail",
+    "address_label": "Ünvan",
+    "contact_phone": "+994 50 393 98 12",
+    "contact_email": "info@cenofex.ai",
+    "contact_address": "Təyin ediləcək",
+    "name_label": "Ad",
+    "email_label2": "E-mail",
+    "message_label": "Mesaj",
+    "name_ph": "Adınız",
+    "email_ph": "siz@şirkət.com",
+    "message_ph": "Sizə necə kömək edə bilərik?",
+    "send": "Mesaj göndər",
+    "copyright": "© 2026 CENOFEX. Bütün hüquqlar qorunur.",
+    "form_subject": "CENOFEX müraciət",
+    "services": [
+      [
+        "ST",
+        "Transformasiya Strategiyası və Konsaltinq",
+        "Transformasiyanın harada real dəyər yaradacağını müəyyənləşdirir, prioritetləri seçir və praktik yol xəritəsi hazırlayırıq."
+      ],
+      [
+        "AU",
+        "Avtomatlaşdırma və Rəqəmsal Həllər",
+        "Biznesiniz üçün doğru həllin seçilməsinə kömək edir və bütün prosesi dəstəkləyirik — texnologiyanın qiymətləndirilməsi və satınalmadan tətbiq və təhvilə qədər. Prosesləri sadələşdirən, manual işi azaldan və effektivliyi artıran həllər hazırlayır və tətbiq edirik."
+      ],
+      [
+        "AI",
+        "AI və Yeni Texnologiyalar",
+        "AI imkanlarını biznes üçün real fayda yaratdığı sahələrdə tətbiq etməyə kömək edirik — ilk use case-lərdən miqyaslana bilən həllərə qədər."
+      ],
+      [
+        "CoE",
+        "CoE as a Service",
+        "Şirkət daxilində tam CoE yaratmadan transformasiya ekspertizası, idarəetmə və icra imkanlarına çıxış təmin edirik."
+      ]
+    ],
+    "solutions": [
+      [
+        "EI",
+        "E-Qaimə Avtomatlaşdırılması",
+        "ERP sisteminiz və dövlətin e-qaimə portalı arasında hesab-faktura prosesini avtomatlaşdırırıq — manual işi, səhvləri və emal müddətini azaldırıq."
+      ],
+      [
+        "HR",
+        "HR Proseslərinin Avtomatlaşdırılması",
+        "Təkrarlanan HR əməliyyatlarını komandanızın gündəlik iş yükündən çıxarırıq. İşçi məlumatları və sənədlərdən rutin sorğu və təsdiqlərə qədər vaxt aparan prosesləri avtomatlaşdırırıq."
+      ],
+      [
+        "BP",
+        "Biznes Proseslərinin Avtomatlaşdırılması",
+        "Maliyyə, Əməliyyat və digər biznes funksiyalarında yüksək həcmli və qayda əsaslı proseslər üçün hazır avtomatlaşdırma ssenariləri — mövcud sistem və iş axınlarınıza uyğunlaşdırılır."
+      ],
+      [
+        "AI",
+        "AI Əsaslı Həllər",
+        "Real biznes ehtiyacları əsasında qurulan praktik AI həlləri — məlumatla işi sürətləndirmək, biznes datasından daha effektiv istifadə etmək və AI imkanlarını gündəlik proseslərə inteqrasiya etmək üçün."
+      ]
+    ],
+    "finance": [
+      [
+        "E-Qaimə Avtomatlaşdırılması",
+        "ERP və Vergi e-Kabineti arasında ikitərəfli e-qaimə avtomatlaşdırılması."
+      ],
+      [
+        "AI Vergi Yazışmaları Assistenti",
+        "Vergi məktublarını oxuyur, prioritetləşdirir və xülasə edir, ERP məlumatları əsasında cavab layihəsi hazırlayır."
+      ],
+      [
+        "Bank və ERP Üzləşməsi",
+        "Bank üzləşməsi, ödənişlər, daxilolmalar, komissiyalar və valyuta əməliyyatlarını avtomatlaşdırır."
+      ]
+    ],
+    "hr": [
+      [
+        "İşə Qəbul",
+        "EMAS-da müqavilənin yaradılması və e-imzadan giriş, avadanlıq və təlim sorğularınadək."
+      ],
+      [
+        "İşdən Çıxış",
+        "Xitam sənədləri, EMAS qeydləri, girişlərin bağlanması və tövsiyə məktublarını avtomatlaşdırır."
+      ],
+      [
+        "HR Əmrləri və İşçi Hərəkətləri",
+        "Təsdiqlənmiş daxili HR sənədlərini müvafiq EMAS qeydlərinə çevirir."
+      ]
+    ]
+  }
 }

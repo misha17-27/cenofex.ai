@@ -271,11 +271,16 @@
     function autoplay() { clearInterval(timer); timer = setInterval(function () { activate(idx + 1); }, 3000); }
     function pick(i) { activate(i); autoplay(); }
 
+    /* наведение подсвечивает зелёным, выбор остаётся белым — это разные состояния */
+    function hoverOn(el) { mark.setAttribute('data-hover', el.dataset.seg); clearInterval(timer); }
+    function hoverOff() { mark.removeAttribute('data-hover'); autoplay(); }
+
     items.forEach(function (el, i) {
-      el.addEventListener('mouseenter', function () { activate(i); clearInterval(timer); });
-      el.addEventListener('focus', function () { activate(i); clearInterval(timer); });
+      el.addEventListener('mouseenter', function () { hoverOn(el); });
+      el.addEventListener('focus', function () { hoverOn(el); });
+      el.addEventListener('mouseleave', hoverOff);
+      el.addEventListener('blur', hoverOff);
       el.addEventListener('click', function () { pick(i); });
-      el.addEventListener('mouseleave', autoplay);
     });
 
     activate(0);

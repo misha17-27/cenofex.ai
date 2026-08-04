@@ -35,6 +35,7 @@ $sections = [
     'pil2' => '02 — название', 'pil2_desc' => '02 — описание (необязательно)',
     'pil3' => '03 — название', 'pil3_desc' => '03 — описание (необязательно)',
     'pil4' => '04 — название', 'pil4_desc' => '04 — описание (необязательно)',
+    'pil5' => '05 — название', 'pil5_desc' => '05 — описание (необязательно)',
     'pil_sum' => 'Итоговая плашка (Together — Transformation)',
   ],
   'Услуги — заголовок' => [
@@ -64,7 +65,7 @@ $sections = [
   ],
 ];
 
-$long = ['pil1_desc','pil2_desc','pil3_desc','pil4_desc','about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','ready_intro',
+$long = ['pil1_desc','pil2_desc','pil3_desc','pil4_desc','pil5_desc','about_p1','about_p2','about_p3','tech_p1','tech_p2','tech_p3','ready_intro',
          'note_text','contact_intro','form_ok','s1_sub','s2_sub','s3_sub'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
