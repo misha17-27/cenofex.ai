@@ -261,30 +261,22 @@
     var rows = q('#pillRows'), mark = q('#conceptMark');
     if (!rows || !mark) return;
     var items = [].slice.call(rows.querySelectorAll('.pill-row'));
-    var timer, idx = 0;
 
+    /* По умолчанию знак без зелёного — ничего не выбрано и не крутится сам. */
     function activate(i) {
-      idx = (i + items.length) % items.length;
-      items.forEach(function (el, n) { el.classList.toggle('on', n === idx); });
-      mark.setAttribute('data-active', items[idx].dataset.seg);
+      items.forEach(function (el, n) { el.classList.toggle('on', n === i); });
+      mark.setAttribute('data-active', items[i].dataset.seg);
     }
-    function autoplay() { clearInterval(timer); timer = setInterval(function () { activate(idx + 1); }, 3000); }
-    function pick(i) { activate(i); autoplay(); }
-
-    /* наведение подсвечивает зелёным, выбор остаётся белым — это разные состояния */
-    function hoverOn(el) { mark.setAttribute('data-hover', el.dataset.seg); clearInterval(timer); }
-    function hoverOff() { mark.removeAttribute('data-hover'); autoplay(); }
+    function hoverOn(el)  { mark.setAttribute('data-hover', el.dataset.seg); }
+    function hoverOff()   { mark.removeAttribute('data-hover'); }
 
     items.forEach(function (el, i) {
       el.addEventListener('mouseenter', function () { hoverOn(el); });
-      el.addEventListener('focus', function () { hoverOn(el); });
+      el.addEventListener('focus',      function () { hoverOn(el); });
       el.addEventListener('mouseleave', hoverOff);
-      el.addEventListener('blur', hoverOff);
-      el.addEventListener('click', function () { pick(i); });
+      el.addEventListener('blur',       hoverOff);
+      el.addEventListener('click',      function () { activate(i); });
     });
-
-    activate(0);
-    autoplay();
   })();
 
   /* ---- появление секций при скролле ---- */

@@ -307,10 +307,10 @@
     .pill-txt i{display:block;font-style:normal;font-size:14px;color:var(--muted);margin-top:4px}
 
     .concept-mark{display:grid;place-items:center}
-    /* Знак как в брендбуке: круг светлый, а просветы между лепестками —
-       фирменный зелёный крест. Диск задаём фоном, лепестки кладём поверх. */
+    /* По умолчанию зелёного нет: светлые лепестки, просветы белые.
+       Диск под лепестками нужен только для подсветки середины (пятый пункт). */
     .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821;
-      background:var(--green);border-radius:50%}
+      background:#fff;border-radius:50%}
     .mark-stage:before{content:"";position:absolute;inset:-10%;border-radius:50%;z-index:-1;
       background:radial-gradient(circle at 50% 45%,rgba(2,167,142,.10),transparent 68%)}
     /* каждый лепесток — отдельная форма (маска из логотипа), цвет задаётся фоном */
@@ -323,27 +323,30 @@
     .petal.p2{-webkit-mask-image:url('../images/mark/petal-2.svg');mask-image:url('../images/mark/petal-2.svg')}
     .petal.p3{-webkit-mask-image:url('../images/mark/petal-3.svg');mask-image:url('../images/mark/petal-3.svg')}
     .petal.p4{-webkit-mask-image:url('../images/mark/petal-4.svg');mask-image:url('../images/mark/petal-4.svg')}
+    /* наведение и выбор красят лепесток одинаково */
     .concept-mark[data-active="p1"] .petal.p1,
     .concept-mark[data-active="p2"] .petal.p2,
     .concept-mark[data-active="p3"] .petal.p3,
-    .concept-mark[data-active="p4"] .petal.p4{background:#fff}
-    /* сдвиг убран: под лепестками теперь сплошной диск, смещение открывало бы щель */
-
-    /* наведение на пункт — соответствующий лепесток загорается зелёным.
-       Правила идут после выбранного состояния, поэтому наведение важнее. */
+    .concept-mark[data-active="p4"] .petal.p4,
     .concept-mark[data-hover="p1"] .petal.p1,
     .concept-mark[data-hover="p2"] .petal.p2,
     .concept-mark[data-hover="p3"] .petal.p3,
-    .concept-mark[data-hover="p4"] .petal.p4{background:#017A66}   /* темнее креста,
-       иначе лепесток сливается с ним и границы не видно */
+    .concept-mark[data-hover="p4"] .petal.p4{background:var(--teal)}
 
-    /* пятый пункт — загорается весь крест, лепестки гаснут до светлого */
-    .concept-mark[data-hover="all"] .petal,
-    .concept-mark[data-active="all"] .petal{background:#E8F2EF}
-    .mark-stage{transition:background .38s ease,box-shadow .38s ease}
+    /* пятый пункт («Демо») — зеленеет середина: просветы между лепестками */
+    .mark-stage{transition:background .38s ease}
     .concept-mark[data-hover="all"] .mark-stage,
-    .concept-mark[data-active="all"] .mark-stage{background:#00C29E;
-      box-shadow:0 0 0 10px rgba(2,167,142,.10)}
+    .concept-mark[data-active="all"] .mark-stage{background:var(--green)}
+    /* при этом лепестки гасим, иначе выбранный остался бы тёмным поверх зелени.
+       Классы .p1–.p4 нужны, чтобы перебить правило выбранного лепестка. */
+    .concept-mark[data-hover="all"] .petal.p1,
+    .concept-mark[data-hover="all"] .petal.p2,
+    .concept-mark[data-hover="all"] .petal.p3,
+    .concept-mark[data-hover="all"] .petal.p4,
+    .concept-mark[data-active="all"] .petal.p1,
+    .concept-mark[data-active="all"] .petal.p2,
+    .concept-mark[data-active="all"] .petal.p3,
+    .concept-mark[data-active="all"] .petal.p4{background:#E8F2EF}
 
     .pil-sum{display:flex;align-items:center;gap:12px;background:var(--grad);color:#fff;
       border-radius:16px;padding:14px 18px;width:max-content;max-width:100%}

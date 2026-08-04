@@ -327,7 +327,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         <div class="pill-rows" id="pillRows">
           <?php foreach ($pillars as $i => $p):
                 $desc = t($c, $p['key'] . '_desc', ''); ?>
-            <button type="button" class="pill-row<?= $i === 0 ? ' on' : '' ?>" data-seg="<?= e($p['seg']) ?>">
+            <button type="button" class="pill-row" data-seg="<?= e($p['seg']) ?>">
               <span class="pill-dot"></span>
               <span class="pill-txt">
                 <em><?= e($p['n']) ?></em>
@@ -344,7 +344,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         </div>
       </div>
 
-      <div class="concept-mark reveal" id="conceptMark" data-active="p1">
+      <div class="concept-mark reveal" id="conceptMark">
         <div class="mark-stage" role="img" aria-label="CENOFEX">
           <?php foreach (['p1','p2','p3','p4'] as $seg): ?>
             <span class="petal <?= $seg ?>" aria-hidden="true"></span>
