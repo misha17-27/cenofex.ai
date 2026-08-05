@@ -307,10 +307,14 @@
     .pill-txt i{display:block;font-style:normal;font-size:14px;color:var(--muted);margin-top:4px}
 
     .concept-mark{display:grid;place-items:center}
-    /* По умолчанию зелёного нет: светлые лепестки, просветы белые.
-       Диск под лепестками нужен только для подсветки середины (пятый пункт). */
-    .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821;
-      background:#fff;border-radius:50%}
+    /* По умолчанию зелёного нет: светлые лепестки, просветы белые. */
+    .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821}
+    /* Середина знака — отдельная фигура (крест между лепестками), а не круг под ними:
+       круг был чуть шире знака и выступал зелёной каймой по краю. */
+    .mark-stage:after{content:"";position:absolute;inset:0;pointer-events:none;
+      background:transparent;transition:background .38s ease;
+      -webkit-mask:url('../images/mark/cross.svg') center/contain no-repeat;
+              mask:url('../images/mark/cross.svg') center/contain no-repeat}
     /* каждый лепесток — отдельная форма (маска из логотипа), цвет задаётся фоном */
     .petal{position:absolute;inset:0;background:#E8F2EF;
       transition:background .38s ease,transform .38s ease;
@@ -332,9 +336,8 @@
     .concept-mark[data-hover="p4"] .petal.p4{background:var(--teal)}
 
     /* пятый пункт («Демо») — зеленеет середина: просветы между лепестками */
-    .mark-stage{transition:background .38s ease}
-    .concept-mark[data-hover="all"] .mark-stage,
-    .concept-mark[data-active="all"] .mark-stage{background:var(--green)}
+    .concept-mark[data-hover="all"] .mark-stage:after,
+    .concept-mark[data-active="all"] .mark-stage:after{background:var(--green)}
     /* при этом лепестки гасим, иначе выбранный остался бы тёмным поверх зелени.
        Классы .p1–.p4 нужны, чтобы перебить правило выбранного лепестка. */
     .concept-mark[data-hover="all"] .petal.p1,
