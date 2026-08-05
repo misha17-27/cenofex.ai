@@ -311,8 +311,6 @@
        Диск под лепестками нужен только для подсветки середины (пятый пункт). */
     .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821;
       background:#fff;border-radius:50%}
-    .mark-stage:before{content:"";position:absolute;inset:-10%;border-radius:50%;z-index:-1;
-      background:radial-gradient(circle at 50% 45%,rgba(2,167,142,.10),transparent 68%)}
     /* каждый лепесток — отдельная форма (маска из логотипа), цвет задаётся фоном */
     .petal{position:absolute;inset:0;background:#E8F2EF;
       transition:background .38s ease,transform .38s ease;
