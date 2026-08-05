@@ -309,12 +309,13 @@
     .concept-mark{display:grid;place-items:center}
     /* По умолчанию зелёного нет: светлые лепестки, просветы белые. */
     .mark-stage{position:relative;width:min(430px,84%);aspect-ratio:838/821}
-    /* Середина знака — отдельная фигура (крест между лепестками), а не круг под ними:
-       круг был чуть шире знака и выступал зелёной каймой по краю. */
+    /* Середина знака: круг ровно по дуге логотипа (центр и радиус посчитаны по
+       контурам лепестков). Раньше это был овал по размеру блока — он стоял на 8px
+       ниже знака и вылезал зелёной каймой снизу. */
     .mark-stage:after{content:"";position:absolute;inset:0;pointer-events:none;
       background:transparent;transition:background .38s ease;
-      -webkit-mask:url('../images/mark/cross.svg') center/contain no-repeat;
-              mask:url('../images/mark/cross.svg') center/contain no-repeat}
+      -webkit-mask:url('../images/mark/disc.svg') center/contain no-repeat;
+              mask:url('../images/mark/disc.svg') center/contain no-repeat}
     /* каждый лепесток — отдельная форма (маска из логотипа), цвет задаётся фоном */
     .petal{position:absolute;inset:0;background:#E8F2EF;
       transition:background .38s ease,transform .38s ease;
