@@ -517,9 +517,11 @@
               mask:url('../images/pattern-mask.png') 0 0/688px auto repeat}
 
     /* ============ ВАРИАНТ 7: тёмная шапка тем же паттерном, что и футер ============ */
+    /* Тайл мельче натурального: шапка всего ~70px высотой, при 688px в неё
+       попадал лишь кусок мотива и паттерн читался как шум. */
     .v7 header,
     .v7 footer{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
-      background-size:688px auto}
+      background-size:300px auto}
     .v7 footer::before{display:none}
     .v7 header{border-bottom:1px solid rgba(255,255,255,.10);
       backdrop-filter:none;-webkit-backdrop-filter:none}
@@ -535,9 +537,9 @@
       /* мобильное меню — та же тёмная плашка */
       /* класс v7 стоит на <body>, поэтому селектор body.v7.menu-open */
       body.v7.menu-open header{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
-        background-size:688px auto}
+        background-size:300px auto}
       .v7 .nav.open .links{background:#1c1c1c url('../images/pattern-dark-tile.png') 0 0 repeat;
-        background-size:688px auto;color:#fff}
+        background-size:440px auto;color:#fff}
       .v7 .nav.open .links a{border-bottom-color:rgba(255,255,255,.14)}
       .v7 .nav.open .links::after{filter:brightness(0) invert(1);opacity:.12}
       .v7 .nav.open .lang{background:rgba(255,255,255,.10)}
