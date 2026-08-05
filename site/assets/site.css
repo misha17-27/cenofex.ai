@@ -502,11 +502,6 @@
     .v6 .sol-brand .ready-item:hover{border-color:rgba(255,255,255,.6);box-shadow:0 20px 44px rgba(0,0,0,.24)}
     .v6 .sol-brand .note{background:var(--ink)}
 
-    /* знак у заголовка Ready to Deploy — светлая версия логотипа (комм. 14) */
-    .v6 .ready-head{display:flex;align-items:flex-start;gap:18px}
-    .v6 .ready-mark{width:clamp(48px,6vw,68px);height:auto;flex:0 0 auto;margin-top:6px;
-      filter:brightness(0) invert(1);opacity:.9}
-
     /* компактнее, чтобы блок помещался на один экран (комм. 12) */
     .v6 .sol-brand .ready-item{padding:18px}
     .v6 .sol-brand .ready-item h4{font-size:16px;margin-bottom:6px}
@@ -514,10 +509,6 @@
     .v6 .sol-brand .group{margin-top:clamp(22px,2.6vw,32px)}
     .v6 .sol-brand .group-head{margin-bottom:14px}
     .v6 .sol-brand .ready{gap:14px}
-    @media (max-width:560px){
-      .v6 .ready-head{gap:12px}
-      .v6 .ready-mark{width:42px}
-    }
 
     /* футер — тёмная фирменная плашка с паттерном тон-в-тон */
     .v6 footer{background:var(--ink)}

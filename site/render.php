@@ -427,12 +427,9 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
   <!-- SOLUTIONS -->
   <section class="band sol-brand" id="solutions">
     <div class="wrap">
-      <div class="head reveal ready-head">
-        <img class="ready-mark" src="<?= $base ?>/images/brand-icon.svg" alt="" aria-hidden="true">
-        <div>
-          <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
-          <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
-        </div>
+      <div class="head reveal">
+        <h2 class="title"><?= e(t($c,'ready_title')) ?></h2>
+        <p class="lead"><?= e(t($c,'ready_intro')) ?></p>
       </div>
 
       <?php if ($finance): ?>
