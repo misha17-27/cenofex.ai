@@ -5,7 +5,7 @@
   --side:250px;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--dark);font-family:Manrope,system-ui,Segoe UI,Arial,sans-serif;line-height:1.55}
+body{overflow-x:clip;margin:0;background:var(--bg);color:var(--dark);font-family:Manrope,system-ui,Segoe UI,Arial,sans-serif;line-height:1.55}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
@@ -58,7 +58,7 @@ textarea{min-height:110px;resize:vertical}
 .btn:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(2,167,142,.26)}
 .btn.ghost{background:#fff;color:var(--teal);border:1.5px solid rgba(2,167,142,.4)}
 .btn.danger{background:#fff;color:#c0392b;border:1.5px solid rgba(192,57,43,.35);box-shadow:none}
-.btn.sm{min-height:36px;padding:0 14px;font-size:13px}
+.btn.sm{min-height:36px;padding:0 14px;font-size:13px;white-space:nowrap}
 
 .alert{border-radius:12px;padding:12px 15px;font-size:14px;margin-bottom:16px}
 .alert.ok{background:#e7f8f3;color:#056d5c;border:1px solid #b6e7dc}
@@ -102,6 +102,33 @@ tr:last-child td{border-bottom:0}
   .main{margin-left:0}
   .burger{display:flex}
   .content{padding:16px}
+}
+
+/* На узком экране шапка панели не помещалась в одну строку и уезжала вбок.
+   Разносим на две: сверху бургер и название, снизу язык и кнопки. */
+@media (max-width:760px){
+  .topbar{flex-wrap:wrap;padding:10px 14px;gap:10px}
+  .topbar h1{flex:1;min-width:0;font-size:16px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .topbar .right{margin-left:0;width:100%;justify-content:space-between}
+  .burger{flex:0 0 auto}
+}
+@media (max-width:400px){
+  .topbar .right{gap:6px}
+  .topbar .right .btn{padding:0 10px;font-size:12px}
+}
+
+/* Экран входа: капча Cloudflare имеет фиксированные 300px, и вместе с полями
+   34px карточка переставала помещаться в узкий экран. Ужимаем поля. */
+@media (max-width:430px){
+  .auth{padding:16px}
+  .auth-card{padding:22px 16px}
+}
+
+/* Поля в две колонки на телефоне не помещаются — пусть идут одна под другой */
+@media (max-width:640px){
+  .row{gap:10px}
+  .row>*{flex:1 1 100%;min-width:0}
 }
 
 /* ---------- Поле пароля с «глазом» ---------- */
