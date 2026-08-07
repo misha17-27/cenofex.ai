@@ -302,9 +302,10 @@
       background:#C9ECE7;transition:background .22s,box-shadow .22s}
     .pill-row.on .pill-dot{background:var(--green);box-shadow:0 0 0 5px rgba(2,167,142,.16)}
     .pill-txt{display:block;min-width:0}
-    .pill-txt em{display:block;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.14em;
-      color:var(--green);margin-bottom:2px}
-    .pill-txt b{display:block;font-size:clamp(17px,2.1vw,20px);line-height:1.25}
+    /* номер и название — в одной строке, описание под ними */
+    .pill-txt em{font-style:normal;font-size:12px;font-weight:800;letter-spacing:.12em;
+      color:var(--green);margin-right:10px;vertical-align:.08em}
+    .pill-txt b{font-size:clamp(17px,2.1vw,20px);line-height:1.25}
     .pill-txt i{display:block;font-style:normal;font-size:14px;color:var(--muted);margin-top:4px}
 
     .concept-mark{display:grid;place-items:center}
@@ -426,7 +427,7 @@
       .pill-rows{grid-template-columns:1fr 1fr;gap:8px}
       .pill-row{padding:12px;gap:9px;align-items:center}
       .pill-dot{width:10px;height:10px;margin-top:0}
-      .pill-txt em{font-size:10px;letter-spacing:.1em}
+      .pill-txt em{font-size:11px;letter-spacing:.08em;margin-right:8px}
       .pill-txt b{font-size:15px;line-height:1.2}
       .pill-txt i{font-size:12.5px}
       .pil-sum{width:100%;justify-content:center;padding:12px 14px}
