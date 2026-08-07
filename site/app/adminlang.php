@@ -80,6 +80,7 @@ function admin_phrases(): array
         'Сообщение после отправки' => ['Message after sending', 'Göndərişdən sonrakı mesaj'],
         'Открыть сайт для поисковиков' => ['Allow search engines', 'Axtarış sistemlərinə icazə'],
         'Впишите 1, когда сайт будет запущен. Пока стоит 0 — страница закрыта от Google.' => ['Enter 1 when the site goes live. While it is 0 the page is hidden from Google.', 'Sayt işə düşəndə 1 yazın. 0 olduqda səhifə Google-dan gizlidir.'],
+        'Показывается, когда ссылку на сайт отправляют в мессенджере или соцсети. Лучше 1200×630 px.' => ['Shown when the link is shared in a messenger or on social media. 1200×630 px works best.', 'Link messencer və ya sosial şəbəkədə paylaşılanda göstərilir. Ən yaxşısı 1200×630 px.'],
         'Описание картинки' => ['Image description', 'Şəklin təsviri'],
         'Атрибут alt: что изображено на фото. Его читают поисковики' => ['The alt attribute: what the photo shows. It is read by search engines', 'Alt atributu: şəkildə nə təsvir olunub. Onu axtarış sistemləri'],
         'и программы для незрячих. Если оставить пустым — подставится заголовок блока.' => ['and screen readers. Leave it empty to use the section heading.', 'və ekran oxuyucuları oxuyur. Boş buraxsanız, blokun başlığı istifadə olunacaq.'],

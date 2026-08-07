@@ -132,6 +132,27 @@ function photo_alt(string $key, string $lang, string $fallback = ''): string
     return $v !== '' ? $v : $fallback;
 }
 
+/**
+ * Приём загруженной картинки. Возвращает путь от корня сайта или null.
+ * Тип проверяем по содержимому файла, а не по расширению.
+ */
+function upload_image(array $file, string &$err): ?string
+{
+    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) return null;
+    if ($file['error'] !== UPLOAD_ERR_OK)  { $err = 'Ошибка загрузки.'; return null; }
+    if ($file['size'] > 6 * 1024 * 1024)   { $err = 'Файл больше 6 МБ.'; return null; }
+
+    $allowed = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
+    $mime = @mime_content_type($file['tmp_name']) ?: '';
+    if (!isset($allowed[$mime])) { $err = 'Допустимы JPG, PNG или WEBP.'; return null; }
+
+    $dir = dirname(__DIR__) . '/uploads/photos';
+    if (!is_dir($dir)) @mkdir($dir, 0775, true);
+    $name = 'img' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $allowed[$mime];
+    if (!move_uploaded_file($file['tmp_name'], $dir . '/' . $name)) { $err = 'Не удалось сохранить.'; return null; }
+    return '/uploads/photos/' . $name;
+}
+
 function cache_path(string $lang): string
 {
     return rtrim(cfg('paths.cache'), '/') . "/page_{$lang}.html";

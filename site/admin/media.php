@@ -12,22 +12,6 @@ $slots = [
 ];
 $err = '';
 
-function upload_photo(array $file, string &$err): ?string
-{
-    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) return null;
-    if ($file['error'] !== UPLOAD_ERR_OK) { $err = 'Ошибка загрузки.'; return null; }
-    if ($file['size'] > 6 * 1024 * 1024) { $err = 'Файл больше 6 МБ.'; return null; }
-
-    $allowed = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
-    $mime = @mime_content_type($file['tmp_name']) ?: '';
-    if (!isset($allowed[$mime])) { $err = 'Допустимы JPG, PNG или WEBP.'; return null; }
-
-    $dir = dirname(__DIR__) . '/uploads/photos';
-    if (!is_dir($dir)) @mkdir($dir, 0775, true);
-    $name = 'img' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $allowed[$mime];
-    if (!move_uploaded_file($file['tmp_name'], $dir . '/' . $name)) { $err = 'Не удалось сохранить.'; return null; }
-    return '/uploads/photos/' . $name;
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
@@ -38,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($_POST[$f])) setting_set($f, trim($_POST[$f]));
         }
         // 1) загруженный файл важнее
-        $path = upload_photo($_FILES[$key] ?? [], $err);
+        $path = upload_image($_FILES[$key] ?? [], $err);
         if ($path) { setting_set($key, $path); continue; }
         // 2) иначе — ссылка из поля
         if (isset($_POST[$key])) {
