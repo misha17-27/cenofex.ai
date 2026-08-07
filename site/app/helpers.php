@@ -122,6 +122,16 @@ function photo(string $key): string
     return $v !== '' ? $v : photo_default($key);
 }
 
+/**
+ * Подпись alt для картинки: своя из панели (на нужном языке),
+ * иначе — переданный запасной текст.
+ */
+function photo_alt(string $key, string $lang, string $fallback = ''): string
+{
+    $v = trim(setting('alt_' . $key . '_' . $lang));
+    return $v !== '' ? $v : $fallback;
+}
+
 function cache_path(string $lang): string
 {
     return rtrim(cfg('paths.cache'), '/') . "/page_{$lang}.html";

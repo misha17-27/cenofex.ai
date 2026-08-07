@@ -32,6 +32,11 @@ function upload_photo(array $file, string &$err): ?string
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     csrf_check();
     foreach (array_keys($slots) as $key) {
+        // подписи alt — по одной на каждый язык
+        foreach (['en', 'az'] as $lg) {
+            $f = 'alt_' . $key . '_' . $lg;
+            if (isset($_POST[$f])) setting_set($f, trim($_POST[$f]));
+        }
         // 1) загруженный файл важнее
         $path = upload_photo($_FILES[$key] ?? [], $err);
         if ($path) { setting_set($key, $path); continue; }
@@ -75,6 +80,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <?php endif; ?>
           <p class="hint" style="margin:8px 0 6px">Загрузить новый файл (заменит ссылку):</p>
           <input type="file" name="<?= e($key) ?>" accept="image/jpeg,image/png,image/webp">
+
+          <div class="row" style="margin-top:12px">
+            <div>
+              <label>Описание картинки <span class="badge gray">EN</span></label>
+              <input type="text" name="alt_<?= e($key) ?>_en" value="<?= e(setting('alt_' . $key . '_en')) ?>">
+            </div>
+            <div>
+              <label>Описание картинки <span class="badge">AZ</span></label>
+              <input type="text" name="alt_<?= e($key) ?>_az" value="<?= e(setting('alt_' . $key . '_az')) ?>">
+            </div>
+          </div>
+          <p class="hint" style="margin:6px 0 0">Атрибут alt: что изображено на фото. Его читают поисковики
+            и программы для незрячих. Если оставить пустым — подставится заголовок блока.</p>
         </div>
       </div>
     </div>

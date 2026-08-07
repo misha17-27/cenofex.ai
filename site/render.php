@@ -261,7 +261,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
               <img src="<?= e(img_small($img)) ?>"
                    <?php $ss = img_srcset($img); if ($ss): ?>srcset="<?= e($ss) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
                    width="1600" height="1100" decoding="async"
-                   alt="<?= e(t($c,$s['ct'])) ?>" <?= $i===0?'loading="eager" fetchpriority="high"':'loading="lazy"' ?>
+                   alt="<?= e(photo_alt($s['img'], $lang, t($c,$s['ct']))) ?>" <?= $i===0?'loading="eager" fetchpriority="high"':'loading="lazy"' ?>
                    onerror="this.onerror=null;this.src='<?= $base ?>/images/<?= e($s['fb']) ?>';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
               <div class="hero-chip"><img src="<?= $base ?>/images/brand-icon.svg" alt="">
                 <div><b><?= e(t($c,$s['ct'])) ?></b><span><?= e(t($c,$s['cs'])) ?></span></div>
@@ -299,7 +299,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         <img src="<?= e(img_small($ab)) ?>"
              <?php $ssa = img_srcset($ab); if ($ssa): ?>srcset="<?= e($ssa) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
              width="1600" height="1200" decoding="async"
-             alt="<?= e(t($c,'about_title')) ?>" loading="lazy"
+             alt="<?= e(photo_alt('photo_about', $lang, t($c,'about_title'))) ?>" loading="lazy"
              onerror="this.onerror=null;this.src='<?= $base ?>/images/4.png';this.style.objectFit='contain';this.parentNode.style.background='#4C6971'">
       </div>
     </div>
@@ -400,7 +400,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           <img src="<?= e(img_small($techPhoto)) ?>"
                <?php $ts = img_srcset($techPhoto); if ($ts): ?>srcset="<?= e($ts) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
                width="1600" height="1100" loading="lazy" decoding="async"
-               alt="<?= e(t($c,'tech_title')) ?>"
+               alt="<?= e(photo_alt('photo_tech', $lang, t($c,'tech_title'))) ?>"
                onerror="this.onerror=null;this.src='<?= $base ?>/images/5.png';this.style.objectFit='contain'">
           <figcaption class="tech-caps">
             <?php foreach ($caps as $cap): ?><span><?= e($cap) ?></span><?php endforeach; ?>
