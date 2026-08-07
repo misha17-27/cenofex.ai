@@ -90,7 +90,8 @@
       track.style.transform = 'translateX(' + (-cur * 100) + '%)';
       dotEls.forEach(function (d, n) { d.classList.toggle('active', n === cur); });
     }
-    function start() { clearInterval(timer); timer = setInterval(function () { show(cur + 1); }, 10000);   // слайд меняется раз в 10 секунд }
+    /* слайд меняется раз в 10 секунд */
+    function start() { clearInterval(timer); timer = setInterval(function () { show(cur + 1); }, 10000); }
     var prev = hero.querySelector('.hero-arrow.prev'), next = hero.querySelector('.hero-arrow.next');
     if (prev) prev.addEventListener('click', function () { show(cur - 1); start(); });
     if (next) next.addEventListener('click', function () { show(cur + 1); start(); });
