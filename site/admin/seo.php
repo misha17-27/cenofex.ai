@@ -8,7 +8,7 @@ $fields = [
   'seo_title_az'       => ['Заголовок страницы (AZ)', ''],
   'seo_desc_az'        => ['Описание (AZ)', '', true],
   'og_image'           => ['Картинка для соцсетей', 'Путь от корня сайта, например /images/logo-white-text.png'],
-  'robots_index'       => ['Открыть сайт для поисковиков', 'Впишите 1, когда сайт будет запущен. Пока стоит 0 — страница закрыта от Google.'],
+  'robots_index'       => ['Видимость в поиске', 'Закрывайте только на время работ — закрытый сайт выпадает из выдачи.', false, 'choice'],
   'contact_form_email' => ['Почта для заявок с формы', 'Куда приходят сообщения из формы обратной связи.'],
 ];
 
@@ -31,7 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $isArea = !empty($f[2]); ?>
     <div class="field">
       <label><?= e($f[0]) ?></label>
-      <?php if ($isArea): ?>
+      <?php if (($f[3] ?? '') === 'choice'):
+            $cur = setting($k, '1') === '0' ? '0' : '1'; ?>
+        <select name="<?= e($k) ?>">
+          <option value="1"<?= $cur === '1' ? ' selected' : '' ?>>Открыт для поисковиков</option>
+          <option value="0"<?= $cur === '0' ? ' selected' : '' ?>>Закрыт от поисковиков</option>
+        </select>
+      <?php elseif ($isArea): ?>
         <textarea name="<?= e($k) ?>" style="min-height:80px"><?= e(setting($k)) ?></textarea>
       <?php else: ?>
         <input type="text" name="<?= e($k) ?>" value="<?= e(setting($k)) ?>">

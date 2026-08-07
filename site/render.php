@@ -113,7 +113,7 @@ ob_start();
 <meta name="twitter:image" content="<?= e($siteUrl . $ogImage) ?>">
 <?php /* Пока на / стоит coming soon, страницу в поиск не пускаем.
          Переключается в админке: SEO → «Открыть сайт для поисковиков». */ ?>
-<meta name="robots" content="<?= setting('robots_index', '0') === '1' ? 'index, follow' : 'noindex, nofollow' ?>">
+<meta name="robots" content="<?= setting('robots_index', '1') === '0' ? 'noindex, nofollow' : 'index, follow' ?>">
 <meta name="theme-color" content="#02A78E">
 <meta name="author" content="CENOFEX">
 <link rel="canonical" href="<?= e($canonical) ?>">
