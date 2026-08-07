@@ -80,6 +80,8 @@ function admin_phrases(): array
         'Сообщение после отправки' => ['Message after sending', 'Göndərişdən sonrakı mesaj'],
         'Открыть сайт для поисковиков' => ['Allow search engines', 'Axtarış sistemlərinə icazə'],
         'Впишите 1, когда сайт будет запущен. Пока стоит 0 — страница закрыта от Google.' => ['Enter 1 when the site goes live. While it is 0 the page is hidden from Google.', 'Sayt işə düşəndə 1 yazın. 0 olduqda səhifə Google-dan gizlidir.'],
+        'по умолчанию' => ['default', 'standart'],
+        'Сейчас на сайте картинка по умолчанию. Загрузите свою, чтобы заменить.' => ['A default image is currently used on the site. Upload your own to replace it.', 'Hazırda saytda standart şəkil istifadə olunur. Əvəz etmək üçün öz şəklinizi yükləyin.'],
         'Видимость в поиске' => ['Search visibility', 'Axtarışda görünmə'],
         'Открыт для поисковиков' => ['Open to search engines', 'Axtarış sistemlərinə açıq'],
         'Закрыт от поисковиков' => ['Closed to search engines', 'Axtarış sistemlərinə bağlı'],

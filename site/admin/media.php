@@ -67,11 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div style="flex:1">
           <label><?= e($label) ?>
-            <?php if ($isDefault): ?><span class="badge gray">стандартная</span><?php endif; ?>
+            <?php if ($isDefault): ?><span class="badge gray">по умолчанию</span><?php endif; ?>
           </label>
           <input type="text" name="<?= e($key) ?>" value="<?= e($cur) ?>" placeholder="/uploads/photos/... или https://...">
           <?php if ($isDefault): ?>
-            <p class="hint" style="margin:6px 0 0">Сейчас на сайте стандартная картинка. Загрузите свою, чтобы заменить.</p>
+            <p class="hint" style="margin:6px 0 0">Сейчас на сайте картинка по умолчанию. Загрузите свою, чтобы заменить.</p>
           <?php endif; ?>
           <p class="hint" style="margin:8px 0 6px">Загрузить новый файл (заменит ссылку):</p>
           <input type="file" name="<?= e($key) ?>" accept="image/jpeg,image/png,image/webp">
