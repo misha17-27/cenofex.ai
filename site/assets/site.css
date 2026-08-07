@@ -162,7 +162,8 @@
       animation:cxSpin 44s linear infinite}
     .hero-viewport{z-index:1}
     .contact-info{position:relative;overflow:hidden}
-    .contact-info::after{content:"";position:absolute;right:-56px;top:-56px;width:210px;height:210px;
+    /* знак — внизу карточки: сверху он спорил с заголовком, а снизу заполняет пустоту */
+    .contact-info::after{content:"";position:absolute;right:-56px;bottom:-56px;width:210px;height:210px;
       background:url('../images/brand-icon.svg') center/contain no-repeat;filter:brightness(0) invert(1);
       opacity:.06;pointer-events:none;animation:cxSpin 30s linear infinite}
     .contact-info>*{position:relative;z-index:1}
