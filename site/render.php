@@ -328,9 +328,8 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
           <?php foreach ($pillars as $i => $p):
                 $desc = t($c, $p['key'] . '_desc', ''); ?>
             <button type="button" class="pill-row" data-seg="<?= e($p['seg']) ?>">
-              <span class="pill-dot"></span>
+              <em class="pill-num"><?= e($p['n']) ?></em>
               <span class="pill-txt">
-                <em><?= e($p['n']) ?></em>
                 <b><?= e(t($c, $p['key'], $p['def'])) ?></b>
                 <?php if ($desc !== ''): ?><i><?= e($desc) ?></i><?php endif; ?>
               </span>
