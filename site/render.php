@@ -131,7 +131,7 @@ ob_start();
       onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"></noscript>
 <?php /* Предзагрузка главной картинки — ускоряет LCP */
-      $lcp = setting($slides[0]['img'], $slides[0]['def']);
+      $lcp = photo($slides[0]['img']);
       $lcpSet = img_srcset($lcp); ?>
 <link rel="preload" as="image" href="<?= e(img_small($lcp)) ?>"
       <?php if ($lcpSet): ?>imagesrcset="<?= e($lcpSet) ?>" imagesizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
