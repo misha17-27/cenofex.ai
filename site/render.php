@@ -61,13 +61,13 @@ $svgSol = [
 $slides = [
   ['k'=>'s1_kicker','a'=>'s1_ta','b'=>'s1_tb','sub'=>'s1_sub','cta'=>'cta_talk','ctaHref'=>'#contact',
    'alt'=>'cta_about','altHref'=>'#about','img'=>'photo_hero1','ct'=>'chip_t1','cs'=>'chip_s1',
-   'def'=>'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80','fb'=>'1.png'],
+   'fb'=>'1.png'],
   ['k'=>'s2_kicker','a'=>'s2_ta','b'=>'s2_tb','sub'=>'s2_sub','cta'=>'cta_partners','ctaHref'=>'#technology',
    'alt'=>'cta_talk','altHref'=>'#contact','img'=>'photo_hero2','ct'=>'chip_t2','cs'=>'chip_s2',
-   'def'=>'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80','fb'=>'5.png'],
+   'fb'=>'5.png'],
   ['k'=>'s3_kicker','a'=>'s3_ta','b'=>'s3_tb','sub'=>'s3_sub','cta'=>'cta_services','ctaHref'=>'#services',
    'alt'=>'cta_talk','altHref'=>'#contact','img'=>'photo_hero3','ct'=>'chip_t3','cs'=>'chip_s3',
-   'def'=>'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80','fb'=>'3.png'],
+   'fb'=>'3.png'],
 ];
 
 /** Набор размеров для картинок Unsplash — мобильные грузят маленькую версию. */
@@ -240,7 +240,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
     <div class="hero-viewport">
       <div class="hero-track" id="heroTrack">
         <?php foreach ($slides as $i => $s):
-          $img = setting($s['img'], $s['def']); ?>
+          $img = photo($s['img']); ?>
         <div class="hero-slide<?= $i===0?' active':'' ?>">
           <div class="wrap hero-inner">
             <div>
@@ -295,7 +295,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         </div>
       </div>
       <div class="about-media reveal">
-        <?php $ab = setting('photo_about', 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80'); ?>
+        <?php $ab = photo('photo_about'); ?>
         <img src="<?= e(img_small($ab)) ?>"
              <?php $ssa = img_srcset($ab); if ($ssa): ?>srcset="<?= e($ssa) ?>" sizes="(max-width:980px) 92vw, 46vw"<?php endif; ?>
              width="1600" height="1200" decoding="async"
@@ -387,8 +387,7 @@ $FLAGS = JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
         </div>
 
         <?php
-          $techPhoto = setting('photo_tech',
-              'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80');
+          $techPhoto = photo('photo_tech');
           $caps = [
             t($c, 'cap1', 'RPA'),
             t($c, 'cap2', 'AI & Agentic AI'),

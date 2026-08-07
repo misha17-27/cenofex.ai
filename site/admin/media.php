@@ -54,18 +54,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Рекомендуемый размер — не меньше 1600 px по ширине.</p>
 
   <?php foreach ($slots as $key => $label):
-        $cur = setting($key); ?>
+        $cur  = setting($key);              // что задано в панели
+        $used = photo($key);                // что реально стоит на сайте
+        $isDefault = ($cur === ''); ?>
     <div style="border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px">
       <div class="row" style="align-items:flex-start">
         <div style="flex:0 0 190px">
           <div style="background:#0c1615;border-radius:10px;overflow:hidden;aspect-ratio:4/3;display:grid;place-items:center">
-            <?php if ($cur): ?><img src="<?= e($cur) ?>" alt="" style="width:100%;height:100%;object-fit:cover">
+            <?php if ($used): ?><img src="<?= e($used) ?>" alt="" style="width:100%;height:100%;object-fit:cover">
             <?php else: ?><span style="color:#7d8f8b;font-size:13px">нет фото</span><?php endif; ?>
           </div>
         </div>
         <div style="flex:1">
-          <label><?= e($label) ?></label>
+          <label><?= e($label) ?>
+            <?php if ($isDefault): ?><span class="badge gray">стандартная</span><?php endif; ?>
+          </label>
           <input type="text" name="<?= e($key) ?>" value="<?= e($cur) ?>" placeholder="/uploads/photos/... или https://...">
+          <?php if ($isDefault): ?>
+            <p class="hint" style="margin:6px 0 0">Сейчас на сайте стандартная картинка. Загрузите свою, чтобы заменить.</p>
+          <?php endif; ?>
           <p class="hint" style="margin:8px 0 6px">Загрузить новый файл (заменит ссылку):</p>
           <input type="file" name="<?= e($key) ?>" accept="image/jpeg,image/png,image/webp">
         </div>

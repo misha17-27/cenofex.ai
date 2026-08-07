@@ -99,6 +99,29 @@ function partners(): array
 
 /* ---------------- Кэш публичных страниц ---------------- */
 
+/**
+ * Картинки страницы: адрес из панели, а если там пусто — стандартный.
+ * Один список на сайт и на админку, иначе в панели «нет фото»,
+ * хотя на странице картинка есть.
+ */
+function photo_default(string $key): string
+{
+    $map = [
+        'photo_hero1' => 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=80',
+        'photo_hero2' => 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1800&q=80',
+        'photo_hero3' => 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80',
+        'photo_about' => 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1800&q=80',
+        'photo_tech'  => 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
+    ];
+    return $map[$key] ?? '';
+}
+
+function photo(string $key): string
+{
+    $v = trim(setting($key));
+    return $v !== '' ? $v : photo_default($key);
+}
+
 function cache_path(string $lang): string
 {
     return rtrim(cfg('paths.cache'), '/') . "/page_{$lang}.html";
